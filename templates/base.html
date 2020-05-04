@@ -14,7 +14,10 @@
       href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Parisienne&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{% static 'css/font-awesome/css/all.min.css' %}">
+    <link
+      rel="stylesheet"
+      href="{% static 'css/font-awesome/css/all.min.css' %}"
+    />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
 
@@ -64,16 +67,20 @@
             <a class="nav-link" href="#">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-shopping-bag"></i>Bag</a>
+            <a class="nav-link" href="#"
+              ><i class="fas fa-shopping-bag"></i>Bag</a
+            >
           </li>
         </ul>
       </div>
     </nav>
 
+    {% block content %} {% endblock %}
+
     <footer>
       <div class="container footer-container">
         <div class="row footer-row">
-          <div class="footer-about col-md-4">
+          <div class="footer-col footer-about col-md-4">
             <h3>About</h3>
             <p>
               <a class="footer-link" href="{% url 'about:about' %}">About Us</a>
@@ -89,18 +96,24 @@
               >
             </p>
           </div>
-          <div class="footer-contact col-md-4">
+          <div class="footer-col footer-contact col-md-4">
             <h3>Contact</h3>
             <a href=""></a>
           </div>
-          <div class="footer-social col-md-4">
+          <div class="footer-col footer-social col-md-4">
             <h3>Social</h3>
+            <a href="" target="_blank"><i class="social fab fa-twitter-square"></i></a>
+            <a href="https://www.facebook.com/tartanthom/" target="_blank"><i class="social fab fa-facebook-square"></i></a>
+            <a href="https://www.instagram.com/tartanthom/" target="_blank"><i class="social fab fa-instagram-square"></i></a>
           </div>
+        </div>
+        <div class="row footer-row">
+            <div class="col-md-12 d-flex justify-content-center">
+                <div class="copyright"><i class="fas fa-copyright"></i>Designed and built by Joojoobee 2020</div>
+            </div>
         </div>
       </div>
     </footer>
-
-    {% block content %} {% endblock %}
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
