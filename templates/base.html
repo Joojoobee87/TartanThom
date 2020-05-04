@@ -75,9 +75,7 @@
       </div>
     </nav>
     <div class="content">
-
-    {% block content %} {% endblock %}
-   
+      {% block content %} {% endblock %}
     </div>
     <footer>
       <div class="container footer-container">
@@ -100,19 +98,37 @@
           </div>
           <div class="footer-col footer-contact col-md-4">
             <h3>Contact</h3>
-            <a href=""></a>
+            <p>
+              <a class="footer-link" href="{% url 'contact:contact' %}"
+                >Contact Us</a
+              >
+            </p>
+            <p>
+              <a class="footer-link" href="{% url 'contact:faq' %}"
+                >FAQs</a
+              >
+            </p>
           </div>
           <div class="footer-col footer-social col-md-4">
             <h3>Social</h3>
-            <a href="" target="_blank"><i class="social fab fa-twitter-square"></i></a>
-            <a href="https://www.facebook.com/tartanthom/" target="_blank"><i class="social fab fa-facebook-square"></i></a>
-            <a href="https://www.instagram.com/tartanthom/" target="_blank"><i class="social fab fa-instagram-square"></i></a>
+            <a href="" target="_blank"
+              ><i class="social fab fa-twitter-square"></i
+            ></a>
+            <a href="https://www.facebook.com/tartanthom/" target="_blank"
+              ><i class="social fab fa-facebook-square"></i
+            ></a>
+            <a href="https://www.instagram.com/tartanthom/" target="_blank"
+              ><i class="social fab fa-instagram-square"></i
+            ></a>
           </div>
         </div>
         <div class="row footer-row">
-            <div class="col-md-12 d-flex justify-content-center">
-                <div class="copyright"><i class="fas fa-copyright"></i>Designed and built by Joojoobee 2020</div>
+          <div class="col-md-12 d-flex justify-content-center">
+            <div class="copyright">
+              <i class="fas fa-copyright"></i>Designed and built by Joojoobee
+              2020
             </div>
+          </div>
         </div>
       </div>
     </footer>
