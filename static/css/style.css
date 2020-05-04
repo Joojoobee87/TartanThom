@@ -8,3 +8,26 @@ body {
     height: 120px;
     width: 280px;
 }
+
+/*----------------------Footer------------------------------*/
+
+footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background-color: #828285;
+}
+
+.footer-container {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+.footer-row {
+    height: 100%;
+    width: 100%;
+}
