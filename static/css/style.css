@@ -105,3 +105,15 @@ footer {
     margin-left: -5%;
 }
 
+/*--------------------------Contact------------------------*/
+
+.contact-container {
+    background-color: #E6BEAE;
+    width: 70%;
+    padding: 2em;
+    margin: 4em auto;
+}
+
+.contact-form {
+    padding: 2em;
+}
