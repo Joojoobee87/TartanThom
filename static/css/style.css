@@ -1,0 +1,10 @@
+/*-----------------Background and Branding-----------------*/
+
+body {
+    background-image: url("/static/img/tartanthom.png");
+}
+
+.brand {
+    height: 120px;
+    width: 280px;
+}
