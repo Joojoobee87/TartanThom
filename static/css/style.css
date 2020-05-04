@@ -2,6 +2,7 @@
 
 body {
     background-image: url("/static/img/tartanthom.png");
+    height: 100%;
 }
 
 .brand {
@@ -27,7 +28,7 @@ a:hover {
 }
 
 i {
-    color: #828285;
+    color: inherit;
     padding: 5px;
 }
 
@@ -49,10 +50,9 @@ i {
 
 footer {
     display: block;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
-    height: 150px;
     background-color: #828285;
 }
 
@@ -66,6 +66,21 @@ footer {
 .footer-row {
     height: 100%;
     width: 100%;
+}
+
+.footer-col {
+    padding: 2em;
+}
+
+.social {
+    font-size: 1.5em;
+    margin-right: 15px;
+}
+
+.copyright {
+    padding: 1em;
+    font-size: .8em;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /*----------------------------Index-------------------------*/
