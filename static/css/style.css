@@ -5,6 +5,10 @@ body {
     height: 100%;
 }
 
+.content {
+    min-height: 70vh;
+}
+
 .brand {
     height: 120px;
     width: 280px;
