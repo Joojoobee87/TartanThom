@@ -31,6 +31,22 @@ def user_registration(request):
         "registration_form": registration_form})
 
 
+def user_login(request):
+    login_form = LoginForm()
+    """username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        # Redirect to a success page.
+        ...
+    else:
+        # Return an 'invalid login' error message.
+        ..."""
+    return render(request, 'accounts/login.html', {
+        "login_form": login_form})
+
+
 def user_logout(request):
     logout(request)
     return redirect(reverse('index'))
