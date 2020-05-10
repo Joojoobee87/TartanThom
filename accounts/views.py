@@ -22,7 +22,7 @@ def user_registration(request):
                                 password=request.POST['password1'])
             if user:
                 login(user=user, request=request)
-                messages.success(request, "A Tartan Thom account has been created for 'f{{username}}'")
+                messages.success(request, "A Tartan Thom account has been created for %s" % user.username)
             else:
                 messages.error(request, "Sorry, we were unable to register your account")
     else:
@@ -56,3 +56,5 @@ def user_logout(request):
 @login_required()
 def user_account(request):
     """Users Account"""
+    user = request.user
+    return render(request, 'accounts/account.html', {'user': user})
