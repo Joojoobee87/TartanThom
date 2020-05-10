@@ -60,12 +60,38 @@
               <a class="dropdown-item" href="#">Gifts</a>
             </div>
           </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'accounts:account' %}"
+                >My Account</a
+              >
+              <a class="dropdown-item" href="{% url 'accounts:logout' %}"
+                >Log Out</a
+              >
+            </div>
+          </li>
+          {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
+            <a class="nav-link" href="{% url 'accounts:register' %}"
+              >Register</a
+            >
           </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="#"
               ><i class="fas fa-shopping-bag"></i>Bag</a
@@ -75,7 +101,9 @@
       </div>
     </nav>
     <div class="content">
-      {% block content %} {% endblock %}
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-{{message.tags}}">{{ message}}</div>
+      {% endfor %} {% endif %} {% block content %} {% endblock %}
     </div>
     <footer>
       <div class="container footer-container">
@@ -104,9 +132,7 @@
               >
             </p>
             <p>
-              <a class="footer-link" href="{% url 'contact:faq' %}"
-                >FAQs</a
-              >
+              <a class="footer-link" href="{% url 'contact:faq' %}">FAQs</a>
             </p>
           </div>
           <div class="footer-col footer-social col-md-4">
