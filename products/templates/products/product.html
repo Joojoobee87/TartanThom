@@ -1,34 +1,107 @@
-{% extends 'base.html' %}
-{% block title%}Tartan Thom Products - {{ product.name }}{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block title%}Tartan Thom Products - {{ product.name
+}}{% endblock %} {% block content %}
 
 <h1>Products</h1>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <img src="static/img/{{ product.image }}" alt="product-image">
-        </div>
-        <div class="col-md-8">
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
-            {% if product.sale_price %}
-                <strike><span>£{{ product.price }}</span></strike>
-                <span>£{{ product.sale_price }}</span>
-            {% else %}
-                <span>£{{ product.price }}</span>
-            {% endif %}
-            <form method="POST" action="#">
-            {% csrf_token %}
-                <div class="input-group">
-                    <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity">
-                    <div class="input-group-btn">
-                    <button class="btn" type="submit">Add to basket</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <img src="static/img/{{ product.image }}" alt="product-image" />
     </div>
+    <div class="col-md-8">
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description }}</p>
+      {% if product.sale_price %}
+      <strike><span>£{{ product.price }}</span></strike>
+      <span>£{{ product.sale_price }}</span>
+      {% else %}
+      <span>£{{ product.price }}</span>
+      {% endif %}
+      <form method="POST" action="#">
+        {% csrf_token %}
+        <div class="input-group">
+          <input
+            type="number"
+            name="quantity"
+            min="1"
+            max="999"
+            class="form-control"
+            placeholder="Quantity"
+          />
+          <div class="input-group-btn">
+            <button class="btn" type="submit">Add to basket</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="description-tab"
+            data-toggle="tab"
+            href="#description"
+            role="tab"
+            aria-controls="description"
+            aria-selected="true"
+            >Description</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="add-info-tab"
+            data-toggle="tab"
+            href="#add-info"
+            role="tab"
+            aria-controls="add-info"
+            aria-selected="false"
+            >Additional Information</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="reviews-tab"
+            data-toggle="tab"
+            href="#reviews"
+            role="tab"
+            aria-controls="contact"
+            aria-selected="false"
+            >Reviews</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="description"
+          role="tabpanel"
+          aria-labelledby="description-tab"
+        >
+          {{ product.description }}
+        </div>
+        <div
+          class="tab-pane fade"
+          id="add-info"
+          role="tabpanel"
+          aria-labelledby="add-info-tab"
+        >
+          ...
+        </div>
+        <div
+          class="tab-pane fade"
+          id="reviews"
+          role="tabpanel"
+          aria-labelledby="reviews-tab"
+        >
+          ...
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
