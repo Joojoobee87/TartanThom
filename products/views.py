@@ -12,17 +12,17 @@ def view_products(request):
 
 def view_cards(request):
     """View all products with the product type 'Cards' """
-    products = Products.objects.get(product_type='Cards')
+    products = Products.objects.filter(product_type='Cards')
     return render(request, "products/products.html", {'products': products})
 
 
 def view_cake_toppers(request):
     """View all products with the product type 'Cake Toppers' """
-    products = Products.objects.get(product_type='Cake Toppers')
+    products = Products.objects.filter(product_type='Cake Toppers')
     return render(request, "products/products.html", {'products': products})
 
 
 def view_gifts(request):
     """View all products with the product type 'Gifts' """
-    products = Products.objects.get(product_type='Gifts')
+    products = Products.objects.filter(product_type='Gifts')
     return render(request, "products/products.html", {'products': products})
