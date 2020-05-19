@@ -100,7 +100,11 @@
         >
         {% if reviews %}
             {% for review in reviews %}
+            {% if review.user_anonymous %}
+            <div>Anonymous</div>
+            {% else %}
             <div>{{ review.user.username }}</div>
+            {% endif %}
             <div>{{ review.review_rating }}</div>
             <div class="stars">
                 <div class="stars-filling" style="width: {{review.review_percentage}}%;"></div>
