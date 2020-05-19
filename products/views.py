@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from products.models import Products
+from django.shortcuts import render, get_object_or_404
+from products.models import Products, ProductReviews
 
 # Create your views here.
 
@@ -26,3 +26,11 @@ def view_gifts(request):
     """View all products with the product type 'Gifts' """
     products = Products.objects.filter(product_type='Gifts')
     return render(request, "products/products.html", {'products': products})
+
+
+def view_product(request, id):
+    """View selected product in the collection"""
+    product = get_object_or_404(Products, pk=id)
+    reviews = ProductReviews.objects.filter(product=id)
+    return render(request, "products/product.html", {
+        'product': product, 'reviews': reviews})
