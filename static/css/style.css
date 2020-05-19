@@ -21,7 +21,12 @@ h4 {
   font-family: "Great Vibes", cursive;
 }
 
-p {
+p,
+span,
+li,
+a,
+div,
+.btn {
   font-family: "Open Sans", sans-serif;
 }
 
@@ -118,6 +123,35 @@ footer {
   padding: 2em;
 }
 
+/*--------------------------Products-----------------------*/
+
+.product-panel {
+    padding: 1em;
+    background-color: #e6beae;
+}
+
+.product-panel-details {
+    padding-top: 1em;
+}
+
+/*--------------------------Product Page-------------------*/
+
+.product-details {
+    padding: 3em;
+    background-color: #e6beae;
+}
+
+.product-row {
+    padding-bottom: 3em;
+}
+
+.add-to-basket {
+    position: relative;
+    display: block;
+    background-color: #828285;
+    color: #ffffff;
+}
+
 /*--------------------------Reviews------------------------*/
 
 .stars {
@@ -146,4 +180,26 @@ footer {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   color: #e6beae;
+}
+
+.tab-content {
+    padding: 2em;
+    background-color: #ffffff;
+    height: 10em;
+    overflow: scroll;
+}
+
+#reviews-tab,
+#add-info-tab,
+#description-tab {
+    background-color: #ffffff;
+    border-color: #e6beae;
+}
+
+.review-text {
+    padding-top: 1em;
+}
+
+.nav-link.active {
+    background-color: #e6beae !important;
 }
