@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% block title%}Tartan Thom Products - {{ product.name
-}}{% endblock %} {% block content %}
+{% extends 'base.html' %} 
+{% block title%}Tartan Thom Products - {{ product.name}}{% endblock %} 
+{% block content %}
 
 <h1>Products</h1>
 <div class="container">
@@ -89,7 +90,7 @@
           role="tabpanel"
           aria-labelledby="add-info-tab"
         >
-          ...
+            ...
         </div>
         <div
           class="tab-pane fade"
@@ -97,7 +98,18 @@
           role="tabpanel"
           aria-labelledby="reviews-tab"
         >
-          ...
+        {% if reviews %}
+            {% for review in reviews %}
+            <div>{{ review.user.username }}</div>
+            <div>{{ review.review_rating }}</div>
+            <div class="stars">
+                <div class="stars-filling" style="width: {{review.review_percentage}}%;"></div>
+            </div>
+            <div>{{ review.review_text }}</div>
+            {% endfor %}
+        {% else %}
+            <div>There are no reviews for this product yet!</div>
+        {% endif %}
         </div>
       </div>
     </div>
