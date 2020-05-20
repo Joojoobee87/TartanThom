@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'knw%+k_w3xi$9lge*iai(3xqkrn5rc*uve)%zouh!_2mt46i(='
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -126,11 +126,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
-MEDIA_URL = '/media/'
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 # Django Crispy Forms API
 
@@ -157,7 +163,12 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_STORAGE_BUCKET_NAME = 'tartanthom'
 AWS_S3_REGION_NAME = 'eu-west-2'
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazon.com' % AWS_STORAGE_BUCKET_NAME
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3BotoStorage'
+
+# Stripe settings
+
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET')
