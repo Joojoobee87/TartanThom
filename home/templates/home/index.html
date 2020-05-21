@@ -18,9 +18,22 @@
             </div>
 		</div>
         <div class="profile-image col-md-6">
-            <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture">
+            <img src="{% static 'images/NicProfile.jpg' %}" alt="Profile Picture">
         </div>
 	</div>
+    <div class="row testimonial-row">
+        <div class="col-md-10">
+            {% if testimonials %}
+                {% for testimonial in testimonials %}
+                    {% if testimonial.testimonial_active %}
+                        <div class="testimonial-content">
+                            <p>"{{ testimonial.testimonial }}"</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 
