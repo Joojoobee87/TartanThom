@@ -55,6 +55,15 @@ i {
   padding: 5px 30px !important;
 }
 
+.nav-brand {
+    background-color: #E5E5E5;
+}
+
+.nav-shop {
+    min-height: 5em;
+    background-color: #CED6D7;
+}
+
 /*----------------------Footer------------------------------*/
 
 footer {
@@ -110,6 +119,43 @@ footer {
   margin-left: -5%;
 }
 
+/*--------------------------Testimonials-------------------*/
+
+.testimonial-content {
+    display: block;
+    position: relative;
+    height: 200px;
+    width: 80%;
+    background-color: #e6beae;
+}
+
+.testimonial {
+    position: absolute;
+    top: 50%;
+    display: none;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+}
+
+.testimonial-paragraph {
+    font-family: "Great Vibes", cursive !important;
+}
+
+.button-left {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+.button-right {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+
 /*--------------------------Contact------------------------*/
 
 .contact-container {
@@ -132,6 +178,10 @@ footer {
 
 .product-panel-details {
     padding-top: 1em;
+}
+
+.products-image {
+    max-width: 100%;
 }
 
 /*--------------------------Product Page-------------------*/
