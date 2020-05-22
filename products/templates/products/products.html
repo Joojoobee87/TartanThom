@@ -1,19 +1,38 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block title%}Tartan Thom - Shop{% endblock %} 
+
 {% block content %}
 
-<h1>All Products</h1>
+<nav id="nav-shop" class="navbar navbar-expand-lg nav-shop">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'products:cards' %}">Cards</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'products:cake-toppers' %}">Cake Toppers</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'products:gifts' %}">Gifts</a>
+    </li>
+  </ul>
+</nav>
+
 <div class="container">
+<h1>{{ product_type }}</h1>
   <div class="row">
-    {% if products %} 
-    {% for product in products %}
+    {% if products %}
+        {% for product in products %}
     <div class="col-md-4">
       <div class="col-md-12 product-panel">
         <div class="product-panel-image">
           <a href="{% url 'products:view_product' product.id %}"
-            ><img src="{% static 'img/NicProfile.jpg' %}" alt="product-image"
+            ><img
+              class="products-image"
+              src="{% static 'img/NicProfile.jpg' %}"
+              alt="product-image"
           /></a>
+          <!-------------Need to switch holding image to {{ product.image.url }}-------->
         </div>
         <div class="product-panel-details">
           <h2>{{ product.name }}</h2>
@@ -49,8 +68,7 @@
         </div>
       </div>
     </div>
-    {% endfor %} 
-    {% endif %}
+    {% endfor %} {% endif %}
   </div>
 </div>
 
