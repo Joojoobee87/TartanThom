@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}Tartan Thom - Basket{% endblock %} 
+{% block content %}
+
+<div class="container">
+<h1>My Basket</h1>
+{% if basket_items %}
+<h1>I have items!!</h1>
+{% for item in basket_items %}
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+    <div class="row">
+        <div class="col-md-6">
+            <!-------------Change this to {{ item.product.image }} for production--------------->
+            <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" />
+        </div>
+        <div class="col-md-6">
+            <h2>{{ item.product.name }}</h2>
+            {% if item.product.sale_price %}
+            <p><span>{{ item.quantity }}</span> x <span>£{{ item.product.sale_price}}</span></p>
+            {% else %}
+            <p><span>{{ item.quantity }}</span> x <span>£{{ item.product.price}}</span></p>
+            {% endif %}
+        </div>
+    
+    </div>
+    </div>
+  </div>
+{% endfor %}
+<div class="row">
+    <div class="col-md-10">
+        <p>There are {{ product_count }} items in your basket</p>
+        <p>Total cost: £{{total}}</p>
+    </div>
+</div>
+</div>
+{% else %}
+<h1>Sorry, no items in session!</h1>
+
+{% endif %}
+
+{% endblock %}
