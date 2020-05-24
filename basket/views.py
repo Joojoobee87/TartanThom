@@ -23,6 +23,21 @@ def add_to_basket(request, id):
     return render(request, 'basket/basket.html')
 
 
-def amend_basket(request):
+def amend_basket(request, id):
     """A view that amends the quantity of a product in the basket"""
+
+    quantity = int(request.POST.get('quantity'))
+    basket = request.session.get('basket', {})
+
+    if quantity > 0:
+        basket[id] = quantity
+    else:
+        basket.pop[id]
+    return render(request, 'basket/basket.html')
+
+
+def delete_from_basket(request, id):
+    """A view that deletes the specified item from the basket"""
+    basket = request.session.get('basket', {})
+    del basket[id]
     return render(request, 'basket/basket.html')
