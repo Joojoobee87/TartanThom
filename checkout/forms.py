@@ -1,4 +1,5 @@
 from django import forms
+from checkout.models import Order
 
 
 class OrderForm(forms.ModelForm):
