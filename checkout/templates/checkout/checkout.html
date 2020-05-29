@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load bootstrap_tags %}
 {% block title %}Tartan Thom - Checkout{% endblock %}
 
 {% block content %}
@@ -7,7 +8,13 @@
 <h1>Checkout</h1>
 
 
+<form action="POST">
 
+{% csrf_token %}
+    <div class="form-group col-md-6">
+    {{ order_form | as_bootstrap }}
+    </div>
+</form>
 
 
 {% endblock %}
