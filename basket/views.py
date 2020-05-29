@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
+from django.urls import reverse
 
 # Create your views here.
 
@@ -33,6 +34,7 @@ def amend_basket(request, id):
         basket[id] = quantity
     else:
         basket.pop[id]
+    request.session.modified = True
     return render(request, 'basket/basket.html')
 
 
@@ -40,4 +42,5 @@ def delete_from_basket(request, id):
     """A view that deletes the specified item from the basket"""
     basket = request.session.get('basket', {})
     del basket[id]
+    request.session.modified = True
     return render(request, 'basket/basket.html')
