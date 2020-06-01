@@ -20,9 +20,12 @@ from home.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts', include('allauth.urls', namespace=None)),
     path('about/', include('about.urls', namespace=None)),
     path('contact/', include('contact.urls', namespace=None)),
-    path('accounts/', include('account.urls', namespace=None)),
+    path('account/', include('account.urls', namespace=None)),
+    path('products/', include('products.urls', namespace=None)),
+    path('basket/', include('basket.urls', namespace=None)),
+    path('checkout/', include('checkout.urls', namespace=None)),
     path('', index, name='index'),
-
 ]
