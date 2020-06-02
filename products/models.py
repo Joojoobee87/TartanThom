@@ -5,6 +5,11 @@ from django.contrib.auth.models import User
 
 
 class Products(models.Model):
+
+    class Meta:
+
+        verbose_name_plural = 'Products'
+
     PRODUCT_TYPE = [
         ('Cards', 'Cards'),
         ('Cake', 'Cake Toppers'),
@@ -43,6 +48,11 @@ class Products(models.Model):
 
 
 class ProductReviews(models.Model):
+
+    class Meta:
+
+        verbose_name_plural = 'Product Reviews'
+
     user = models.ForeignKey(
         User,
         models.SET_NULL,
@@ -55,6 +65,10 @@ class ProductReviews(models.Model):
     review_rating = models.IntegerField()
     review_date = models.DateField()
     review_active = models.BooleanField(default=True)
+
+    def __str__(self):
+
+        return self.user
 
     def review_percentage(self):
         return int((self.review_rating / 5) * 100)
