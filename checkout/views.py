@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from checkout.forms import OrderForm
 from django.utils import timezone
@@ -16,7 +16,7 @@ def checkout(request):
             order = order_form.save()
             order.date = timezone.now()
             print(order_form.errors)
-            messages.error(request, "Thank you for your order")
+            messages.success(request, "Thank you for your order")
             return redirect(request, 'products')
         else:
             print(order_form.errors)
