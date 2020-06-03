@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load bootstrap_tags %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
 {% block title %}Tartan Thom - Checkout{% endblock %}
 
 {% block content %}
@@ -14,7 +18,36 @@
     <div class="form-group col-md-6">
     {{ order_form | as_bootstrap }}
     </div>
+    <div class="form-group col-md-6">
+        <input class=" btn btn-success" type="submit" value="Submit">
+    </div>
 </form>
 
+<div class="container">
+    <div class="row">
+        <div class="col px-3">
+            <fieldset>
+            <h1>Payment</h1>
+                <form id="payment-form">
+                    <div id="card-element">
+                        <!-- Elements will create input elements here -->
+                    </div>
+                    <!-- We'll put the error messages in this element -->
+                    <div id="card-errors" role="alert"></div>
+                    <button id="submit" class="btn">Pay</button>
+                </form>
+            </fieldset>
+        </div>
+    </div>
+</div>
 
+
+
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
