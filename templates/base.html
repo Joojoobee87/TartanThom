@@ -1,5 +1,6 @@
 {% load static %}
 {% load bootstrap_tags %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -65,23 +66,23 @@
               >
               <a class="dropdown-item" href="#"
                 >Dashboard</a
-              >              <a class="dropdown-item" href="{% url 'account:logout' %}"
+              >              <a class="dropdown-item" href="{% url 'account_logout' %}"
                 >Log Out</a
               >
             </div>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'account:login' %}">Login</a>
+            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'account:register' %}"
+            <a class="nav-link" href="{% url 'account_signup' %}"
               >Register</a
             >
           </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href="#"
+            <a class="nav-link" href="{% url 'basket:view_basket' %}"
               ><i class="fas fa-shopping-bag"></i>Bag</a
             >
           </li>
@@ -166,5 +167,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="{% static 'js/jquery.js' %}"></script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
   </body>
 </html>
