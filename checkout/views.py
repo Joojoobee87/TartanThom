@@ -20,21 +20,37 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    basket = request.session.get('basket', {})
-    current_contents = basket_contents(request)
-    total = current_contents['total']
-    stripe_total = round(total * 100)
-    stripe.api_key = stripe_secret_key
-    intent = stripe.PaymentIntent.create(
-        amount=stripe_total,
-        currency=settings.STRIPE_CURRENCY
-    )
-    order_form = OrderForm()
-    context = {
-        'order_form': order_form,
-        'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret,
-    }
+    if request.method == 'POST':
+        print("2 - this is a POST method")
+
+        basket = request.session.get('basket', {})
+        form_data = {
+            'fullname': request.POST['fullname'],
+            'phone_number': request.POST['phone_number'],
+            'address_line1': request.POST['address_line1'],
+            'address_line2': request.POST['address_line2'],
+            'town_city': request.POST['town_city'],
+            'postcode': request.POST['postcode'],
+            'country': request.POST['country']
+        }
+        order_form = OrderForm(form_data)
+
+    else:
+        basket = request.session.get('basket', {})
+        current_contents = basket_contents(request)
+        total = current_contents['total']
+        stripe_total = round(total * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY
+        )
+        order_form = OrderForm()
+        context = {
+            'order_form': order_form,
+            'stripe_public_key': stripe_public_key,
+            'client_secret': intent.client_secret,
+        }
 
     return render(request, 'checkout/checkout.html', context)
 
