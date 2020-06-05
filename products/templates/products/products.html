@@ -7,13 +7,13 @@
 <nav id="nav-shop" class="navbar navbar-expand-lg nav-shop">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'products:cards' %}">Cards</a>
+      <a class="nav-link" href="{% url 'products:view_cards' %}">Cards</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'products:cake-toppers' %}">Cake Toppers</a>
+      <a class="nav-link" href="{% url 'products:view_cake-toppers' %}">Cake Toppers</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{% url 'products:gifts' %}">Gifts</a>
+      <a class="nav-link" href="{% url 'products:view_gifts' %}">Gifts</a>
     </li>
   </ul>
 </nav>
@@ -45,7 +45,7 @@
           {% else %}
           <p><span>£{{ product.price }}</span></p>
           {% endif %}
-          <form method="POST" action="#">
+          <form method="POST" action="{% url 'basket:add_to_basket' product.id %}">
             {% csrf_token %}
             <div class="form-row">
               <div class="col-md-6">
