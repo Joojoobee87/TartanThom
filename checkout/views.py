@@ -48,6 +48,7 @@ def checkout(request):
                         quantity=quantity
                     )
                     order_item.save()
+                    del request.session['basket']
                 except Products.DoesNotExist:
                     print("5 - Product does not exist")
             return redirect(reverse('checkout:checkout_success'))
