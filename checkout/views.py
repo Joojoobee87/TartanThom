@@ -5,7 +5,6 @@ from checkout.forms import OrderForm
 from .models import Order, OrderItem
 from products.models import Products
 from basket.contexts import basket_contents
-from django.utils import timezone
 from django.contrib import messages
 import os
 import stripe
@@ -34,6 +33,24 @@ def checkout(request):
             'country': request.POST['country']
         }
         order_form = OrderForm(form_data)
+
+        if order_form.is_valid():
+            print("3 - Order form is valid")
+            order = order_form.save()
+
+            for id, quantity in basket.items():
+                print("4 - My basket has items!")
+                try:
+                    product = Products.objects.get(pk=id)
+                    order_item = OrderItem(
+                        order=order,
+                        product=product,
+                        quantity=quantity
+                    )
+                    order_item.save()
+                except Products.DoesNotExist:
+                    print("5 - Product does not exist")
+            return redirect(reverse('checkout:checkout_success'))
 
     else:
         basket = request.session.get('basket', {})
