@@ -204,7 +204,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'tartanthom@outlook.com'
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_USER')
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'smtp.gmail.com'
