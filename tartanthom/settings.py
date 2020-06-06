@@ -102,6 +102,8 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 # Django all-auth social account providers
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
@@ -238,7 +240,8 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
-STRIPE_CURRENCY = 'gbp'
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
+STRIPE_CURRENCY = 'usd'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
