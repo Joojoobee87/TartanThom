@@ -63,7 +63,7 @@
               Account
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'account:account' %}"
+              <a class="dropdown-item" href="{% url 'index' %}"
                 >My Account</a
               >
               <a class="dropdown-item" href="#"
@@ -97,7 +97,9 @@
             <div class="alert alert-{{message.tags}}">{{ message}}</div>
         {% endfor %}    
     {% endif %} 
-    {% block content %} {% endblock %}
+    {% block content %} 
+    {% endblock %}
+    </div>
     </div>
     <footer>
       <div class="container footer-container">
