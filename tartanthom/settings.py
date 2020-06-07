@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import env
+if 'DEVELOPMENT':
+    import env
 import dj_database_url
 # if os.path.exists("env.py"):
 #     import env
@@ -29,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'tartanthom.herokuapp.com']
 
 
 # Application definition
@@ -139,24 +140,22 @@ WSGI_APPLICATION = 'tartanthom.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.parse('postgres://pcfgjfldvjmdlh:9755305c7b70f69023b0b96ca0a3baf9535229813680a2bdc7afb74d62949da7@ec2-54-247-79-178.eu-west-1.compute.amazonaws.com:5432/dal25mgtmba448')
 }
 
 # DEBUG TESTING
-# if 'DATABASE_URL' in os.environ:
-#     DATABASES = {
-#         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-#     }
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         }
-#     }
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
 # DEBUG TESTING END
 
 

@@ -1,1 +1,1 @@
-web: python app.py
+web: gunicorn tartanthom.wsgi:application
