@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 from home.views import index
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -23,9 +25,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls', namespace=None)),
     path('about/', include('about.urls', namespace=None)),
     path('contact/', include('contact.urls', namespace=None)),
-    path('account/', include('account.urls', namespace=None)),
     path('products/', include('products.urls', namespace=None)),
     path('basket/', include('basket.urls', namespace=None)),
     path('checkout/', include('checkout.urls', namespace=None)),
     path('', index, name='index'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
