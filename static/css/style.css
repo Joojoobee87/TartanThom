@@ -6,7 +6,7 @@ body {
 }
 
 .content {
-  min-height: 70vh;
+  min-height: 60vh;
 }
 
 .brand {
@@ -39,6 +39,20 @@ a:hover {
 i {
   color: inherit;
   padding: 5px;
+}
+
+button {
+    padding: 0.5em;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    background-color: #828285;
+    border: none;
+}
+
+/*-----------------------Containers-----------------*/
+
+.checkout-container {
+    background-color: #e6beae;
 }
 
 /*-----------------------Navigation-------------------------*/
@@ -119,6 +133,16 @@ footer {
   margin-left: -5%;
 }
 
+/*-------------------Authentication Templates--------------*/
+
+.allauth-container {
+    margin: 3em auto;
+}
+
+.allauth-col {
+    background-color: #e6beae;
+}
+
 /*--------------------------Testimonials-------------------*/
 
 .testimonial-content {
@@ -195,9 +219,10 @@ footer {
     padding-bottom: 3em;
 }
 
-.add-to-basket {
+.add-to-basket,
+.delete-from-basket {
     position: relative;
-    display: block;
+    display: inline-block;
     background-color: #828285;
     color: #ffffff;
 }
@@ -252,4 +277,10 @@ footer {
 
 .nav-link.active {
     background-color: #e6beae !important;
+}
+
+/*------------------------------Basket-------------------------*/
+
+.basket {
+    background-color: #e6beae;
 }
