@@ -6,7 +6,7 @@ body {
 }
 
 .content {
-  min-height: 60vh;
+  min-height: 70vh;
 }
 
 .brand {
@@ -41,7 +41,8 @@ i {
   padding: 5px;
 }
 
-button {
+button,
+input[type="submit"] {
     padding: 0.5em;
     font-family: "Open Sans", sans-serif;
     color: #fff;
@@ -196,7 +197,6 @@ footer {
 /*--------------------------Products-----------------------*/
 
 .product-panel {
-    padding: 1em;
     background-color: #e6beae;
 }
 
