@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from .forms import ContactForm
+from tartanthom import urls
 import os
 
 # Create your views here.
@@ -17,6 +18,7 @@ def contact(request):
         message = request.POST.get('message')
         email = request.POST.get('email')
         from_email = 'jo.broomfield87@gmail.com'
+        to_email = ['jo.broomfield87@gmail.com', 'joanneingle1987@yahoo.co.uk']
         # create a form instance and populate it with data from the request:
         # check whether it's valid:
         if form.is_valid():
@@ -27,10 +29,11 @@ def contact(request):
                 try:
                     print("4. I am trying....")
                     print(from_email)
+                    print(to_email)
                     print(subject)
                     print(message)
-                    send_mail(subject, message, from_email, from_email, fail_silently=False)
-                    return redirect(reverse, "index")
+                    send_mail(subject, message, from_email, to_email, fail_silently=False)
+                    return render(request, 'index.html')
                     # process the data in form.cleaned_data as required
                     # ...
                     # redirect to a new URL:
