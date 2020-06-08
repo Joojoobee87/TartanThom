@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from checkout.forms import OrderForm
@@ -52,8 +52,10 @@ def checkout(request):
                 except Products.DoesNotExist:
                     print("5 - Product does not exist")
                     order.delete()
-            return redirect(reverse('checkout:checkout_success'))
-
+            return redirect(reverse('checkout:checkout_success', args=[order.order_number]))
+        else:
+            print("Something here")
+            # Add messages.errors here
     else:
         basket = request.session.get('basket', {})
         current_contents = basket_contents(request)
@@ -74,6 +76,8 @@ def checkout(request):
     return render(request, 'checkout/checkout.html', context)
 
 
-def checkout_success(request):
-    """Return success page on successful checkout"""
-    return render(request, 'checkout/success.html')
+def checkout_success(request, order_number):
+    """Return success page on successful checkout showing order detail"""
+    order = get_object_or_404(Order, order_number=order_number)
+
+    return render(request, 'checkout/success.html', {'order': order})

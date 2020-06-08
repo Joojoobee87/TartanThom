@@ -31,7 +31,7 @@ card.on('change', ({error}) => {
 // Complete the payment when the user clicks
 
 var form = document.getElementById('payment-form');
-
+console.log(form)
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     card.update({'disabled': true});

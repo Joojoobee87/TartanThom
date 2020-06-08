@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap_tags %}
+{% load crispy_forms_tags %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block title %}Tartan Thom - Checkout{% endblock %}
+
+{% block content %}
+
+<div class="container checkout-container">
+    <div class="row justify-content-center">
+        <div class="col">
+            <h1>Your checkout was successful!</h1>
+            <p>Thanks for your order. Your order number is {{order.order_number}}</p>
+            <p>Please review your order summary below. You can also view this order along with previous orders in your <a href="#">Account</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <h2>Order number:</h2>
+        <p>{{ order.order_number }}</p>
+    </div>
+    <div class="row">
+        <h2>Order date:</h2>
+        <p>{{ order.date }}</p>
+    </div>
+    <div class="row">
+        <h2>Order name:</h2>
+        <p>{{ order.fullname }}</p>
+    </div>
+    <div class="row">
+        {% for item in order.lineitems.all %}
+            <h2>Product name:</h2>
+            {{ item.product.name }}
+            <h2>Quantity</h2>
+            {{ item.quantity }}
+
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

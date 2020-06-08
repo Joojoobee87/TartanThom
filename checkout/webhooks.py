@@ -24,19 +24,23 @@ def webhook(request):
     event = None
 
     try:
+        print("I'm at webhook try")
         event = stripe.Webhook.construct_event(
             payload, sig_header, wh_secret
         )
     except ValueError as e:
+        print("I'm at webhook except1")
         # Invalid payload
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
+        print("I'm at webhook except2")
         # Invalid signature
         return HttpResponse(status=400)
     except Exception as e:
+        print("I'm at webhook except3")
         return HttpResponse(content=e, status=400)
 
-    # Set up webhook handler 
+    # Set up webhook handler
 
     handler = StripeWH_Handler(request)
 
@@ -50,9 +54,11 @@ def webhook(request):
     # Get webhook event type from Stripe
     event_type = event['type']
 
-    #If handler exists, get it from map otherwise use default
+    # If handler exists, get it from map otherwise use default
     event_handler = event_map.get(event_type, handler.handle_event)
 
-    #Call event handler with event
+    # Call event handler with event
     response = event_handler(event)
+    print("I'm returning response")
+    print(response)
     return response

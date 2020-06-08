@@ -1,6 +1,9 @@
 import uuid
+from django.db.models import Sum
 from django.db import models
 from products.models import Products
+from django_countries.fields import CountryField
+
 
 # Create your models here.
 
@@ -14,12 +17,15 @@ class Order(models.Model):
     address_line2 = models.CharField(max_length=50)
     town_city = models.CharField(max_length=30)
     postcode = models.CharField(max_length=10)
-    country = models.CharField(max_length=30)
+    country = CountryField(blank_label='Country', max_length=30)
     order_total = models.DecimalField(max_digits=8, decimal_places=2, null=False, default=0)
 
     def create_order_number(self):
         return uuid.uuid4().hex.upper()
 
+    def calc_order_total(self):
+        self.order_total = self.lineitems.aggregate(Sum('item_total'))['item_total__sum'] or 0
+        self.save()
 
     def save(self, *args, **kwargs):
         if not self.order_number:
@@ -31,7 +37,7 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, null=False, on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(Products, null=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(blank=False)
     item_total = models.DecimalField(max_digits=8, decimal_places=2, null=False,blank=False, editable=False)
