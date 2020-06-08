@@ -44,7 +44,7 @@ class Products(models.Model):
     is_active = models.BooleanField()
 
     def __str__(self):
-        return "{0} {1} {2}".format(self.name, self.description, self.category)
+        return self.name
 
 
 class ProductReviews(models.Model):
