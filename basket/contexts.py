@@ -15,9 +15,11 @@ def basket_contents(request):
         product = get_object_or_404(Products, pk=id)
         if product.sale_price:
             total += quantity * product.sale_price
+            product_count += quantity
+            basket_items.append({'id': id, 'quantity': quantity, 'product': product})
         else:
             total += quantity * product.price
-        product_count += quantity
-        basket_items.append({'id': id, 'quantity': quantity, 'product': product})
+            product_count += quantity
+            basket_items.append({'id': id, 'quantity': quantity, 'product': product})
 
     return {'basket_items': basket_items, 'total': total, 'product_count': product_count}
