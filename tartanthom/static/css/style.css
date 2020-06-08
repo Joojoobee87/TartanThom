@@ -1,0 +1,286 @@
+/*-----------------Background and Branding-----------------*/
+
+body {
+  background-image: url("/static/img/tartanthom.png");
+  height: 100%;
+}
+
+.content {
+  min-height: 70vh;
+}
+
+.brand {
+  height: 120px;
+  width: 280px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Great Vibes", cursive;
+}
+
+p,
+span,
+li,
+a,
+div,
+.btn {
+  font-family: "Open Sans", sans-serif;
+}
+
+a,
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+i {
+  color: inherit;
+  padding: 5px;
+}
+
+button,
+input[type="submit"] {
+    padding: 0.5em;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    background-color: #828285;
+    border: none;
+}
+
+/*-----------------------Containers-----------------*/
+
+.checkout-container {
+    background-color: #e6beae;
+}
+
+/*-----------------------Navigation-------------------------*/
+
+.navbar-collapse {
+  justify-content: center;
+}
+
+.navbar-nav {
+  margin: 0 !important;
+}
+
+.nav-link {
+  padding: 5px 30px !important;
+}
+
+.nav-brand {
+    background-color: #E5E5E5;
+}
+
+.nav-shop {
+    min-height: 5em;
+    background-color: #CED6D7;
+}
+
+/*----------------------Footer------------------------------*/
+
+footer {
+  display: block;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #828285;
+}
+
+.footer-container {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+.footer-row {
+  height: 100%;
+  width: 100%;
+}
+
+.footer-col {
+  padding: 2em;
+}
+
+.social {
+  font-size: 1.5em;
+  margin-right: 15px;
+}
+
+.copyright {
+  padding: 1em;
+  font-size: 0.8em;
+  font-family: "Open Sans", sans-serif;
+}
+
+/*----------------------------Index-------------------------*/
+
+.welcome-container {
+  margin-top: 5em;
+}
+
+.welcome {
+  background-color: #e6beae;
+  height: 400px;
+  padding: 5em;
+}
+
+.profile-image {
+  float: right;
+  margin-top: 15%;
+  margin-left: -5%;
+}
+
+/*-------------------Authentication Templates--------------*/
+
+.allauth-container {
+    margin: 3em auto;
+}
+
+.allauth-col {
+    background-color: #e6beae;
+}
+
+/*--------------------------Testimonials-------------------*/
+
+.testimonial-content {
+    display: block;
+    position: relative;
+    height: 200px;
+    width: 80%;
+    background-color: #e6beae;
+}
+
+.testimonial {
+    position: absolute;
+    top: 50%;
+    display: none;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+}
+
+.testimonial-paragraph {
+    font-family: "Great Vibes", cursive !important;
+}
+
+.button-left {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+.button-right {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+
+/*--------------------------Contact------------------------*/
+
+.contact-container {
+  background-color: #e6beae;
+  width: 70%;
+  padding: 2em;
+  margin: 4em auto;
+}
+
+.contact-form {
+  padding: 2em;
+}
+
+/*--------------------------Products-----------------------*/
+
+.product-panel {
+    background-color: #e6beae;
+}
+
+.product-panel-details {
+    padding-top: 1em;
+}
+
+.products-image {
+    max-width: 100%;
+}
+
+/*--------------------------Product Page-------------------*/
+
+.product-details {
+    padding: 3em;
+    background-color: #e6beae;
+}
+
+.product-row {
+    padding-bottom: 3em;
+}
+
+.add-to-basket,
+.delete-from-basket {
+    position: relative;
+    display: inline-block;
+    background-color: #828285;
+    color: #ffffff;
+}
+
+/*--------------------------Reviews------------------------*/
+
+.stars {
+    position: relative;
+    display: inline-block;
+}
+
+.stars-filling {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #828285;
+}
+
+.stars-filling::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #e6beae;
+}
+
+.tab-content {
+    padding: 2em;
+    background-color: #ffffff;
+    height: 10em;
+    overflow: scroll;
+}
+
+#reviews-tab,
+#add-info-tab,
+#description-tab {
+    background-color: #ffffff;
+    border-color: #e6beae;
+}
+
+.review-text {
+    padding-top: 1em;
+}
+
+.nav-link.active {
+    background-color: #e6beae !important;
+}
+
+/*------------------------------Basket-------------------------*/
+
+.basket {
+    background-color: #e6beae;
+}
