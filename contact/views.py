@@ -33,7 +33,7 @@ def contact(request):
                     print(subject)
                     print(message)
                     send_mail(subject, message, from_email, to_email, fail_silently=False)
-                    return render(request, 'index.html')
+                    return render(request, "home/index.html")
                     # process the data in form.cleaned_data as required
                     # ...
                     # redirect to a new URL:
