@@ -29,4 +29,4 @@ urlpatterns = [
     path('basket/', include('basket.urls', namespace=None)),
     path('checkout/', include('checkout.urls', namespace=None)),
     path('', index, name='index'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
