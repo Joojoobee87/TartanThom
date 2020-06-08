@@ -202,9 +202,9 @@ else:
     EMAIL_PORT = 465
     EMAIL_USE_TLS = False
     EMAIL_USE_SSL = True
-    EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
-    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_USER')
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL__HOST_PASSWORD')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 # Authentication settings
 
