@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from .forms import ContactForm
 from tartanthom import urls
 import os
@@ -16,8 +18,15 @@ def contact(request):
         print("1. I am here")
         subject = request.POST.get('subject')
         message = request.POST.get('message')
-        from_email = request.POST.get('email')
+        email = request.POST.get('email')
+        from_email = 'jo.broomfield87@gmail.com'
         to_email = ['jo.broomfield87@gmail.com']
+        message_context = {
+            'email': email,
+            'message': message
+        }
+        html_message = render_to_string('contact/contact_message.html', message_context)
+        plain_message = strip_tags(html_message)
         # create a form instance and populate it with data from the request:
         # check whether it's valid:
         if form.is_valid():
@@ -31,7 +40,9 @@ def contact(request):
                     print(to_email)
                     print(subject)
                     print(message)
-                    send_mail(subject, message, from_email, to_email, fail_silently=False)
+                    print(html_message)
+                    send_mail(subject, plain_message, from_email, to_email, html_message=html_message, fail_silently=False)
+                    #send_mail(subject, message, from_email, to_email, fail_silently=False)
                     return redirect(reverse('index'))
                     # process the data in form.cleaned_data as required
                     # ...
