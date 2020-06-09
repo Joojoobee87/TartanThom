@@ -194,6 +194,10 @@ footer {
   padding: 2em;
 }
 
+.contact-message-container {
+    background-color: #e6beae;
+}
+
 /*--------------------------Products-----------------------*/
 
 .product-panel {
