@@ -17,6 +17,7 @@ def contact(request):
         subject = request.POST.get('subject')
         message = request.POST.get('message')
         email = request.POST.get('email')
+        email_content = '<h2>From: {email}</h2><p>Email:</p><p>{message}</p>'
         from_email = 'jo.broomfield87@gmail.com'
         to_email = ['jo.broomfield87@gmail.com', 'joanneingle1987@yahoo.co.uk']
         # create a form instance and populate it with data from the request:
@@ -32,8 +33,9 @@ def contact(request):
                     print(to_email)
                     print(subject)
                     print(message)
-                    send_mail(subject, message, from_email, to_email, fail_silently=False)
-                    return render(request, "home/index.html")
+                    print(email_content)
+                    send_mail(subject, email_content, from_email, to_email, fail_silently=False)
+                    return redirect(reverse('index'))
                     # process the data in form.cleaned_data as required
                     # ...
                     # redirect to a new URL:
