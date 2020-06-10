@@ -3,12 +3,12 @@
 {% block title%}Tartan Thom Shop - {{ product.name}}{% endblock %} 
 {% block content %}
 
-<h1>Products</h1>
 <div class="container">
   <div class="row justify-content-center product-row">
     <div class="col-md-4">
       <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" />
     </div>
+    <!-------------------------Added {{ product.image.url }} to image source ------------------>
     <div class="product-details col-md-6">
       <h2>{{ product.name }}</h2>
       <p>{{ product.description }}</p>
@@ -20,7 +20,7 @@
       {% else %}
       <p><span>£{{ product.price }}</span></p>
       {% endif %}
-      <form method="POST" action="#">
+      <form method="POST" action="{% url 'basket:add_to_basket' product.id %}">
         {% csrf_token %}
         <div class="form-row">
             <div class="col-md-4">
@@ -33,7 +33,7 @@
                 placeholder="Quantity"
             />
             </div>
-                      <div class="col-md-4">
+            <div class="col-md-4">
             <button class="add-to-basket btn" type="submit">Add to basket</button>
           </div>
         </div>
