@@ -36,5 +36,8 @@ def view_product(request, id):
     """View selected product in the collection"""
     product = get_object_or_404(Products, pk=id)
     reviews = ProductReviews.objects.filter(product=id)
-    return render(request, "products/product.html", {
-        'product': product, 'reviews': reviews})
+    context = {
+        'product': product,
+        'reviews': reviews,
+    }
+    return render(request, "products/product.html", context)
