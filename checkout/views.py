@@ -18,10 +18,10 @@ def checkout(request):
     print("1 - Start of function")
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-
     if request.method == 'POST':
         print("2 - this is a POST method")
-
+        order_user = request.user
+        print(order_user)
         basket = request.session.get('basket', {})
         form_data = {
             'fullname': request.POST['fullname'],
@@ -30,14 +30,15 @@ def checkout(request):
             'address_line2': request.POST['address_line2'],
             'town_city': request.POST['town_city'],
             'postcode': request.POST['postcode'],
-            'country': request.POST['country']
+            'country': request.POST['country'],
+            'order_user': order_user,
         }
         order_form = OrderForm(form_data)
 
         if order_form.is_valid():
             print("3 - Order form is valid")
             order = order_form.save()
-
+            print(order_form)
             for id, quantity in basket.items():
                 print("4 - My basket has items!")
                 try:
@@ -81,3 +82,21 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     return render(request, 'checkout/success.html', {'order': order})
+
+
+@login_required
+def checkout_history(request):
+    order_user = request.user
+    print(order_user)
+    order_history = get_object_or_404(Order)
+    print("1. I have started")
+    if order_history:
+        print("2. I have order history")
+        for order in order_history:
+            print("3. I have orders!")
+            return
+    else:
+        print("4. I don't have an order history")
+        return
+
+    return render(request, 'checkout/checkout_history')

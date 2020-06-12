@@ -2,6 +2,7 @@ import uuid
 from django.db.models import Sum
 from django.db import models
 from products.models import Products
+from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
 
@@ -9,6 +10,7 @@ from django_countries.fields import CountryField
 
 
 class Order(models.Model):
+    order_user = models.ForeignKey(User, null=True, on_delete=models.CASCADE, default='')
     order_number = models.CharField(max_length=32)
     fullname = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=20)

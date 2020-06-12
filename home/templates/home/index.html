@@ -18,17 +18,21 @@
             </div>
 		</div>
         <div class="profile-image col-md-6">
-            <img src="{% static 'images/NicProfile.jpg' %}" alt="Profile Picture">
+            <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture">
         </div>
 	</div>
-    <div class="row testimonial-row">
-        <div class="col-md-10">
+    <div class="row testimonial-row justify-content-center">
+        <div class="testimonial-content col-md-10">
+            <div class="button-left"><i class="fas fa-angle-left fa-2x"></i></div>
+            <div class="button-right"><i class="fas fa-angle-right fa-2x"></i></div>
             {% if testimonials %}
                 {% for testimonial in testimonials %}
                     {% if testimonial.testimonial_active %}
-                        <div class="testimonial-content">
-                            <p>"{{ testimonial.testimonial }}"</p>
+                    <div class="row justify-content-center">
+                        <div class="testimonial col-md-8">
+                            <p class="testimonial-paragraph">"{{ testimonial.testimonial }}"</p>
                         </div>
+                    </div>
                     {% endif %}
                 {% endfor %}
             {% endif %}

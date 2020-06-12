@@ -79,6 +79,12 @@ input[type="submit"] {
     background-color: #CED6D7;
 }
 
+/*----------------------Profile------------------------------*/
+
+.my-profile-container {
+    background-color: #e6beae;
+}
+
 /*----------------------Footer------------------------------*/
 
 footer {
