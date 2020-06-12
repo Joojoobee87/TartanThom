@@ -31,7 +31,6 @@ def checkout(request):
             'town_city': request.POST['town_city'],
             'postcode': request.POST['postcode'],
             'country': request.POST['country'],
-            'order_user': order_user,
         }
         order_form = OrderForm(form_data)
 
@@ -79,6 +78,7 @@ def checkout(request):
     return render(request, 'checkout/checkout.html', context)
 
 
+@login_required
 def checkout_success(request, order_number):
     """Return success page on successful checkout showing order detail"""
     order = get_object_or_404(Order, order_number=order_number)
@@ -102,6 +102,7 @@ def checkout_history(request):
     return render(request, 'checkout/checkout_history.html', context)
 
 
+@login_required
 def order_detail(request, order_number):
     """Return details of an individual order and the items within the order"""
     order = get_object_or_404(Order, order_number=order_number)

@@ -11,6 +11,7 @@
             <div>
                 <h1>Order Detail</h1>
             </div>
+
             <div class="row">
                 <div class="col">
                     <h3>Order Summary:</h3>
@@ -19,6 +20,25 @@
                 </div>
             </div>
             <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Delivery Details:</h3>
+                    <p>{{ order.fullname }}</p>
+                    <p>{{ order.address_line1 }}</p>
+                    <p>{{ order.address_line2 }}</p>
+                    <p>{{ order.town_city }}</p>
+                    <p>{{ order.postcode }}</p>
+                    <p>{{ order.country }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Payment Details:</h3>
+                    <p>Total Items: £{{ order.order_total }}</p>
+                    <p>Delivery charge: £ XXXXX</p>
+                    <p>Grand Total: £ XXXXX</p>
+                </div>
+            </div>
+            <hr>
+
         {% if order %}
             {% for item in order.lineitems.all %}
             <div class="row">
