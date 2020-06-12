@@ -16,11 +16,11 @@ class Products(models.Model):
         ('Gifts', 'Gifts')
     ]
     category = [
-        ('B', 'Birthday'),
-        ('W', 'Wedding'),
-        ('A', 'Anniversary'),
-        ('H', 'New Home'),
-        ('BB', 'Baby')
+        ('Birthday', 'Birthday'),
+        ('Wedding', 'Wedding'),
+        ('Anniversary', 'Anniversary'),
+        ('New Home', 'New Home'),
+        ('Baby', 'Baby')
     ]
     labels = [
         ('New', 'New'),
