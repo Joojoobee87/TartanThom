@@ -6,26 +6,54 @@
 
 
 <div class="container my-profile-container">
-
     <div class="row justify-content-center m-3">
-        <div class="col-md-6">
-            <h1>Some text here</h1>
-            <p>{{ user }}</p>
-            <p>{{ user.email }}</p>
-            <p>{{ user.username }}</p>
-        </div>
-        <div class="col-md-6">
-            <h3>Some more text here</h3>
-        </div>
-        <div class="col-md-6">
-            <h3>Even more text here</h3>
-            {% if user_orders %}
-                <p>{{ user_orders.id }}</p>
-                <p>{{ user_orders.order_number }}</p>
-                <p>{{ user_orders.date }}</p>
-                <p>{{ user_orders.fullname }}</p>
-                <p>{{ user_orders.order_total }}</p>
-            {% endif %}
+        <div class="col-md-12">
+            <div class="row">
+                <h1>My Details</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <i class="fas fa-user-cog fa-5x"></i>
+                </div>
+                <div class="col-md-10">
+                    <p>Update your user details</p>
+                    <p>{{ user.email }}</p>
+                    <p>{{ user.username }}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <a href="{% url 'checkout:checkout_history' %}"><h1>Order History</h1></a>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <i class="fas fa-box-open fa-5x"></i>
+                </div>
+                <div class="col-md-10">
+                    <p>View your previous orders</p>
+                </div>
+            </div>
+            <hr>
+            <a href="{% url 'checkout:checkout_history' %}"><h1>Your Addresses</h1></a>
+            <div class="row">
+                <div class="col-md-2">
+                    <i class="fas fa-address-card fa-5x"></i>
+                </div>
+                <div class="col-md-10">
+                    <p>Functionality coming soon...</p>
+                </div>
+            </div>
+            <hr>
+            <a href="{% url 'checkout:checkout_history' %}"><h1>Your Payments</h1></a>
+            <div class="row">
+                <div class="col-md-2">
+                    <i class="far fa-credit-card fa-5x"></i>
+                </div>
+                <div class="col-md-10">
+                    <p>Functionality coming soon...</p>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>
