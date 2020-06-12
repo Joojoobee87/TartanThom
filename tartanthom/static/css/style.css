@@ -37,7 +37,7 @@ a:hover {
 }
 
 i {
-    color: #828285;
+    color: inherit;
     padding: 5px;
 }
 
@@ -137,7 +137,7 @@ footer {
 /*----------------------Profile----------------------------*/
 
 .my-profile-container {
-    background-color: #e6beae !important;
+    background-color: #e6beae;
 }
 
 .profile-box {
@@ -148,10 +148,6 @@ footer {
 /*-------------------Authentication Templates--------------*/
 
 .allauth-container {
-    margin: 3em auto;
-}
-
-.allauth-col {
     background-color: #e6beae;
 }
 

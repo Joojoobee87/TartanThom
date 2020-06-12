@@ -239,23 +239,21 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3BotoStorage'
 
 # Static and Media settings when using Amazon AWS
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+#STATICFILES_LOCATION = 'static'
+#STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
-MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+#MEDIAFILES_LOCATION = 'media'
+#DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 # Override static and media URLs in production
-STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "node_modules")]
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+#STATIC_URL = "/static/"
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, "node_modules")]
+#MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
-#else:
-
-    # Static and Media settings when in development
-#    STATIC_URL = '/static/'
-#    STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-#    MEDIA_URL = '/media/'
-#    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#Static and Media settings when in development
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
