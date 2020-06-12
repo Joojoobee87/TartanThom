@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from checkout.models import Order
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseBadRequest
+from home.forms import TestimonialForm
 
 # Create your views here.
 
@@ -28,3 +29,12 @@ def my_profile(request):
             print("4. Sorry this user has no orders")
             return redirect(reverse('index'))
     return render(request, 'profiles/my_profile.html', {'user': user})
+
+
+def testimonial(request):
+    """"Displays testimonial page with form for user to complete and submit"""
+    form = TestimonialForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'home/testimonial.html', context)
