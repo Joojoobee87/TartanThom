@@ -13,31 +13,40 @@
 <div class="container checkout-container">
     <div class="row justify-content-center">
         <div class="col">
-            <h1>Your checkout was successful!</h1>
+            <h1>Order Confirmation</h1>
+            <h3>Your checkout was successful!</h3>
             <p>Thanks for your order. Your order number is {{order.order_number}}</p>
-            <p>Please review your order summary below. You can also view this order along with previous orders in your <a href="#">Account</a></p>
+            <p>Please review your order summary below. You can also view this order along with previous orders in your <a href="{% url 'profiles:my_profile' %}">Account</a></p>
         </div>
     </div>
+    <hr>
     <div class="row">
-        <h2>Order number:</h2>
-        <p>{{ order.order_number }}</p>
+        <div class="col">
+            <h3>Order Details:</h3>
+            <p>Order Number: {{ order.order_number }}</p>
+            <p>Order Date: {{ order.date }}</p>
+        </div>
     </div>
+    <hr>
     <div class="row">
-        <h2>Order date:</h2>
-        <p>{{ order.date }}</p>
+        <div class="col">
+            <h3>Delivery Details:</h3>
+            <p>{{ order.fullname }}</p>
+            <p>{{ order.address_line1 }}</p>
+            <p>{{ order.address_line2 }}</p>
+            <p>{{ order.town_city }}</p>
+            <p>{{ order.postcode }}</p>
+            <p>{{ order.country }}</p>
+        </div>
     </div>
+    <hr>
     <div class="row">
-        <h2>Order name:</h2>
-        <p>{{ order.fullname }}</p>
-    </div>
-    <div class="row">
-        {% for item in order.lineitems.all %}
-            <h2>Product name:</h2>
-            {{ item.product.name }}
-            <h2>Quantity</h2>
-            {{ item.quantity }}
-
-        {% endfor %}
+        <div class="col">
+            <h3>Payment Details:</h3>
+            <p>Total Items: £{{ order.Order_total }}</p>
+            <p>Delivery charge: £ XXXXX</p>
+            <p>Grand Total: £ XXXXX</p>
+        </div>
     </div>
 
 </div>
