@@ -5,62 +5,72 @@
 {% block content %}
 
 
-<div class="container my-profile-container">
-    <div class="row justify-content-center m-3">
-        <div class="col-md-6">
-            <div class="profile-box">
-                <div class="row">
+<div class="container my-profile-container p-3 my-5">
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col">
+            <h1>My Profile</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center m-2">
+        <div class="col-md-5 profile-box m-2 p-3">
+            <div class="row">
+                <div class="col-md-12">
                     <h1>My Details</h1>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <i class="fas fa-user-cog fa-3x"></i>
-                    </div>
-                    <div class="col-md-8">
-                        <p>Update your user details</p>
-                    </div>
-                </div>
             </div>
-            <div class="profile-box">
-                <div class="row">
-                    <a href="{% url 'checkout:checkout_history' %}"><h1>Order History</h1></a>
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-user-cog fa-3x"></i>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <i class="fas fa-box-open fa-3x"></i>
-                    </div>
-                    <div class="col-md-8">
-                        <p>View your previous orders</p>
-                    </div>
+                <div class="col-md-8">
+                    <p>Update your user details</p>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-6">
-            <div class="profile-box">
-                <div class="row">
-                    <a href="{% url 'checkout:checkout_history' %}"><h1>Your Addresses</h1></a>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <i class="fas fa-address-card fa-3x"></i>
-                    </div>
-                    <div class="col-md-8">
-                        <p>Functionality coming soon...</p>
-                    </div>
+        <div class="col-md-5 profile-box m-2 p-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{% url 'checkout:checkout_history' %}"><h1>Order History</h1></a>
                 </div>
             </div>
-            <div class="profile-box">
-                <div class="row">
-                    <a href="{% url 'checkout:checkout_history' %}"><h1>Your Payments</h1></a>
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-box-open fa-3x"></i>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <i class="far fa-credit-card fa-3x"></i>
-                    </div>
-                    <div class="col-md-8">
-                        <p>Functionality coming soon...</p>
-                    </div>
+                <div class="col-md-8">
+                    <p>View your previous orders</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center m-2">
+        <div class="col-md-5 profile-box m-2 p-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#"><h1>Your Addresses</h1></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-address-card fa-3x"></i>
+                </div>
+                <div class="col-md-8">
+                    <p>Functionality coming soon...</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 profile-box m-2 p-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#"><h1>Your Payments</h1></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="far fa-credit-card fa-3x"></i>
+                </div>
+                <div class="col-md-8">
+                    <p>Functionality coming soon...</p>
                 </div>
             </div>
         </div>
