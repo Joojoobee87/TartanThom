@@ -52,7 +52,8 @@ input[type="submit"] {
 
 /*-----------------------Containers-----------------*/
 
-.checkout-container {
+.checkout-container,
+.my-profile-container {
     background-color: #e6beae;
 }
 
@@ -83,6 +84,14 @@ input[type="submit"] {
 
 .my-profile-container {
     background-color: #e6beae;
+}
+
+.profile-box {
+    border: solid #828285;
+}
+
+.fa-3x {
+    color: #828285;
 }
 
 /*----------------------Footer------------------------------*/
