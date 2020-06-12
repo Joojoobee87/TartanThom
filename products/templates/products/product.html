@@ -3,119 +3,67 @@
 {% block title%}Tartan Thom Shop - {{ product.name}}{% endblock %} 
 {% block content %}
 
-<div class="container">
-  <div class="row justify-content-center product-row">
-    <div class="col-md-4">
-      <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" />
-    </div>
+<div class="container p-3 my-5">
+    <div class="row justify-content-center my-1">
+        <div class="col-md-4 m-2">
+            <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" />
+        </div>
     <!-------------------------Added {{ product.image.url }} to image source ------------------>
-    <div class="product-details col-md-6">
-      <h2>{{ product.name }}</h2>
-      <p>{{ product.description }}</p>
-      {% if product.sale_price %}
-      <p>
-      <strike><span>£{{ product.price }}</span></strike>
-      <span>£{{ product.sale_price }}</span>
-      </p>
-      {% else %}
-      <p><span>£{{ product.price }}</span></p>
-      {% endif %}
-      <form method="POST" action="{% url 'basket:add_to_basket' product.id %}">
-        {% csrf_token %}
-        <div class="form-row">
-            <div class="col-md-4">
-            <input
-                type="number"
-                name="quantity"
-                min="1"
-                max="999"
-                class="form-control"
-                placeholder="Quantity"
-            />
-            </div>
-            <div class="col-md-4">
-            <button class="add-to-basket btn" type="submit">Add to basket</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-10">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            id="description-tab"
-            data-toggle="tab"
-            href="#description"
-            role="tab"
-            aria-controls="description"
-            aria-selected="true"
-            >Description</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            id="add-info-tab"
-            data-toggle="tab"
-            href="#add-info"
-            role="tab"
-            aria-controls="add-info"
-            aria-selected="false"
-            >Additional Information</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            id="reviews-tab"
-            data-toggle="tab"
-            href="#reviews"
-            role="tab"
-            aria-controls="contact"
-            aria-selected="false"
-            >Reviews</a
-          >
-        </li>
-      </ul>
-      <div class="tab-content" id="myTabContent">
-        <div
-          class="tab-pane fade show active"
-          id="description"
-          role="tabpanel"
-          aria-labelledby="description-tab"
-        >
-          {{ product.description }}
-        </div>
-        <div
-          class="tab-pane fade"
-          id="add-info"
-          role="tabpanel"
-          aria-labelledby="add-info-tab"
-        >
-            ...
-        </div>
-        <div
-          class="tab-pane fade"
-          id="reviews"
-          role="tabpanel"
-          aria-labelledby="reviews-tab"
-        >
-        {% if reviews %}
-            {% for review in reviews %}
-            {% if review.user_anonymous %}
-            <div>Customer: Anonymous</div>
+        <div class="col-md-6 product-details m-2">
+            <h2>{{ product.name }}</h2>
+            <p>Category: {{ product.category }}</p>
+            {% if product.sale_price %}
+                <p><strike>£{{ product.price }}</strike>   £{{ product.sale_price }}</p>
             {% else %}
-            <div>Customer: {{ review.user.username }}</div>
+                <p>£{{ product.price }}</p>
             {% endif %}
-            <div>Date: {{ review.review_date }}</div>
-            <div class="stars">
-                <div class="stars-filling" style="width: {{review.review_percentage}}%;"></div>
+            <form method="POST" action="{% url 'basket:add_to_basket' product.id %}">
+                {% csrf_token %}
+                <div class="form-row my-1">
+                    <div class="col-md-6 col-sx-12">
+                        <input type="number" name="quantity" min="1" max="999" class="form-control"
+                            placeholder="Quantity"/>
+                    </div>
+                </div>
+                <div class="form-row my-1">
+                    <div class="col-md-12">
+                        <button class="add-to-basket btn" type="submit">Add to basket</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center my-1">
+        <div class="col-md-10 my-1">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description"
+                    role="tab" aria-controls="description" aria-selected="true">Description</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
+                    aria-controls="contact" aria-selected="false">Reviews</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                <p>{{ product.description }}</p>
+                <p>Size: {{ product.size }}</p>
             </div>
-            <div class="review-text">{{ review.review_text }}</div>
-            <hr>
+            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+            {% if reviews %}
+                {% for review in reviews %}
+                    {% if review.user_anonymous %}
+                        <div>Customer: Anonymous</div>
+                    {% else %}
+                        <div>Customer: {{ review.user.username }}</div>
+                    {% endif %}
+                    <div>Date: {{ review.review_date }}</div>
+                    <div class="stars">
+                        <div class="stars-filling" style="width: {{review.review_percentage}}%;"></div>
+                    </div>
+                    <div class="review-text">{{ review.review_text }}</div>
+                    <hr>
             {% endfor %}
         {% else %}
             <div>There are no reviews for this product yet!</div>
