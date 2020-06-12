@@ -50,10 +50,24 @@ input[type="submit"] {
     border: none;
 }
 
-/*-----------------------Containers-----------------*/
+/*-----------------------Buttons---------------------------*/
 
-.checkout-container,
-.my-profile-container {
+.add-to-basket,
+.delete-from-basket {
+    position: relative;
+    display: inline-block;
+    background-color: #828285;
+    color: #ffffff;
+}
+
+.checkout-btn {
+    background-color: #828285;
+    color: #ffffff;
+}
+
+/*-----------------------Containers-------------------------*/
+
+.checkout-container {
     background-color: #e6beae;
 }
 
@@ -92,6 +106,12 @@ input[type="submit"] {
 
 .fa-3x {
     color: #828285;
+}
+
+/*-------------------Authentication Templates--------------*/
+
+.allauth-container {
+    background-color: #e6beae;
 }
 
 /*----------------------Footer------------------------------*/
@@ -215,12 +235,13 @@ footer {
 
 /*--------------------------Products-----------------------*/
 
-.product-panel {
+.product-container {
     background-color: #e6beae;
 }
 
 .product-panel-details {
     padding-top: 1em;
+    text-align: center;
 }
 
 .products-image {
@@ -236,14 +257,6 @@ footer {
 
 .product-row {
     padding-bottom: 3em;
-}
-
-.add-to-basket,
-.delete-from-basket {
-    position: relative;
-    display: inline-block;
-    background-color: #828285;
-    color: #ffffff;
 }
 
 /*--------------------------Reviews------------------------*/
@@ -300,6 +313,6 @@ footer {
 
 /*------------------------------Basket-------------------------*/
 
-.basket {
+.basket-container {
     background-color: #e6beae;
 }
