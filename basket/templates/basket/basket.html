@@ -20,7 +20,7 @@
                     <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" />
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6 my-1">
                     <h2>{{ item.product.name }}</h2>
                     {% if item.product.sale_price %}
                     <p>
@@ -39,15 +39,14 @@
                             </div>
                         </div>
                         <div class="form-row my-1">
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-xs-6 my-1">
                                 <button class="add-to-basket btn btn-md" type="submit">Update</button>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-xs-6 my-1">
                                 <form method="POST" action="{% url 'basket:delete_from_basket' item.product.id %}">
                                     {% csrf_token %}
-                                    <button class="delete-from-basket btn btn-md float-right" type="submit">
+                                    <button class="delete-from-basket btn btn-md float-left" type="submit">
                                         <i class="far fa-trash-alt"></i>
-                                        {{item.product.id}}
                                     </button>
                                 </form>
                             </div>
@@ -58,6 +57,7 @@
             </div>
         </div>
     </div>
+    <hr>
     {% endfor %}
     <div class="row justify-content-center m-2 p-3">
         <div class="col-md-12">
