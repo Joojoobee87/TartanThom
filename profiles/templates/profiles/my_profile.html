@@ -1,63 +1,70 @@
 {% extends 'base.html' %} 
 {% load static %} 
-{% block title%}Tartan Thom - My Profile{% endblock %} 
+{% block title%}Tartan Thom - Profile{% endblock %} 
 
 {% block content %}
 
 
 <div class="container my-profile-container">
     <div class="row justify-content-center m-3">
-        <div class="col-md-12">
-            <div class="row">
-                <h1>My Details</h1>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <i class="fas fa-user-cog fa-5x"></i>
+        <div class="col-md-6">
+            <div class="profile-box">
+                <div class="row">
+                    <h1>My Details</h1>
                 </div>
-                <div class="col-md-10">
-                    <p>Update your user details</p>
-                    <p>{{ user.email }}</p>
-                    <p>{{ user.username }}</p>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <a href="{% url 'checkout:checkout_history' %}"><h1>Order History</h1></a>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    <i class="fas fa-box-open fa-5x"></i>
-                </div>
-                <div class="col-md-10">
-                    <p>View your previous orders</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <i class="fas fa-user-cog fa-3x"></i>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Update your user details</p>
+                    </div>
                 </div>
             </div>
-            <hr>
-            <a href="{% url 'checkout:checkout_history' %}"><h1>Your Addresses</h1></a>
-            <div class="row">
-                <div class="col-md-2">
-                    <i class="fas fa-address-card fa-5x"></i>
+            <div class="profile-box">
+                <div class="row">
+                    <a href="{% url 'checkout:checkout_history' %}"><h1>Order History</h1></a>
                 </div>
-                <div class="col-md-10">
-                    <p>Functionality coming soon...</p>
-                </div>
-            </div>
-            <hr>
-            <a href="{% url 'checkout:checkout_history' %}"><h1>Your Payments</h1></a>
-            <div class="row">
-                <div class="col-md-2">
-                    <i class="far fa-credit-card fa-5x"></i>
-                </div>
-                <div class="col-md-10">
-                    <p>Functionality coming soon...</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <i class="fas fa-box-open fa-3x"></i>
+                    </div>
+                    <div class="col-md-8">
+                        <p>View your previous orders</p>
+                    </div>
                 </div>
             </div>
-            
+        </div>
+
+        <div class="col-md-6">
+            <div class="profile-box">
+                <div class="row">
+                    <a href="{% url 'checkout:checkout_history' %}"><h1>Your Addresses</h1></a>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <i class="fas fa-address-card fa-3x"></i>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Functionality coming soon...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-box">
+                <div class="row">
+                    <a href="{% url 'checkout:checkout_history' %}"><h1>Your Payments</h1></a>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <i class="far fa-credit-card fa-3x"></i>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Functionality coming soon...</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-
 
 {% endblock %}

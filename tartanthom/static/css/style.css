@@ -37,8 +37,8 @@ a:hover {
 }
 
 i {
-  color: inherit;
-  padding: 5px;
+    color: #828285;
+    padding: 5px;
 }
 
 button,
@@ -53,7 +53,7 @@ input[type="submit"] {
 /*-----------------------Containers-----------------*/
 
 .checkout-container {
-    background-color: #e6beae;
+    background-color: #828285;
 }
 
 /*-----------------------Navigation-------------------------*/
@@ -133,6 +133,17 @@ footer {
   margin-top: 15%;
   margin-left: -5%;
 }
+
+/*----------------------Profile----------------------------*/
+
+.my-profile-container {
+    background-color: #e6beae !important;
+}
+
+.profile-box {
+    border: solid #828285;
+}
+
 
 /*-------------------Authentication Templates--------------*/
 

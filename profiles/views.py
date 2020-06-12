@@ -16,7 +16,7 @@ def my_profile(request):
         print(user.id)
         try:
             print("3. I am trying")
-            user_orders = get_object_or_404(Order, order_user=user.id)
+            user_orders = Order.objects.filter(order_user=user).values()
             print(user_orders)
             if user_orders:
                 print("3. My user has orders")
