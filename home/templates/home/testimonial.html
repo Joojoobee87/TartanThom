@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title%}Tartan Thom - My Profile{% endblock %} 
+
+{% block content %}
+
+
+<div class="container testimonial-container">
+    <div class="row justify-content-center m-3">
+        <div class="col-md-12">
+            <div class="row">
+                <h1>Testimonials</h1>
+            </div>
+            <div class="row">
+                <form action="{% url 'profiles:my_profile' %}" method="POST">
+                {% csrf_token %}
+                    <!-------------Customer Details----------->
+                    <div class="row">
+                        <div class="col px-3">
+                            <fieldset class="mb-5">
+                                <div>
+                                    {{ form|crispy }}
+                                </div>
+                            </fieldset>
+                            <fieldset class="mb-5">
+                                <div class="submit-button">
+                                    <button type="submit" class="btn">Pay</button>
+                                </div>
+                            </fieldset>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
