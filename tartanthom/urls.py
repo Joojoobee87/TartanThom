@@ -29,5 +29,6 @@ urlpatterns = [
     path('basket/', include('basket.urls', namespace=None)),
     path('checkout/', include('checkout.urls', namespace=None)),
     path('profiles/', include('profiles.urls', namespace=None)),
+    path('home/', include('home.urls', namespace=None)),
     path('', index, name='index'),
 ]
