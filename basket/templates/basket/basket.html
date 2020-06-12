@@ -32,22 +32,22 @@
                     </p>
                     {% endif %}
                     <form method="POST" action="{% url 'basket:amend_basket' item.product.id %}">                      {% csrf_token %}
-                        <div class="form-row">
-                            <div class="col-md-12">
+                        <div class="form-row my-1">
+                            <div class="col-md-6">
                                 <input type="number" name="quantity" min="1" max="999" class="form-control"
                                     placeholder="Quantity"/>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <button class="add-to-basket btn" type="submit">Update</button>
+                        <div class="form-row my-1">
+                            <div class="col-md-3">
+                                <button class="add-to-basket btn btn-md" type="submit">Update</button>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <form method="POST" action="{% url 'basket:delete_from_basket' item.product.id %}">
                                     {% csrf_token %}
-                                    <button class="delete-from-basket" type="submit">
-                                    <i class="far fa-trash-alt"></i>
-                                    {{item.product.id}}
+                                    <button class="delete-from-basket btn btn-md float-right" type="submit">
+                                        <i class="far fa-trash-alt"></i>
+                                        {{item.product.id}}
                                     </button>
                                 </form>
                             </div>
@@ -65,21 +65,26 @@
             <p>Total cost: £{{total}}</p>
         </div>
         <div class="col-md-12">
-            <a href="{% url 'checkout:checkout' %}" class="btn">Checkout</a>
+            <a href="{% url 'checkout:checkout' %}" class="btn checkout-btn btn-md">Proceed to Checkout</a>
+        </div>
+    </div>
+{% else %}
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col-md-12">
+            <h3>Sorry, you don't have any items in your basket!</h3>
+        </div>
+        <div class="col-md-12">
+            <p>
+                <a href="{% url 'products:view_products' %}" class="btn checkout-btn rounded-0 btn-md">
+                    <span>
+                        <i class="fas fa-shopping-bag"></i>
+                    </span>
+                    <span>Continue shopping</span>
+                </a>
+            </p>
         </div>
     </div>
 </div>
-{% else %}
-
-<h3>Sorry, you don't have any items in your basket!</h3>
-
-<a href="{% url 'products:view_products' %}" class="btn checkout-btn rounded-0 btn-lg">
-    <span>
-        <i class="fas fa-shopping-bag"></i>
-    </span>
-    <span>Continue shopping</span>
-</a>
-
 
 {% endif %} 
 
