@@ -37,7 +37,9 @@ def checkout(request):
 
         if order_form.is_valid():
             print("3 - Order form is valid")
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            order.order_user = request.user
+            order.save()
             print(order_form)
             for id, quantity in basket.items():
                 print("4 - My basket has items!")
@@ -86,17 +88,26 @@ def checkout_success(request, order_number):
 
 @login_required
 def checkout_history(request):
-    order_user = request.user
-    print(order_user)
-    order_history = get_object_or_404(Order)
-    print("1. I have started")
-    if order_history:
-        print("2. I have order history")
-        for order in order_history:
-            print("3. I have orders!")
-            return
+    """ Returns a list of previous orders for the logged in user """
+    user = request.user
+    user_orders = Order.objects.filter(order_user=user)
+    if user_orders:
+        context = {
+            'user_orders': user_orders,
+        }
     else:
-        print("4. I don't have an order history")
-        return
+        messages.error("Sorry, you don't currently have any orders")
+        return redirect(reverse('profiles:my_profile'))
 
-    return render(request, 'checkout/checkout_history')
+    return render(request, 'checkout/checkout_history.html', context)
+
+
+def order_detail(request, order_number):
+    """ Return details of an individual order """
+    order = get_object_or_404(Order, order_number=order_number)
+    order_items = get_object_or_404(OrderItem, order=order)
+    context = {
+        'order': order,
+        'order_items': order_items,
+    }
+    return render(request, 'checkout/order_detail.html', context)
