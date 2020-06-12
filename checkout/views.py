@@ -103,11 +103,9 @@ def checkout_history(request):
 
 
 def order_detail(request, order_number):
-    """ Return details of an individual order """
+    """Return details of an individual order and the items within the order"""
     order = get_object_or_404(Order, order_number=order_number)
-    order_items = get_object_or_404(OrderItem, order=order)
     context = {
         'order': order,
-        'order_items': order_items,
     }
     return render(request, 'checkout/order_detail.html', context)

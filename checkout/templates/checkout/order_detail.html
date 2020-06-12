@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title%}Tartan Thom - My Profile{% endblock %} 
+
+{% block content %}
+
+
+<div class="container checkout-container">
+    <div class="row justify-content-center m-3">
+        <div class="col-md-12">
+            <div>
+                <h1>Order Detail</h1>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Order Summary:</h3>
+                    <p>Order Number: {{ order.order_number }}</p>
+                    <p>Date: {{ order.date }}</p>
+                </div>
+            </div>
+            <hr>
+        {% if order %}
+            {% for item in order.lineitems.all %}
+            <div class="row">
+                <div class="col">
+                    <img src="{{ item.product.image.url }}" alt="product-image" height="200" width="200">
+                </div>
+                <div class="col">
+                    <h3>{{ item.product.name }}</h3>
+                    <p>Quantity: {{ item.quantity }}</p>
+                    <p>Product total : £{{ item.item_total }}</p>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
