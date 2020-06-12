@@ -5,12 +5,15 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %} 
 {% block content %}
 
-<div class="container allauth-container">
-    <div class="row justify-content-center">
-        <div class="allauth-col col-sm-12 col-md-10 p-5">
+<div class="container allauth-container p-3 my-5">
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col-md-12">
 
             <h1>{% trans "Sign In" %}</h1>
-
+        </div>
+    </div>
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col-md-12">
             {% get_providers as socialaccount_providers %} {% if socialaccount_providers %}
             <p>
             {% blocktrans with site.name as site_name %}Please sign in with one of your
