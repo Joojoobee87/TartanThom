@@ -43,16 +43,15 @@
                                 <button class="add-to-basket btn btn-md" type="submit">Update</button>
                             </div>
                             <div class="col-md-3 col-xs-6 my-1">
-                                <form method="POST" action="{% url 'basket:delete_from_basket' item.product.id %}">
-                                    {% csrf_token %}
-                                    <button class="delete-from-basket btn btn-md float-left" type="submit">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
-                                </form>
                             </div>
                         </div>
                     </form>
-
+                    <form method="POST" action="{% url 'basket:delete_from_basket' item.product.id %}">
+                        {% csrf_token %}
+                        <button class="delete-from-basket btn btn-md float-left" type="submit">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

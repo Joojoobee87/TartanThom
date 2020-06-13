@@ -42,5 +42,7 @@ def delete_from_basket(request, id):
     """A view that deletes the specified item from the basket"""
     basket = request.session.get('basket', {})
     del basket[id]
+    if not basket.items():
+        request.session['product_count'] = 0
     request.session.modified = True
     return render(request, 'basket/basket.html')

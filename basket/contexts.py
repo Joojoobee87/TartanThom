@@ -16,10 +16,12 @@ def basket_contents(request):
         if product.sale_price:
             total += quantity * product.sale_price
             product_count += quantity
+            request.session['product_count'] = product_count
             basket_items.append({'id': id, 'quantity': quantity, 'product': product})
         else:
             total += quantity * product.price
             product_count += quantity
+            request.session['product_count'] = product_count
             basket_items.append({'id': id, 'quantity': quantity, 'product': product})
 
     return {'basket_items': basket_items, 'total': total, 'product_count': product_count}
