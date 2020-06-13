@@ -13,7 +13,7 @@
                 <h1>Testimonials</h1>
             </div>
             <div class="row">
-                <form action="{% url 'profiles:my_profile' %}" method="POST">
+                <form action="{% url 'home:testimonial' %}" method="POST">
                 {% csrf_token %}
                     <!-------------Customer Details----------->
                     <div class="col-md-12 px-3 mx-auto">

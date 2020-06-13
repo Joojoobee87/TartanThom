@@ -31,9 +31,9 @@ def testimonial(request):
     print("1. I am here")
     form = TestimonialForm()
     context = {
-        'form': form,
+            'form': form,
     }
-    if request.POST:
+    if request.method == 'POST':
         print("2. I am here")
         form_data = {
             'testimonial': request.POST['testimonial'],
@@ -42,7 +42,6 @@ def testimonial(request):
         form = TestimonialForm(form_data)
         if form.is_valid():
             print("3. I am here")
-
             testimonial = form.save(commit=False)
             testimonial.testimonial_date = datetime.datetime.now()
             testimonial.testimonial_user = request.user
