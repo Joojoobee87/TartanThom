@@ -60,7 +60,8 @@ input[type="submit"] {
     color: #ffffff;
 }
 
-.checkout-btn {
+.checkout-btn,
+.tartan-thom-btn {
     background-color: #828285;
     color: #ffffff;
 }
@@ -68,6 +69,10 @@ input[type="submit"] {
 /*-----------------------Containers-------------------------*/
 
 .checkout-container {
+    background-color: #e6beae;
+}
+
+.tartan-thom-container {
     background-color: #e6beae;
 }
 
@@ -94,6 +99,15 @@ input[type="submit"] {
     background-color: #CED6D7;
 }
 
+.bag-quantity {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #e6beae;
+    text-align: center;
+}
+
 /*----------------------Profile------------------------------*/
 
 .my-profile-container {
@@ -108,7 +122,12 @@ input[type="submit"] {
     color: #828285;
 }
 
-/*-------------------Authentication Templates--------------*/
+/*----------------------Testimonials-------------------------*/
+
+
+
+
+/*-------------------Authentication Templates----------------*/
 
 .allauth-container {
     background-color: #e6beae;
