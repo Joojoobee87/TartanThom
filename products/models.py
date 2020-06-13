@@ -38,8 +38,8 @@ class Products(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=5)
     sale_price = models.DecimalField(decimal_places=2, max_digits=5)
     size = models.CharField(max_length=100, choices=sizes)
-    label = models.CharField(max_length=100, choices=labels)
-    tags = models.CharField(max_length=100)
+    label = models.CharField(blank=True, max_length=100, choices=labels)
+    tags = models.CharField(blank=True, max_length=100)
     is_bespoke = models.BooleanField()
     is_active = models.BooleanField()
 
