@@ -50,6 +50,10 @@
                     <p>Quantity: {{ item.quantity }}</p>
                     <p>Product total : £{{ item.item_total }}</p>
                     <a href="{% url 'products:review_product' item.product.id %}" class="btn tartan-thom-btn">Leave a review</a>
+                    {% if item.product.is_bespoke %}
+                        <a href="{% url 'checkout:bespoke' item.product.id %}" class="btn tartan-thom-btn">Complete bespoke form</a>
+                    {% endif %}
+
                 </div>
             </div>
             <hr>
