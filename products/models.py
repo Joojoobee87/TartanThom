@@ -64,7 +64,7 @@ class ProductReviews(models.Model):
     review_text = models.TextField(null=False)
     review_rating = models.IntegerField()
     review_date = models.DateField()
-    review_active = models.BooleanField(default=True)
+    review_active = models.BooleanField(default=False)
 
     def __str__(self):
 

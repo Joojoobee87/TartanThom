@@ -5,56 +5,70 @@
 {% block content %}
 
 <nav id="nav-shop" class="navbar navbar-expand-lg nav-shop">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'products:view_cards' %}">Cards</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'products:view_cake-toppers' %}">Cake Toppers</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'products:view_gifts' %}">Gifts</a>
-    </li>
-  </ul>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'products:view_cards' %}">Cards</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'products:view_cake-toppers' %}">Cake Toppers</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'products:view_gifts' %}">Gifts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </nav>
 
-<div class="container">
-
-    <div class="row m-3">
+<div class="container my-profile-container p-3 my-5">
+    <div class="row justify-content-center m-1 p-3">
+        <div class="col">
+            <h1>Products</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center mx-3 p-3">
         <div class="col-md-6">
-            <h1>{{ product_type }}</h1>
+            <h3>{{ product_type }}</h3>
         </div>
         <div class="col-md-6">
             <h3>Found XX results to match your search</h3>
         </div>
     </div>
-
-    <div class="row">
+    <div class="row justify-content-center m-2 p-3">
         {% if products %}
             {% for product in products %}
-        <div class="product-panel col-md-4 col-sm-6">
-            <div class="row">
-                <div class="product-panel">
-                    <div class="product-panel-image">
-                        <a href="{% url 'products:view_product' product.id %}"
-                            ><img class="products-image" src="{{ product.image.url }}" alt="product-image"/></a>
-                        <!-------------Need to switch holding image to {{ product.image.url }}-------->
+            <div class="product-panel col-md-3 col-sm-5 m-3">
+                <div class="row">
+                    <div class="product-panel">
+                        <div class="product-panel-image">
+                            <a href="{% url 'products:view_product' product.id %}"
+                                ><img class="products-image" src="{% static 'img/NicProfile.jpg' %}" alt="product-image"/></a>
+                            <!-------------Need to switch holding image to {{ product.image.url }}-------->
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="product-panel-details">
-                    <h2>{{ product.name }}</h2>
-                    {% if product.sale_price %}
-                    <p><strike>£{{ product.price }}</strike>£{{ product.sale_price }}</p>
-                    {% else %}
-                    <p>£{{ product.price }}</p>
-                    {% endif %}
+                <div class="row justify-content-center">
+                    <div class="col-md-12 product-panel-details">
+                        <h2>{{ product.name }}</h2>
+                    </div>
                 </div>
-            </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12 product-panel-details">
+                        {% if product.sale_price %}
+                        <p><strike>£{{ product.price }}</strike>   £{{ product.sale_price }}</p>
+                        {% else %}
+                        <p>£{{ product.price }}</p>
+                        {% endif %}
+                    </div>
+                </div>
 
-        </div>
-        {% endfor %} {% endif %}
+            </div>
+            {% endfor %} 
+        {% endif %}
     </div>
 </div>
 

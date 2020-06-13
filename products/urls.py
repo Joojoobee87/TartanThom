@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from products.views import view_products, view_cards, view_cake_toppers, view_gifts, view_product
+from products.views import view_products, view_cards, view_cake_toppers, view_gifts, view_product, review_product
 
 
 app_name = 'products'
@@ -9,4 +9,5 @@ urlpatterns = [
     path('cake-toppers/', view_cake_toppers, name='view_cake-toppers'),
     path('gifts/', view_gifts, name='view_gifts'),
     path('view-product/<id>/', view_product, name='view_product'),
+    path('review-product/<id>/', review_product, name='review_product'),
 ]
