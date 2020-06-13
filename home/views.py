@@ -7,4 +7,7 @@ from .models import Testimonials
 def index(request):
     """A view that displays the homepage"""
     testimonials = Testimonials.objects.all()
-    return render(request, "home/index.html", {'testimonials': testimonials})
+    context = {
+        'testimonials': testimonials,
+    }
+    return render(request, "home/index.html", context)
