@@ -49,6 +49,7 @@
                     <h3>{{ item.product.name }}</h3>
                     <p>Quantity: {{ item.quantity }}</p>
                     <p>Product total : £{{ item.item_total }}</p>
+                    <a href="{% url 'products:review_product' item.product.id %}" class="btn tartan-thom-btn">Leave a review</a>
                 </div>
             </div>
             <hr>

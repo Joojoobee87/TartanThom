@@ -54,3 +54,23 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return self.product.name
+
+
+class Bespoke(models.Model):
+    class Meta:
+
+        verbose_name_plural = 'Bespoke'
+
+    bespoke_item = models.ForeignKey(OrderItem, null=False, on_delete=models.CASCADE)
+    person_name1 = models.CharField(max_length=50, blank=True)
+    person_name2 = models.CharField(max_length=50, blank=True)
+    date_of_birth = models.DateField(blank=True)
+    place_of_birth = models.CharField(max_length=50, blank=True)
+    birth_weight_lb = models.IntegerField(blank=True)
+    birth_weight_oz = models.IntegerField(blank=True)
+    wedding_date = models.DateField(blank=True)
+    address_line1 = models.CharField(max_length=50, blank=True)
+    is_complete = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.bespoke_item
