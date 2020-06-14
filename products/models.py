@@ -11,9 +11,9 @@ class Products(models.Model):
         verbose_name_plural = 'Products'
 
     PRODUCT_TYPE = [
-        ('cards', 'cards'),
-        ('cake-toppers', 'cake-toppers'),
-        ('Gifts', 'Gifts')
+        ('cards', 'Cards'),
+        ('cake-toppers', 'Cake-Toppers'),
+        ('gifts', 'Gifts')
     ]
     category = [
         ('Birthday', 'Birthday'),

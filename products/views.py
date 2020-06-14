@@ -17,9 +17,11 @@ def view_products_by_type(request, product_type):
     """View all products with the product type 'Cards' """
     if request.method == 'GET':
         products = Products.objects.filter(product_type=product_type)
+        results_count = products.count()
         context = {
             'products': products,
             'product_type': product_type,
+            'results_count': results_count,
         }
     else:
         messages.error(request, "Sorry, there are no products of this type")
