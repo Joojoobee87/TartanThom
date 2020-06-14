@@ -10,27 +10,47 @@
 <div class="container tartan-thom-container p-3 my-5">
     <div class="row justify-content-center m-2 p-3">
         <div class="col-md-12">
-            <div class="row">
-                <h1>Bespoke Item Form</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h1>Bespoke Item Form</h1>
+                </div>
             </div>
 
-            <div class="row">
-                <form action="{% url 'checkout:bespoke' order.order_number %}" method="POST">
+            <div class="row justify-content-center">
+                <div class="col-md-8 px-3 mx-auto">
+
+                <form action="{% url 'checkout:bespoke' order.order_number product.id %}" method="POST">
                 {% csrf_token %}
                     <!-------------Customer Details----------->
-                    <div class="col-md-12 px-3 mx-auto">
-                        <fieldset class="mb-5">
-                            <div>
-                                {{ form|crispy }}
-                            </div>
-                        </fieldset>
-                        <fieldset class="mb-5">
-                            <button type="submit" class="btn tartan-thom-btn">Submit</button>
-                        </fieldset>
-                    </div>
+                    <fieldset class="mb-5">
+                    <!---------------------Birthday----------------->
+                    {% if product.category == 'Birthday' %}
+                        {{ form.person_name1|as_crispy_field }}
+                        {{ form.date_of_birth|as_crispy_field }}
+                    <!---------------------New Home----------------->
+                    {% elif product.category == 'New Home' %}
+                        {{ form.person_name1|as_crispy_field }}
+                        {{ form.address_line1|as_crispy_field }}
+                    <!------------Anniversary/Wedding--------------->
+                    {% elif product.category == 'Anniversary' or 'Wedding' %}
+                        {{ form.person_name1|as_crispy_field }}
+                        {{ form.person_name2|as_crispy_field }}
+                        {{ form.wedding_date|as_crispy_field }}
+                    <!----------------------Baby-------------------->
+                    {% elif product.category == 'Baby' %}
+                        {{ form.person_name1|as_crispy_field }}
+                        {{ form.date_of_birth|as_crispy_field }}
+                        {{ form.place_of_birth|as_crispy_field }}
+                        {{ form.birth_weight_lb|as_crispy_field }}
+                        {{ form.birth_weight_oz|as_crispy_field }}
+                    {% endif %}
+                    </fieldset>
+                    <fieldset class="mb-5">
+                        <button type="submit" class="btn tartan-thom-btn">Submit</button>
+                    </fieldset>
                 </form>
+                </div>
             </div>
-
         </div>
     </div>
 </div>    
