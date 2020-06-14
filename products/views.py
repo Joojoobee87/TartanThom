@@ -13,25 +13,18 @@ def view_products(request):
     return render(request, "products/products.html", {'products': products, 'product_type': product_type})
 
 
-def view_cards(request):
+def view_products_by_type(request, product_type):
     """View all products with the product type 'Cards' """
-    products = Products.objects.filter(product_type='Cards')
-    product_type = "Cards"
-    return render(request, "products/products.html", {'products': products, 'product_type': product_type})
-
-
-def view_cake_toppers(request):
-    """View all products with the product type 'Cake Toppers' """
-    products = Products.objects.filter(product_type='Cake Toppers')
-    product_type = "Cake Toppers"
-    return render(request, "products/products.html", {'products': products, 'product_type': product_type})
-
-
-def view_gifts(request):
-    """View all products with the product type 'Gifts' """
-    products = Products.objects.filter(product_type='Gifts')
-    product_type = "Gifts"
-    return render(request, "products/products.html", {'products': products, 'product_type': product_type})
+    if request.method == 'GET':
+        products = Products.objects.filter(product_type=product_type)
+        context = {
+            'products': products,
+            'product_type': product_type,
+        }
+    else:
+        messages.error(request, "Sorry, there are no products of this type")
+        return redirect(reverse('view_products'))
+    return render(request, "products/products.html", context)
 
 
 def view_product(request, id):

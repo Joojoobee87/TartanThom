@@ -10,13 +10,13 @@
             <div class="col-md-12">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                    <a class="nav-link" href="{% url 'products:view_cards' %}">Cards</a>
+                    <a class="nav-link" href="{% url 'products:view_products_by_type' 'cards' %}">Cards</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{% url 'products:view_cake-toppers' %}">Cake Toppers</a>
+                    <a class="nav-link" href="{% url 'products:view_products_by_type' 'cake-toppers' %}">Cake Toppers</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{% url 'products:view_gifts' %}">Gifts</a>
+                    <a class="nav-link" href="{% url 'products:view_products_by_type' 'gifts' %}">Gifts</a>
                     </li>
                 </ul>
             </div>
@@ -32,7 +32,7 @@
     </div>
     <div class="row justify-content-center mx-3 p-3">
         <div class="col-md-6">
-            <h3>{{ product_type }}</h3>
+            <h3>{{ product_type|title }}</h3>
         </div>
         <div class="col-md-6">
             <h3>Found XX results to match your search</h3>
