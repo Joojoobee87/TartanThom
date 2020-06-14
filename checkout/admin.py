@@ -13,9 +13,12 @@ class OrderItemsInline(admin.TabularInline):
 class BespokeAdminInline(admin.TabularInline):
     model = Bespoke
 
-    readonly_fields = ('bespoke_order',)
+    readonly_fields = ('product_name', )
 
-    fields = ('bespoke_order', 'person_name1', 'person_name2', 'date_of_birth', 'place_of_birth', 'birth_weight_lb', 'birth_weight_oz', 'wedding_date', 'address_line1', 'is_complete')
+    fields = ('bespoke_order', 'product_name', 'person_name1', 'person_name2', 'date_of_birth', 'place_of_birth', 'birth_weight_lb', 'birth_weight_oz', 'wedding_date', 'address_line1', 'is_complete')
+
+    def product_name(self, instance):
+        return instance.bespoke_product.name
 
 
 class OrderAdmin(admin.ModelAdmin):

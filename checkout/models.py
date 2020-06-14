@@ -63,6 +63,7 @@ class Bespoke(models.Model):
         verbose_name_plural = 'Bespoke'
 
     bespoke_order = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
+    bespoke_product = models.ForeignKey(Products, null=False, on_delete=models.CASCADE)
     person_name1 = models.CharField(max_length=50, blank=True, null=True)
     person_name2 = models.CharField(max_length=50, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
@@ -72,6 +73,3 @@ class Bespoke(models.Model):
     wedding_date = models.DateField(blank=True, null=True)
     address_line1 = models.CharField(max_length=50, blank=True, null=True)
     is_complete = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.bespoke_order.fullname
