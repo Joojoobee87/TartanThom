@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap_tags %}
+{% load crispy_forms_tags %}
+
+{% block title %}Tartan Thom - Bespoke{% endblock %}
+
+{% block content %}
+
+<div class="container tartan-thom-container p-3 my-5">
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col-md-12">
+            <div class="row">
+                <h1>Bespoke Item Form</h1>
+            </div>
+
+            <div class="row">
+                <form action="{% url 'checkout:bespoke' order.order_number %}" method="POST">
+                {% csrf_token %}
+                    <!-------------Customer Details----------->
+                    <div class="col-md-12 px-3 mx-auto">
+                        <fieldset class="mb-5">
+                            <div>
+                                {{ form|crispy }}
+                            </div>
+                        </fieldset>
+                        <fieldset class="mb-5">
+                            <button type="submit" class="btn tartan-thom-btn">Submit</button>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>    
+
+{% endblock %}
