@@ -21,6 +21,7 @@ class Order(models.Model):
     postcode = models.CharField(max_length=10)
     country = CountryField(blank_label='Country', max_length=30)
     order_total = models.DecimalField(max_digits=8, decimal_places=2, null=False, default=0)
+    is_complete = models.BooleanField(default=False)
 
     def create_order_number(self):
         return uuid.uuid4().hex.upper()
@@ -61,16 +62,16 @@ class Bespoke(models.Model):
 
         verbose_name_plural = 'Bespoke'
 
-    bespoke_item = models.ForeignKey(OrderItem, null=False, on_delete=models.CASCADE)
-    person_name1 = models.CharField(max_length=50, blank=True)
-    person_name2 = models.CharField(max_length=50, blank=True)
-    date_of_birth = models.DateField(blank=True)
-    place_of_birth = models.CharField(max_length=50, blank=True)
-    birth_weight_lb = models.IntegerField(blank=True)
-    birth_weight_oz = models.IntegerField(blank=True)
-    wedding_date = models.DateField(blank=True)
-    address_line1 = models.CharField(max_length=50, blank=True)
+    bespoke_order = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
+    person_name1 = models.CharField(max_length=50, blank=True, null=True)
+    person_name2 = models.CharField(max_length=50, blank=True, null=True)
+    date_of_birth = models.DateField(blank=True, null=True)
+    place_of_birth = models.CharField(max_length=50, blank=True, null=True)
+    birth_weight_lb = models.IntegerField(blank=True, null=True)
+    birth_weight_oz = models.IntegerField(blank=True, null=True)
+    wedding_date = models.DateField(blank=True, null=True)
+    address_line1 = models.CharField(max_length=50, blank=True, null=True)
     is_complete = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.bespoke_item
+        return self.bespoke_order.fullname
