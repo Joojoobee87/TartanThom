@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from products.models import Products, ProductReviews
+from products.forms import ReviewForm
 import datetime
 
 # Create your views here.
@@ -48,10 +49,12 @@ def review_product(request, id):
     """ Review form for user to submit for a specific product"""
     print("1. I am here")
     form = ReviewForm()
+    product = get_object_or_404(Products, pk=id)
     context = {
             'form': form,
+            'product': product,
     }
-    product = get_object_or_404(Products, pk=id)
+
     if request.method == 'POST':
         print("2. I am here")
         form_data = {

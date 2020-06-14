@@ -60,7 +60,7 @@ class ProductReviews(models.Model):
         null=True,
     )
     user_anonymous = models.BooleanField(default=False)
-    product = models.ForeignKey('Products', null=False, on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, null=False, on_delete=models.CASCADE)
     review_text = models.TextField(null=False)
     review_rating = models.IntegerField()
     review_date = models.DateField()
@@ -72,3 +72,5 @@ class ProductReviews(models.Model):
 
     def review_percentage(self):
         return int((self.review_rating / 5) * 100)
+
+
