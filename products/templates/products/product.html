@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title%}Tartan Thom Shop - {{ product.name}}{% endblock %} 
 {% block content %}
 
 <div class="container p-3 my-5">
     <div class="row justify-content-center my-1">
-        <div class="col-md-4 m-2">
-            <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" />
+        <div class="col-md-4 m-2 p-0">
+            <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" class="products-image"/>
+            {% if product.label %}
+            <div class="product-label py-auto">
+                <span id="label">{{ product.label }}</span>
+            </div>
+            {% endif %}
         </div>
     <!-------------------------Added {{ product.image.url }} to image source ------------------>
         <div class="col-md-6 product-details m-2">
@@ -19,13 +25,10 @@
             {% endif %}
             <form method="POST" action="{% url 'basket:add_to_basket' product.id %}">
                 {% csrf_token %}
-                <div class="form-row my-1">
-                    <div class="col-md-6 col-sx-12">
-                        <input type="number" name="quantity" min="1" max="999" class="form-control"
-                            placeholder="Quantity"/>
-                    </div>
-                </div>
-                <div class="form-row my-1">
+                <fieldset>
+                {{ form|crispy }}
+                </fieldset>
+                <div class="form-row my-2">
                     <div class="col-md-12">
                         <button class="add-to-basket btn" type="submit">Add to basket</button>
                     </div>

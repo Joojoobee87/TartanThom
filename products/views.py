@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from products.models import Products, ProductReviews
 from products.forms import ReviewForm
+from basket.forms import QuantityForm
 import datetime
 
 # Create your views here.
@@ -10,7 +11,13 @@ def view_products(request):
     """View all products in the collection"""
     products = Products.objects.all()
     product_type = "All Products"
-    return render(request, "products/products.html", {'products': products, 'product_type': product_type})
+    results_count = products.count()
+    context = {
+        'products': products,
+        'product_type': product_type,
+        'results_count': results_count,
+    }
+    return render(request, "products/products.html", context)
 
 
 def view_products_by_type(request, product_type):
@@ -31,11 +38,13 @@ def view_products_by_type(request, product_type):
 
 def view_product(request, id):
     """View selected product in the collection"""
+    form = QuantityForm()
     product = get_object_or_404(Products, pk=id)
     reviews = ProductReviews.objects.filter(product=id)
     context = {
         'product': product,
         'reviews': reviews,
+        'form': form,
     }
     return render(request, "products/product.html", context)
 
