@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, OrderItem
+from .models import Order, OrderItem, Bespoke
 
 # Register your models here.
 
@@ -10,13 +10,26 @@ class OrderItemsInline(admin.TabularInline):
     readonly_fields = ('item_total',)
 
 
+class BespokeAdminInline(admin.TabularInline):
+    model = Bespoke
+
+    readonly_fields = ('bespoke_order',)
+
+    fields = ('bespoke_order', 'person_name1', 'person_name2', 'date_of_birth', 'place_of_birth', 'birth_weight_lb', 'birth_weight_oz', 'wedding_date', 'address_line1', 'is_complete')
+
+
 class OrderAdmin(admin.ModelAdmin):
-    inlines = (OrderItemsInline, )
+    inlines = (OrderItemsInline, BespokeAdminInline)
+
+    list_display = ('order_number', 'fullname', 'date', 'order_total', 'is_complete')
 
     readonly_fields = ('order_number', 'date', 'order_total')
 
     fields = ('order_user', 'order_number', 'date', 'fullname', 'phone_number', 
-              'address_line1', 'address_line2', 'town_city', 'postcode', 'country', 'order_total')
+              'address_line1', 'address_line2', 'town_city', 'postcode', 'country', 'order_total', 'is_complete')
 
 
-admin.site.register(Order, OrderAdmin)
+
+
+
+admin.site.register(Order, OrderAdmin,)
