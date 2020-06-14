@@ -1,5 +1,6 @@
 {% extends 'base.html' %} 
-{% load static %} 
+{% load static %}
+{% load crispy_forms_tags %}
 {% block title%}Tartan Thom - Basket{% endblock %} 
 {% block content %}
 
@@ -11,16 +12,31 @@
     </div>
 
 {% if basket_items %}
+    <div class="row justify-content-center m-1 p-3">
+        <div class="col-md-12">
+            <a href="{% url 'products:view_products' %}" class="btn checkout-btn btn-md">
+                <span>
+                    <i class="fas fa-shopping-bag"></i>
+                </span>
+                <span>Continue shopping</span>
+            </a>
+        </div>
+    </div>
     {% for item in basket_items %}
     <div class="row justify-content-center m-2 p-3">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 p-1 my-1">
                     <!-------------Change this to {{ item.product.image }} for production--------------->
-                    <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" />
+                    <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" class="products-image"/>
+                    {% if item.product.label %}
+                    <div class="product-label-left py-auto">
+                        <span id="label">{{ item.product.label }}</span>
+                    </div>
+                    {% endif %}
                 </div>
 
-                <div class="col-md-6 my-1">
+                <div class="col-md-6 p-3 my-1 basket-detail">
                     <h2>{{ item.product.name }}</h2>
                     {% if item.product.sale_price %}
                     <p>
@@ -31,26 +47,47 @@
                         <span>{{ item.quantity }}</span> x <span>£{{ item.product.price}}</span>
                     </p>
                     {% endif %}
-                    <form method="POST" action="{% url 'basket:amend_basket' item.product.id %}">                      {% csrf_token %}
-                        <div class="form-row my-1">
-                            <div class="col-md-6">
-                                <input type="number" name="quantity" min="1" max="999" class="form-control"
-                                    placeholder="Quantity"/>
-                            </div>
-                        </div>
+                    <form method="POST" action="{% url 'basket:amend_basket' item.product.id %}">         
+                    {% csrf_token %}
+                        <fieldset>
+                        {{ form|crispy }}
+                        </fieldset>
                         <div class="form-row my-1">
                             <div class="col-md-3 col-xs-6 my-1">
                                 <button class="add-to-basket btn btn-md" type="submit">Update</button>
                             </div>
-                            <div class="col-md-3 col-xs-6 my-1">
-                            </div>
                         </div>
                     </form>
+
                     <form method="POST" action="{% url 'basket:delete_from_basket' item.product.id %}">
                         {% csrf_token %}
-                        <button class="delete-from-basket btn btn-md float-left" type="submit">
-                            <i class="far fa-trash-alt"></i>
+
+                        <!-- Bootstrap Button trigger modal -->
+                        <button type="button" class="delete-from-basket btn btn-md float-left" data-toggle="modal" data-target="#confirmDelete"><i class="far fa-trash-alt"></i>
                         </button>
+
+                        <!-- Bootstrap Modal -->
+                        <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content m-5 p-5">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="confirm-delete-header">Confirm Delete</h3>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="confirm-delete-body">
+                                    Are you sure you want to remove this item from your basket?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                    <button type="submit" class="btn tartan-thom-btn-pink">Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -74,7 +111,7 @@
         </div>
         <div class="col-md-12">
             <p>
-                <a href="{% url 'products:view_products' %}" class="btn checkout-btn rounded-0 btn-md">
+                <a href="{% url 'products:view_products' %}" class="btn checkout-btn btn-md">
                     <span>
                         <i class="fas fa-shopping-bag"></i>
                     </span>
