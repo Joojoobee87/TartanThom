@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from checkout.forms import OrderForm
-from .models import Order, OrderItem
+from checkout.forms import OrderForm, BespokeForm
+from .models import Order, OrderItem, Bespoke
 from products.models import Products
 from basket.contexts import basket_contents
 from django.contrib import messages
@@ -51,6 +51,7 @@ def checkout(request):
                     )
                     order_item.save()
                     del request.session['basket']
+                    del request.session['product_count']
                 except Products.DoesNotExist:
                     print("5 - Product does not exist")
                     order.delete()
@@ -110,3 +111,34 @@ def order_detail(request, order_number):
         'order': order,
     }
     return render(request, 'checkout/order_detail.html', context)
+
+
+def bespoke(request, order_number):
+    """
+    Returns a bespoke form for users to complete further
+    information for order items
+    """
+    print("1. I am here")
+    form = BespokeForm()
+    order = get_object_or_404(Order, order_number=order_number)
+    print(order)
+    context = {
+        'form': form,
+        'order': order,
+    }
+    if request.method == 'POST':
+        print("2. I am here")
+        form = BespokeForm(request.POST)
+        if form.is_valid():
+            print("3. I am here")
+            bespoke = form.save(commit=False)
+            bespoke.bespoke_item = order_item
+            bespoke.save()
+            messages.success(request, 'Thanks for submitting your bespoke details!')
+        else:
+            print("4. I am here")
+            messages.error(request, 'Please check the information in the form')
+    else:
+        print("I am not a POST")
+
+    return render(request, 'checkout/bespoke.html', context)
