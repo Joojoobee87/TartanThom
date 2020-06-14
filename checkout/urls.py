@@ -8,6 +8,6 @@ urlpatterns = [
     path('success/<order_number>/', checkout_success, name='checkout_success'),
     path('checkout_history/', checkout_history, name='checkout_history'),
     path('order_detail/<order_number>', order_detail, name='order_detail'),
-    path('bespoke/<order_number>/', bespoke, name='bespoke'),
+    path('bespoke/<order_number>/<id>/', bespoke, name='bespoke'),
     path('wh/', webhook, name='webhook'),
 ]

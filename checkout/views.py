@@ -91,7 +91,7 @@ def checkout_success(request, order_number):
 def checkout_history(request):
     """ Returns a list of previous orders for the logged in user """
     user = request.user
-    user_orders = Order.objects.filter(order_user=user)
+    user_orders = Order.objects.filter(order_user=user).order_by('-date')
     if user_orders:
         context = {
             'user_orders': user_orders,
@@ -113,18 +113,20 @@ def order_detail(request, order_number):
     return render(request, 'checkout/order_detail.html', context)
 
 
-def bespoke(request, order_number):
+def bespoke(request, order_number, id):
     """
     Returns a bespoke form for users to complete further
     information for order items
     """
     print("1. I am here")
     form = BespokeForm()
+    product = get_object_or_404(Products, pk=id)
     order = get_object_or_404(Order, order_number=order_number)
     print(order)
     context = {
         'form': form,
         'order': order,
+        'product': product,
     }
     if request.method == 'POST':
         print("2. I am here")
@@ -132,7 +134,8 @@ def bespoke(request, order_number):
         if form.is_valid():
             print("3. I am here")
             bespoke = form.save(commit=False)
-            bespoke.bespoke_item = order_item
+            bespoke.bespoke_order = order
+            bespoke.bespoke_product = product
             bespoke.save()
             messages.success(request, 'Thanks for submitting your bespoke details!')
         else:
