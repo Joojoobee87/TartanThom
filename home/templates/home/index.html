@@ -5,34 +5,16 @@
 
 {% block content %}
 
-<div class="container welcome-container">
-	<div class="row welcome-row">
-		<div class="welcome col-md-6">
-			<h1>Welcome</h1>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem et consequuntur, quaerat neque,
-				illo suscipit ipsa in saepe iusto quas, natus corrupti itaque? At velit aspernatur tempore eum quod
-				earum?</p>
-            <div class="signature">
-                <h4>Nicola Thomson</h4>
-                <p>Founder of Tartan Thom</p>
-            </div>
-		</div>
-        <div class="profile-image col-md-6">
-            <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture">
-        </div>
-	</div>
-    <div class="row testimonial-row justify-content-center">
-        <div class="testimonial-content col-md-10">
-            <div class="button-left"><i class="fas fa-angle-left fa-2x"></i></div>
-            <div class="button-right"><i class="fas fa-angle-right fa-2x"></i></div>
+<div>
+
+    <div class="row justify-content-center flex-column my-3">
+        <div class="testimonial-content col-md-10 flex-column">
             {% if testimonials %}
                 {% for testimonial in testimonials %}
                     {% if testimonial.testimonial_active %}
-                    <div class="row justify-content-center">
-                        <div class="testimonial col-md-8">
-                            <p class="testimonial-paragraph">"{{ testimonial.testimonial }}"</p>
-                        </div>
-                    </div>
+                    <h3 class="testimonial px-2">"{{ testimonial.testimonial }}"</h3>
+                    <div class="button-left"><i class="fas fa-angle-left fa-2x"></i></div>
+                    <div class="button-right"><i class="fas fa-angle-right fa-2x"></i></div>
                     {% endif %}
                 {% endfor %}
             {% endif %}

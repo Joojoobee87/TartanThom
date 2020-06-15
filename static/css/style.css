@@ -234,22 +234,8 @@ footer {
 .testimonial-content {
     display: block;
     position: relative;
-    height: 200px;
-    width: 80%;
+    min-height: 200px;
     background-color: #e6beae;
-}
-
-.testimonial {
-    position: absolute;
-    top: 50%;
-    display: none;
-    text-align: center;
-    margin: auto;
-    width: 80%;
-}
-
-.testimonial-paragraph {
-    font-family: "Great Vibes", cursive !important;
 }
 
 .button-left {
@@ -264,6 +250,14 @@ footer {
     position: absolute;
     top: 50%;
     right: 0;
+}
+
+.fa-angle-right {
+    margin-right: 1em;
+}
+
+.fa-angle-left {
+    margin-left: 1em;
 }
 
 /*--------------------------Contact------------------------*/
@@ -410,6 +404,18 @@ footer {
     .link {
         overflow-wrap: break-word;
     }
+
+    .fa-angle-right {
+        margin-right: .5em !important;
+}
+
+    .fa-angle-left {
+        margin-left: .5em !important;
+    }
+
+    .testimonial-content {
+        padding: 2em !important;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -427,6 +433,22 @@ footer {
 
     .fa-archive {
         float: left !important;
+    }
+
+}
+
+@media only screen and (max-width: 991px) {
+
+    .testimonial-content {
+        padding: 5em;
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+    .testimonial-content {
+        padding: 7em;
     }
 
 }

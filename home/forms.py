@@ -9,7 +9,7 @@ class TestimonialForm(forms.ModelForm):
         fields = ('testimonial', 'testimonial_allow_publish')
 
         widgets = {
-            'testimonial': forms.Textarea(attrs={'required': True, 'rows': 5, 'cols': 20, 'max_length': 500}),
+            'testimonial': forms.Textarea(attrs={'required': True, 'rows': 5, 'cols': 20, 'max_length': 300}),
             'testimonial_allow_publish': forms.CheckboxInput(attrs={'required': False, 'null': False}),
         }
 
@@ -19,7 +19,7 @@ class TestimonialForm(forms.ModelForm):
         }
 
         help_texts = {
-            'testimonial': 'Tell us a bit about why you love Tartan Thom',
+            'testimonial': 'Tell us a bit about why you love Tartan Thom (max 300 characters)',
             'testimonial_allow_publish': 'Do we have your permission to publish on our site?',
         }
 

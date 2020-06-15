@@ -11,7 +11,7 @@ class Testimonials(models.Model):
 
     testimonial_date = models.DateField()
     testimonial_allow_publish = models.BooleanField(default=True)
-    testimonial = models.TextField()
+    testimonial = models.TextField(max_length=300)
     testimonial_active = models.BooleanField(default=False)
     testimonial_user = models.ForeignKey(
         User,
