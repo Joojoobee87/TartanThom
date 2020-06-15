@@ -20,11 +20,41 @@
 <div class="container">
     <div class="row justify-content-center flex-column my-3">
         <div class="col-md-12 flex-column">
-            <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture">
-            <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture">
-            <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture">
-            <div class="shop-now p-7">
-                <h2>Shop Now</h2>
+            <div class="row">
+                <div class="col-md-6 p-0">
+                    <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture" class="shop-now-image">
+                    <a href="{% url 'products:view_products' %}">
+                        <div class="shop-now">
+                            <h2>Shop Now</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 p-0">
+                    <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture" class="shop-now-image">
+                    <a href="{% url 'products:view_products_by_type' 'cards' %}">
+                        <div class="shop-cards">
+                            <h2>Shop Cards</h2>
+                        </div>
+                    </a>                
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 p-0">
+                    <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture" class="shop-now-image">
+                    <a href="{% url 'products:view_products_by_type' 'cake-toppers' %}">
+                        <div class="shop-cake-toppers">
+                            <h2>Shop Cake Toppers</h2>
+                        </div>
+                    </a>   
+                </div>
+                <div class="col-md-6 p-0">
+                    <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture" class="shop-now-image">
+                    <a href="{% url 'products:view_products_by_type' 'gifts' %}">
+                        <div class="shop-gifts">
+                            <h2>Shop Gifts</h2>
+                        </div>
+                    </a>   
+                </div>
             </div>
         </div>
     </div>
