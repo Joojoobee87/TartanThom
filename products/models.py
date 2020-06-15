@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -62,7 +63,7 @@ class ProductReviews(models.Model):
     user_anonymous = models.BooleanField(default=False)
     product = models.ForeignKey(Products, null=False, on_delete=models.CASCADE)
     review_text = models.TextField(null=False)
-    review_rating = models.IntegerField()
+    review_rating = models.IntegerField(null=False, default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
     review_date = models.DateField()
     review_active = models.BooleanField(default=False)
 

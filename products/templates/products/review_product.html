@@ -10,23 +10,27 @@
     <div class="row justify-content-center m-2 p-3">
         <div class="col-md-12">
             <div class="row">
-                <h1>Product Reviews</h1>
+                <div class="col-md-8 px-3 mx-auto">
+                    <h1>Product Reviews</h1>
+                </div>
             </div>
             <div class="row">
-                <form action="{% url 'products:review_product' product.id %}" method="POST">
-                {% csrf_token %}
-                    <!-------------Customer Details----------->
-                    <div class="col-md-12 px-3 mx-auto">
-                        <fieldset class="mb-5">
-                            <div>
-                                {{ form|crispy }}
-                            </div>
-                        </fieldset>
-                        <fieldset class="mb-5">
-                            <button type="submit" class="btn tartan-thom-btn">Submit</button>
-                        </fieldset>
-                    </div>
-                </form>
+                <div class="col-md-8 px-3 mx-auto">
+                    <form action="{% url 'products:review_product' product.id %}" method="POST">
+                    {% csrf_token %}
+                        <!-------------Customer Details----------->
+                        <div class="col-md-12 px-3 mx-auto">
+                            <fieldset class="mb-5">
+                                <div>
+                                    {{ form|crispy }}
+                                </div>
+                            </fieldset>
+                            <fieldset class="mb-5">
+                                <button type="submit" class="btn tartan-thom-btn">Submit</button>
+                            </fieldset>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
