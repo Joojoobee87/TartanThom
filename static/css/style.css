@@ -203,20 +203,52 @@ footer {
 
 /*----------------------------Index-------------------------*/
 
+.nav-home {
+    min-height: 150px;
+    background-color: #CED6D7;
+}
+
+.shop-now {
+    display: block;
+    position: absolute;
+    background-color: #e6beae;
+    margin: 1em;
+    padding: 1em;
+    top: 0;
+    float: left;
+}
+
+.shop-cards,
+.shop-cake-toppers,
+.shop-gifts {
+    display: block;
+    position: absolute;
+    background-color: #E5E5E5;
+    margin: 1em;
+    padding: 1em;
+    top: 0;
+    float: left;
+}
+
+.shop-now-image {
+    width: 100%;
+}
+
+
+/*----------------------------ABout-------------------------*/
+
+
 .welcome-container {
   margin-top: 5em;
 }
 
 .welcome {
   background-color: #e6beae;
-  height: 400px;
-  padding: 5em;
 }
 
 .profile-image {
-  float: right;
-  margin-top: 15%;
-  margin-left: -5%;
+    width: 100%;
+    float: right;
 }
 
 /*-------------------Authentication Templates--------------*/
