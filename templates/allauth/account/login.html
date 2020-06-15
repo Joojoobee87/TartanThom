@@ -32,7 +32,7 @@
             </div>
 
             {% include "socialaccount/snippets/login_extra.html" %} {% else %}
-            <p>
+            <p class="mb-3">
             {% blocktrans %}If you have not created an account yet, then please
             <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
             </p>
@@ -45,10 +45,10 @@
             {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
                 {% endif %}
-                <p>
-                    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                <p class="my-2">
+                    <a class="tartan-thom-a button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %} Click here to reset</a>
                 </p>
-                <p>
+                <p class="my-2">
                     <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
                 </p>
             </form>

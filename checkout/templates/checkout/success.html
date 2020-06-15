@@ -10,39 +10,48 @@
 
 {% block content %}
 
-<div class="container checkout-container">
-    <div class="row justify-content-center">
-        <div class="col">
-            <h1>Order Confirmation</h1>
-            <h3>Your checkout was successful!</h3>
-            <p>Thanks for your order. Your order number is {{order.order_number}}</p>
-            <p>Please review your order summary below. You can also view this order along with previous orders in your <a href="{% url 'profiles:my_profile' %}">Account</a></p>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col">
-            <h3>Order Details:</h3>
-            <p>Order Number: {{ order.order_number }}</p>
-            <p>Order Date: {{ order.date }}</p>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Delivery Details:</h3>
-            <p>{{ order.fullname }}</p>
-            <p>{{ order.address_line1 }}</p>
-            <p>{{ order.address_line2 }}</p>
-            <p>{{ order.town_city }}</p>
-            <p>{{ order.postcode }}</p>
-            <p>{{ order.country }}</p>
-        </div>
-        <div class="col-md-6">
-            <h3>Payment Details:</h3>
-            <p>Total Items: £{{ order.Order_total }}</p>
-            <p>Delivery charge: £ XXXXX</p>
-            <p>Grand Total: £ XXXXX</p>
+<div class="container tartan-thom-container p-3 my-5">
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col-md-12">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h1>Order Confirmation</h1>
+                </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h3>Your checkout was successful!</h3>
+                    <p>Thanks for your order. Your order number is {{order.order_number}}</p>
+                    <p>Please review your order summary below. You can also view this order along with previous orders in your <a href="{% url 'profiles:my_profile' %}">Account</a></p>
+                </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h3>Order Details:</h3>
+                    <p>Order Number: {{ order.order_number }}</p>
+                    <p>Order Date: {{ order.date }}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <h3>Delivery Details:</h3>
+                    <p>{{ order.fullname }}</p>
+                    <p>{{ order.address_line1 }}</p>
+                    <p>{{ order.address_line2 }}</p>
+                    <p>{{ order.town_city }}</p>
+                    <p>{{ order.postcode }}</p>
+                    <p>{{ order.country }}</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Payment Details:</h3>
+                    <p>Total Items: £{{ order.Order_total }}</p>
+                    <p>Delivery charge: £ XXXXX</p>
+                    <p>Grand Total: £ XXXXX</p>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
