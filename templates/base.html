@@ -91,11 +91,13 @@
       </div>
     </nav>
     <div class="content">
+    
     {% if messages %} 
         {% for message in messages %}
-            <div class="alert alert-{{message.tags}}">{{ message}}</div>
+            <div id="django-alert" class="alert alert-{{message.tags}}">{{ message }}</div>
         {% endfor %}    
     {% endif %} 
+
     {% block content %} 
     {% endblock %}
     </div>

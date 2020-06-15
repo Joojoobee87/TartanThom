@@ -9,6 +9,25 @@ body {
   min-height: 70vh;
 }
 
+#django-alert {
+  font-family: "Open Sans", sans-serif;
+}
+
+.alert-error {
+    background-color: #828285 !important;
+    color:#fff;
+}
+
+.alert-success {
+    background-color: #e6beae !important;
+    color: #828285;
+}
+
+.alert-info {
+    background-color: #CED6D7 !important;
+    color: #828285;
+}
+
 .brand {
   height: 120px;
   width: 280px;
@@ -235,7 +254,7 @@ footer {
 }
 
 
-/*----------------------------ABout-------------------------*/
+/*----------------------------About-------------------------*/
 
 
 .welcome-container {
