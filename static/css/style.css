@@ -50,6 +50,14 @@ input[type="submit"] {
     border: none;
 }
 
+#confirm-delete-header {
+    font-family: "Great Vibes", cursive;
+}
+
+#confirm-delete-body {
+    font-family: "Open Sans", sans-serif;
+}
+
 /*-----------------------Buttons---------------------------*/
 
 .add-to-basket,
@@ -64,6 +72,11 @@ input[type="submit"] {
 .tartan-thom-btn {
     background-color: #828285;
     color: #ffffff;
+}
+
+.tartan-thom-btn-pink {
+    background-color: #e6beae;
+    color: #828285
 }
 
 /*-----------------------Containers-------------------------*/
@@ -97,6 +110,11 @@ input[type="submit"] {
 .nav-shop {
     min-height: 5em;
     background-color: #CED6D7;
+}
+
+.dropdown-menu {
+    border: none;
+    background-color: #f8f9fa;
 }
 
 .bag-quantity {
@@ -168,6 +186,10 @@ footer {
   padding: 1em;
   font-size: 0.8em;
   font-family: "Open Sans", sans-serif;
+}
+
+.footer-link:hover {
+    color: #e6beae;
 }
 
 /*----------------------------Index-------------------------*/
@@ -264,6 +286,7 @@ footer {
 }
 
 .products-image {
+    width: 100%;
     max-width: 100%;
 }
 
@@ -278,7 +301,24 @@ footer {
     top: 0;
     background-color: #CED6D7;
     text-align: center;
+}
+
+.product-label-left {
+    height: 50px;
+    width: 50px;
+    margin: 1em;
+    padding: .5em;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #CED6D7;
+    text-align: center;
+}
+
+#label {
     font-family: "Great Vibes", cursive !important;
+    font-size: 1em;
 }
 
 /*--------------------------Product Page-------------------*/
@@ -348,4 +388,24 @@ footer {
 
 .basket-container {
     background-color: #e6beae;
+}
+
+/*----------------------------Responsive-----------------------*/
+
+@media only screen and (max-width: 400px) {
+
+    .brand {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .products-image {
+        max-width: 432px;
+    }
+
+    .basket-detail {
+        padding: 3em !important;
+    }
 }
