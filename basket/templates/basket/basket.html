@@ -4,10 +4,14 @@
 {% block title%}Tartan Thom - Basket{% endblock %} 
 {% block content %}
 
-<div class="container basket-container p-3 my-5">
-    <div class="row justify-content-center m-1 p-3">
-        <div class="col">
-            <h1>My Basket</h1>
+<div class="container tartan-thom-container p-3 my-5">
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col-md-12">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <h1>My Basket</h1>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -97,19 +101,23 @@
     {% endfor %}
     <div class="row justify-content-center m-2 p-3">
         <div class="col-md-12">
-            <p>There are {{ product_count }} items in your basket</p>
+            {% if product_count == 1%}
+                <h3>There is {{ product_count }} item in your basket</h3>
+            {% else %}
+                <h3>There are {{ product_count }} items in your basket</h3>
+            {% endif %}
             <p>Total cost: £{{total}}</p>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 my-3">
             <a href="{% url 'checkout:checkout' %}" class="btn checkout-btn btn-md">Proceed to Checkout</a>
         </div>
     </div>
 {% else %}
     <div class="row justify-content-center m-2 p-3">
-        <div class="col-md-12">
+        <div class="col-md-12 my-3">
             <h3>Sorry, you don't have any items in your basket!</h3>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 my-3">
             <p>
                 <a href="{% url 'products:view_products' %}" class="btn checkout-btn btn-md">
                     <span>
