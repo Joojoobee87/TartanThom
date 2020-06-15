@@ -5,6 +5,23 @@
 
 {% block content %}
 
-<h1>About Tartan Thom</h1>
+
+<div class="container welcome-container">
+	<div class="row welcome-row">
+		<div class="welcome col-md-6">
+			<h1>Welcome</h1>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem et consequuntur, quaerat neque,
+				illo suscipit ipsa in saepe iusto quas, natus corrupti itaque? At velit aspernatur tempore eum quod
+				earum?</p>
+            <div class="signature">
+                <h4>Nicola Thomson</h4>
+                <p>Founder of Tartan Thom</p>
+            </div>
+		</div>
+        <div class="profile-image col-md-6">
+            <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture">
+        </div>
+	</div>
+</div>
 
 {% endblock %}
