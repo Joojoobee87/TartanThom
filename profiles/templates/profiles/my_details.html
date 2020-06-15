@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Tartan Thom - My Details{% endblock %}
+
+{% block content %}
+
+<div class="container tartan-thom-container p-3 my-5">
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col-md-12">
+            <div class="row justify-content-center m-2 p-3">
+                <div class="col-md-8">
+                    <h1>My Details</h1>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8 px-3 mx-auto">
+                    <form action="{% url 'profiles:my_details' %}" method="POST">
+                    {% csrf_token %}
+                        <!-------------Customer Details----------->
+                        <fieldset class="mb-5">
+                        {{ form|crispy }}
+                        </fieldset>
+                        <fieldset class="mb-5">
+                            <button type="submit" class="btn tartan-thom-btn">Submit</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 px-3 mx-auto">
+                    <a href="{% url 'account_change_password' %}"><h3>Forgotten your password? Click here to change it</h3></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

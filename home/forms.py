@@ -1,5 +1,7 @@
 from django import forms
 from home.models import Testimonials
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm
 
 
 class TestimonialForm(forms.ModelForm):
@@ -28,3 +30,10 @@ class TestimonialForm(forms.ModelForm):
                 'max_length': "Try keep it short and sweet",
             },
         }
+
+
+class UserDetailsForm(forms.ModelForm):
+    class Meta:
+        model = User
+
+        fields = ('username', 'first_name', 'last_name', 'email')

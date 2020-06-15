@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse
 from checkout.models import Order
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseBadRequest
-from home.forms import TestimonialForm
+from home.forms import TestimonialForm, UserDetailsForm
 import datetime
 
 # Create your views here.
@@ -54,3 +54,21 @@ def testimonial(request):
         print("I am not a POST")
 
     return render(request, 'home/testimonial.html', context)
+
+
+@login_required
+def my_details(request):
+    """ A view to render User Details and allow them to update them """
+    form = UserDetailsForm(instance=request.user)
+    context = {
+            'form': form,
+    }
+    if request.method == "POST":
+        form = UserDetailsForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your details have been updated")
+            return redirect(reverse('profiles:my_profile'))
+        else:
+            messages.error(request, "Please check your details and try again")
+    return render(request, 'profiles/my_details.html', context)
