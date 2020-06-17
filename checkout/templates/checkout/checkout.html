@@ -10,56 +10,123 @@
 
 {% block content %}
 
-<div class="container checkout-container">
-<h1>Checkout</h1>
 
-    <form action="{% url 'checkout:checkout' %}" method="POST" id="payment-form">
-    {% csrf_token %}
-        <!-------------Customer Details----------->
-        <div class="row">
-            <div class="col px-3">
-                <fieldset class="mb-5">
-                <h2>Customer Details</h2>
-                    <div>
-                        {{ order_form.fullname | as_crispy_field }}
-                        {{ order_form.phone_number | as_crispy_field }}
-                    </div>
-                </fieldset>
+<div class="container checkout-container p-3 my-5">
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col-md-12">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-8 px-3 mx-auto my-2">
+                    <h1>Checkout</h1>
+                </div>
             </div>
-        </div>
 
-        <!-------------Delivery Address----------->
-        <div class="row">
-            <div class="col px-3">
-                <fieldset class="mb-5">
-                <h2>Delivery Address</h2>
-                    <div>
-                        {{ order_form.address_line1 | as_crispy_field }}
-                        {{ order_form.address_line2 | as_crispy_field }}
-                        {{ order_form.town_city | as_crispy_field }}
-                        {{ order_form.postcode | as_crispy_field }}
-                        {{ order_form.country | as_crispy_field }}
-                    </div>
-                </fieldset>
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-8 px-3 mx-auto my-2">
+                    <h2>Checkout Items</h2>
+                </div>
             </div>
-        </div>
-        <!-------------Payment Details------------>
-        <div class="row">
-            <div class="col px-3">
-                <fieldset class="mb-5">
-                <h2>Payment</h2>
-                        <div id="card-element">
-                            <!-- Elements will create input elements here -->
+
+            {% for item in basket_items %}
+            <div class="row justify-content-center m-2">
+                <div class="col-md-12 col-lg-8">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 p-1 my-1">
+                            <img src="{{ item.product.image.url }}" alt="product-image" class="products-image"/>
+                            {% if item.product.label %}
+                            <div class="product-label-left py-auto">
+                                <span id="label">{{ item.product.label }}</span>
+                            </div>
+                            {% endif %}
                         </div>
-                        <!-- We'll put the error messages in this element -->
-                        <div id="card-errors" role="alert"></div>
-                </fieldset>
-                <div class="submit-button">
-                    <button id="submit-button" class="btn">Pay</button>
+
+                        <div class="col-xs-12 col-md-6 px-3 my-1 basket-detail">
+                            <h2>{{ item.product.name }}</h2>
+                            {% if item.product.sale_price %}
+                            <p>
+                                <span>{{ item.quantity }}</span> x <span>£{{ item.product.sale_price}}</span>
+                            </p>
+                            {% else %}
+                            <p>
+                                <span>{{ item.quantity }}</span> x <span>£{{ item.product.price}}</span>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+            <div class="row justify-content-center my-3">
+                <div class="col-md-12 col-lg-8">
+                    {% if product_count == 1%}
+                        <h3>You are checking out {{ product_count }} item from Tartan Thom</h3>
+                    {% else %}
+                        <h3>You are checking out {{ product_count }} items from Tartan Thom</h3>
+                    {% endif %}
+                    <p>Total cost: £{{total}}</p>
+                </div>
+                <div class="col-md-12 col-lg-8 my-3">
+                    <a href="{% url 'basket:view_basket' %}" class="btn checkout-btn btn-md m-1">Back to bag</a>
+                    <a href="{% url 'products:view_products' %}" class="btn checkout-btn btn-md m-1">Continue Shopping</a>
+
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-8">
+
+                    <form action="{% url 'checkout:checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                        <!-------------Customer Details----------->
+                        <div class="row">
+                            <div class="col px-3">
+                                <fieldset class="mb-5">
+                                <h2>Customer Details</h2>
+                                    <div>
+                                        {{ order_form.fullname | as_crispy_field }}
+                                        {{ order_form.phone_number | as_crispy_field }}
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <!-------------Delivery Address----------->
+                        <div class="row">
+                            <div class="col px-3">
+                                <fieldset class="mb-5">
+                                <h2>Delivery Address</h2>
+                                    <div>
+                                        {{ order_form.address_line1 | as_crispy_field }}
+                                        {{ order_form.address_line2 | as_crispy_field }}
+                                        {{ order_form.town_city | as_crispy_field }}
+                                        {{ order_form.postcode | as_crispy_field }}
+                                        {{ order_form.country | as_crispy_field }}
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-------------Payment Details------------>
+                        <div class="row">
+                            <div class="col px-3">
+                                <fieldset class="mb-5">
+                                <h2>Payment</h2>
+                                        <div id="card-element">
+                                            <!-- Elements will create input elements here -->
+                                        </div>
+                                        <!-- We'll put the error messages in this element -->
+                                        <div id="card-errors" role="alert"></div>
+                                </fieldset>
+                                <div class="submit-button">
+                                    <button id="submit-button" class="btn checkout-btn">Pay</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 

@@ -6,7 +6,7 @@
 
 <div class="container tartan-thom-container p-3 my-5">
     <div class="row justify-content-center m-2 p-3">
-        <div class="col-md-12">
+        <div class="col-md-12 col-lg-8">
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <h1>My Bag</h1>
@@ -17,7 +17,7 @@
 
 {% if basket_items %}
     <div class="row justify-content-center m-1 p-3">
-        <div class="col-md-12">
+        <div class="col-md-12 col-lg-8">
             <a href="{% url 'products:view_products' %}" class="btn checkout-btn btn-md">
                 <span>
                     <i class="fas fa-shopping-bag"></i>
@@ -28,10 +28,9 @@
     </div>
     {% for item in basket_items %}
     <div class="row justify-content-center m-2 p-3">
-        <div class="col-md-12">
+        <div class="col-md-12 col-lg-8">
             <div class="row">
-                <div class="col-md-4 p-1 my-1">
-                    <!-------------Change this to {{ item.product.image }} for production--------------->
+                <div class="col-md-4 my-1">
                     <img src="{{ item.product.image.url }}" alt="product-image" class="products-image"/>
                     {% if item.product.label %}
                     <div class="product-label-left py-auto">
@@ -40,7 +39,7 @@
                     {% endif %}
                 </div>
 
-                <div class="col-md-6 px-3 my-1 basket-detail">
+                <div class="col-md-6 my-1">
                     <h2>{{ item.product.name }}</h2>
                     {% if item.product.sale_price %}
                     <p>
@@ -100,7 +99,7 @@
     <hr>
     {% endfor %}
     <div class="row justify-content-center m-2 p-3">
-        <div class="col-md-12">
+        <div class="col-md-12 col-lg-8">
             {% if product_count == 1%}
                 <h3>There is {{ product_count }} item in your basket</h3>
             {% else %}
@@ -108,16 +107,16 @@
             {% endif %}
             <p>Total cost: £{{total}}</p>
         </div>
-        <div class="col-md-12 my-3">
+        <div class="col-md-12 col-lg-8 my-3">
             <a href="{% url 'checkout:checkout' %}" class="btn checkout-btn btn-md">Proceed to Checkout</a>
         </div>
     </div>
 {% else %}
     <div class="row justify-content-center m-2 p-3">
-        <div class="col-md-12 my-3">
+        <div class="col-md-12 col-lg-8 my-3">
             <h3>Sorry, you don't have any items in your basket!</h3>
         </div>
-        <div class="col-md-12 my-3">
+        <div class="col-md-12 col-lg-8 my-3">
             <p>
                 <a href="{% url 'products:view_products' %}" class="btn checkout-btn btn-md">
                     <span>
