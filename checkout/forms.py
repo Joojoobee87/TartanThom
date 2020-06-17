@@ -10,10 +10,14 @@ class OrderForm(forms.ModelForm):
 
 
 class BespokeForm(forms.ModelForm):
+
+    wedding_date = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, 2040)))
+    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, 2040)))
+
     class Meta:
         model = Bespoke
 
-        fields = ('person_name1', 'person_name2', 'date_of_birth', 'place_of_birth', 'birth_weight_lb', 'birth_weight_oz', 'wedding_date', 'address_line1')
+        fields = ('person_name1', 'person_name2', 'date_of_birth', 'place_of_birth', 'birth_weight_lb', 'birth_weight_oz', 'address_line1')
 
         labels = {
             'person_name1': 'Name',

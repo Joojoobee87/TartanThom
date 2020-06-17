@@ -5,7 +5,6 @@ from products.models import Products
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
-
 # Create your models here.
 
 
@@ -72,4 +71,4 @@ class Bespoke(models.Model):
     birth_weight_oz = models.IntegerField(blank=True, null=True)
     wedding_date = models.DateField(blank=True, null=True)
     address_line1 = models.CharField(max_length=50, blank=True, null=True)
-    is_complete = models.BooleanField(default=False)
+    is_complete = models.BooleanField(blank=True, default=False)
