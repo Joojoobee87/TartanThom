@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title%}Tartan Thom - Basket{% endblock %} 
+{% block title%}Tartan Thom - Bag{% endblock %} 
 {% block content %}
 
 <div class="container tartan-thom-container p-3 my-5">
@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="row justify-content-center">
                 <div class="col-md-12">
-                    <h1>My Basket</h1>
+                    <h1>My Bag</h1>
                 </div>
             </div>
         </div>
@@ -30,9 +30,9 @@
     <div class="row justify-content-center m-2 p-3">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-6 p-1 my-1">
+                <div class="col-md-4 p-1 my-1">
                     <!-------------Change this to {{ item.product.image }} for production--------------->
-                    <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" class="products-image"/>
+                    <img src="{{ item.product.image.url }}" alt="product-image" class="products-image"/>
                     {% if item.product.label %}
                     <div class="product-label-left py-auto">
                         <span id="label">{{ item.product.label }}</span>
@@ -40,7 +40,7 @@
                     {% endif %}
                 </div>
 
-                <div class="col-md-6 p-3 my-1 basket-detail">
+                <div class="col-md-6 px-3 my-1 basket-detail">
                     <h2>{{ item.product.name }}</h2>
                     {% if item.product.sale_price %}
                     <p>

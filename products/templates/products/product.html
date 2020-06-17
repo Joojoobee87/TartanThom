@@ -7,14 +7,13 @@
 <div class="container p-3 my-5">
     <div class="row justify-content-center my-1">
         <div class="col-md-4 m-2 p-0">
-            <img src="{% static 'img/NicProfile.jpg' %}" alt="product-image" class="products-image"/>
+            <img src="{{ product.image.url }}" alt="product-image" class="products-image"/>
             {% if product.label %}
             <div class="product-label py-auto">
                 <span id="label">{{ product.label }}</span>
             </div>
             {% endif %}
         </div>
-    <!-------------------------Added {{ product.image.url }} to image source ------------------>
         <div class="col-md-6 product-details m-2">
             <h2>{{ product.name }}</h2>
             <p>Category: {{ product.category }}</p>

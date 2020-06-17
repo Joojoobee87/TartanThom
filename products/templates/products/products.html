@@ -53,14 +53,13 @@
                     <div class="product-panel">
                         <div class="product-panel-image">
                             <a href="{% url 'products:view_product' product.id %}">
-                                <img class="products-image" src="{% static 'img/NicProfile.jpg' %}" alt="product-image"/>
+                                <img class="products-image" src="{{ product.image.url }}" alt="product-image"/>
                                 {% if product.label %}
                                 <div class="product-label py-auto">
                                     <span id="label">{{ product.label }}</span>
                                 </div>
                                 {% endif %}
                             </a>
-                            <!-------------Need to switch holding image to {{ product.image.url }}-------->
                         </div>
                     </div>
                 </div>

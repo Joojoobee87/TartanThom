@@ -31,6 +31,11 @@ class Products(models.Model):
         ('A4', 'A4'),
         ('A5', 'A5')
     ]
+    colours = [
+        ('gold', 'Gold'),
+        ('rose-gold', 'Rose Gold'),
+        ('silver-glitter', 'Silver Glitter')
+    ]
     name = models.CharField(max_length=100)
     product_type = models.CharField(max_length=100, choices=PRODUCT_TYPE)
     image = models.ImageField(upload_to='img')
@@ -39,6 +44,7 @@ class Products(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=5)
     sale_price = models.DecimalField(decimal_places=2, max_digits=5)
     size = models.CharField(max_length=100, choices=sizes)
+    colour = models.CharField(blank=True, max_length=50, choices=colours)
     label = models.CharField(blank=True, max_length=100, choices=labels)
     tags = models.CharField(blank=True, max_length=100)
     is_bespoke = models.BooleanField()
