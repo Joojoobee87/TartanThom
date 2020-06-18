@@ -42,13 +42,13 @@ class Products(models.Model):
     description = models.TextField()
     category = models.CharField(max_length=100, choices=category)
     price = models.DecimalField(decimal_places=2, max_digits=5)
-    sale_price = models.DecimalField(decimal_places=2, max_digits=5)
+    sale_price = models.DecimalField(null=True, decimal_places=2, max_digits=5)
     size = models.CharField(max_length=100, choices=sizes)
     colour = models.CharField(blank=True, max_length=50, choices=colours)
     label = models.CharField(blank=True, max_length=100, choices=labels)
     tags = models.CharField(blank=True, max_length=100)
-    is_bespoke = models.BooleanField()
-    is_active = models.BooleanField()
+    is_bespoke = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -70,14 +70,12 @@ class ProductReviews(models.Model):
     product = models.ForeignKey(Products, null=False, on_delete=models.CASCADE)
     review_text = models.TextField(null=False)
     review_rating = models.IntegerField(null=False, default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
-    review_date = models.DateField()
-    review_active = models.BooleanField(default=False)
+    review_date = models.DateField(auto_now_add=True)
+    review_active = models.BooleanField(default=True)
 
     def __str__(self):
 
-        return self.user
+        return self.user.username
 
     def review_percentage(self):
         return int((self.review_rating / 5) * 100)
-
-
