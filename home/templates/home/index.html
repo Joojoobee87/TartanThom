@@ -22,7 +22,7 @@
         <div class="col-md-12 flex-column">
             <div class="row">
                 <div class="col-md-6 p-0">
-                    <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture" class="shop-now-image">
+                    <img src="{% static 'img/TartanThomStamp.jpg' %}" alt="Profile Picture" class="shop-now-image">
                     <a href="{% url 'products:view_products' %}">
                         <div class="shop-now">
                             <h2>Shop Now</h2>
@@ -30,27 +30,27 @@
                     </a>
                 </div>
                 <div class="col-md-6 p-0">
-                    <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture" class="shop-now-image">
+                    <img src="{% static 'img/CardHappyBirthday.jpg' %}" alt="Profile Picture" class="shop-now-image">
                     <a href="{% url 'products:view_products_by_type' 'cards' %}">
-                        <div class="shop-cards">
+                        <div class="shop-now">
                             <h2>Shop Cards</h2>
                         </div>
-                    </a>                
+                    </a>           
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 p-0">
-                    <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture" class="shop-now-image">
+                    <img src="{% static 'img/CakeTopperBabyBaker.jpg' %}" alt="Profile Picture" class="shop-now-image">
                     <a href="{% url 'products:view_products_by_type' 'cake-toppers' %}">
-                        <div class="shop-cake-toppers">
+                        <div class="shop-now">
                             <h2>Shop Cake Toppers</h2>
                         </div>
                     </a>   
                 </div>
                 <div class="col-md-6 p-0">
-                    <img src="{% static 'img/NicProfile.jpg' %}" alt="Profile Picture" class="shop-now-image">
+                    <img src="{% static 'img/GiftsWedding.jpg' %}" alt="Profile Picture" class="shop-now-image">
                     <a href="{% url 'products:view_products_by_type' 'gifts' %}">
-                        <div class="shop-gifts">
+                        <div class="shop-now">
                             <h2>Shop Gifts</h2>
                         </div>
                     </a>   
@@ -60,7 +60,7 @@
     </div>
 
     <div class="row justify-content-center flex-column my-3">
-        <div class="testimonial-content col-md-10">
+        <div class="testimonial-content col-md-12">
             {% if testimonials %}
                 {% for testimonial in testimonials %}
                     {% if testimonial.testimonial_active %}
