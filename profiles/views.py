@@ -20,37 +20,31 @@ def my_profile(request):
 @login_required
 def testimonial(request):
     """"Displays testimonial page with form for user to complete and submit"""
-    print("1. I am here")
     form = TestimonialForm()
     context = {
             'form': form,
     }
     if request.method == 'POST':
-        print("2. I am here")
         form_data = {
             'testimonial': request.POST['testimonial'],
-            'testimonial_allow_publish': request.POST['testimonial_allow_publish'],
+            'testimonial_allow_publish': request.POST.get('testimonial_allow_publish', False),
         }
         form = TestimonialForm(form_data)
         if form.is_valid():
-            print("3. I am here")
             testimonial = form.save(commit=False)
             testimonial.testimonial_date = datetime.datetime.now()
             testimonial.testimonial_user = request.user
             testimonial.save()
             messages.success(request, 'Thanks for submitting your testimonial!')
         else:
-            print("4. I am here")
             messages.error(request, 'Please check the information in the form')
-    else:
-        print("I am not a POST")
 
     return render(request, 'home/testimonial.html', context)
 
 
 @login_required
 def my_details(request):
-    """ A view to render User Details and allow them to update them """
+    """A view to display User details and allow them to update their information"""
     form = UserDetailsForm(instance=request.user)
     context = {
             'form': form,
