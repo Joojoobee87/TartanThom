@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect, reverse
-from checkout.models import Order
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseBadRequest
 from home.forms import TestimonialForm, UserDetailsForm
 import datetime
 
@@ -11,18 +9,12 @@ import datetime
 
 @login_required
 def my_profile(request):
-    if request.user:
-        user = request.user
-        try:
-            user_orders = Order.objects.filter(order_user=user).values()
-            if user_orders:
-                return render(request, 'profiles/my_profile.html', {'user': user, 'user_orders': user_orders})
-            else:
-                messages.info(request, "There are no orders")
-        except:
-            HttpResponseBadRequest("Something went wrong!")
-            return redirect(reverse('index'))
-    return render(request, 'profiles/my_profile.html', {'user': user})
+    """ Displays users profile page or redirects to login for authentication"""
+    user = request.user
+    context = {
+        'user': user,
+    }
+    return render(request, 'profiles/my_profile.html', context)
 
 
 @login_required
