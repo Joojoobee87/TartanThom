@@ -29,7 +29,13 @@ class Products(models.Model):
     ]
     sizes = [
         ('A4', 'A4'),
-        ('A5', 'A5')
+        ('A5', 'A5'),
+        ('200mm x 200mm', '200mm x 200mm'),
+        ('122mm x 172mm', '122mm x 172mm'),
+        ('172mm x 122mm', '172mm x 122mm'),
+        ('250mm x 250mm', '250mm x 250mm'),
+        ('210mm x 297mm', '210mm x 297mm'),
+        ('152mm x variable', '152mm x variable'),
     ]
     name = models.CharField(max_length=100)
     product_type = models.CharField(max_length=100, choices=PRODUCT_TYPE)
