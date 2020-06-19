@@ -257,17 +257,13 @@ footer {
 
 /*----------------------------About-------------------------*/
 
-
-.welcome-container {
-  margin-top: 5em;
-}
-
 .welcome {
   background-color: #e6beae;
 }
 
 .profile-image {
     width: 100%;
+    max-width: 100%;
     float: right;
 }
 
