@@ -91,6 +91,9 @@
       </div>
     </nav>
     <div class="content">
+
+    {% block extra_nav %}
+    {% endblock %}
     
     {% if messages %} 
         {% for message in messages %}
