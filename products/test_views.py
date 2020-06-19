@@ -1,8 +1,10 @@
 from django.test import TestCase
 from django.utils import timezone
 from products.models import Products, ProductReviews
+from products.forms import ReviewForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+import datetime
 
 # Create your tests here.
 
@@ -53,6 +55,15 @@ class TestProductsViews(TestCase):
             is_active=True
             )
 
+        self.form_date = {
+            'review_rating': '5',
+            'review_text': 'Some text',
+            'user': self.user_1,
+            'product': self.product_1,
+            'review_date': datetime.datetime.now(),
+            'user_anonymous': False,
+        }
+
     def test_get_view_products_page(self):
         response = self.client.get('/products/')
         self.assertEqual(response.status_code, 200)
@@ -98,6 +109,20 @@ class TestProductsViews(TestCase):
         response = self.client.get(f'/products/review-product/{self.product_1.id}/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/review_product.html')
+
+    def test_valid_review_form_submits(self):
+        form = ReviewForm({
+            'review_rating': '5',
+            'review_text': 'Some text',
+            'review_date': datetime.datetime.now(),
+            'user_anonymous': False,
+        })
+        self.assertTrue(form.is_valid)
+        #review = form.save()
+        #review.user = self.user_1
+        #review.product = self.product_1
+        #response = self.client.post(f'/products/review-product/{self.product_1.id}/', form)
+        #self.assertRedirects(response, '/profiles/my_profile/')
 
     def tearDown(self):
         self.product_1.delete()

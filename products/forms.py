@@ -9,8 +9,8 @@ class ReviewForm(forms.ModelForm):
         fields = ('review_rating', 'review_text', 'user_anonymous')
 
         widgets = {
-            'review_rating': forms.NumberInput(attrs={'localize': False, 'min_value': 1, 'max_value': 5}),
-            'review_text': forms.Textarea(attrs={'required': True, 'rows': 5, 'cols': 20, 'max_length': 500}),
+            'review_rating': forms.NumberInput(attrs={'localize': False, 'required': True, 'min_value': 1, 'max_value': 5}),
+            'review_text': forms.Textarea(attrs={'required': True, 'rows': 5, 'cols': 20}),
             'user_anonymous': forms.CheckboxInput(attrs={'required': False, 'null': False}),
         }
 
@@ -28,6 +28,12 @@ class ReviewForm(forms.ModelForm):
 
         error_messages = {
             'review_text': {
-                'max_length': "Try keep it short and sweet",
+                'max_length': "Try keep it short and sweet, maximum 500 characters",
+                'required': "This field is required",
             },
+            'review_rating': {
+                'required': "This field is required",
+                'min_value': "The minimum value is 1",
+                'max_value': "The maximum value is 5",
+            }
         }

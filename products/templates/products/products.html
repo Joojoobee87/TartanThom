@@ -53,7 +53,11 @@
                     <div class="product-panel">
                         <div class="product-panel-image">
                             <a href="{% url 'products:view_product' product.id %}">
+                                {% if product.image.url %}
                                 <img class="products-image" src="{{ product.image.url }}" alt="product-image"/>
+                                {% else %}
+                                <img class="products-image" src="{% static 'img/TartanThomDefault.jpg' %}" alt="product-image"/>
+                                {% endif %}
                                 {% if product.label %}
                                 <div class="product-label py-auto">
                                     <span id="label">{{ product.label }}</span>

@@ -76,7 +76,5 @@ def review_product(request, id):
             return redirect(reverse('profiles:my_profile'))
         else:
             messages.error(request, 'Please check the information in the form')
-    else:
-        print("I am not a POST")
 
     return render(request, 'products/review_product.html', context)
