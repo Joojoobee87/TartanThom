@@ -21,7 +21,8 @@ class Products(models.Model):
         ('Wedding', 'Wedding'),
         ('Anniversary', 'Anniversary'),
         ('New Home', 'New Home'),
-        ('Baby', 'Baby')
+        ('Baby', 'Baby'),
+        ('Leaving', 'Leaving'),
     ]
     labels = [
         ('New', 'New'),
