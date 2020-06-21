@@ -19,15 +19,10 @@ class Order(models.Model):
     town_city = models.CharField(max_length=30)
     postcode = models.CharField(max_length=10)
     country = CountryField(blank_label='Country', max_length=30)
-    order_total = models.DecimalField(max_digits=8, decimal_places=2, null=False, default=0)
     is_complete = models.BooleanField(default=False)
 
     def create_order_number(self):
         return uuid.uuid4().hex.upper()
-
-    def calc_order_total(self):
-        self.order_total = self.lineitems.aggregate(Sum('item_total'))['item_total__sum'] or 0
-        self.save()
 
     def save(self, *args, **kwargs):
         if not self.order_number:

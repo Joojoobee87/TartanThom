@@ -118,6 +118,8 @@ def bespoke(request, order_number, id):
     }
     if request.method == 'POST':
         form = BespokeForm(request.POST)
+        print(request.POST)
+        print(form.errors)
         if form.is_valid():
             bespoke = form.save(commit=False)
             bespoke.bespoke_order = order
@@ -125,6 +127,6 @@ def bespoke(request, order_number, id):
             bespoke.save()
             messages.success(request, 'Thanks for submitting your bespoke details!')
         else:
-            messages.error(request, 'Please check the information in the form')
+            messages.error(request, '%s - Please check the information in the form' %form.errors )
 
     return render(request, 'checkout/bespoke.html', context)
