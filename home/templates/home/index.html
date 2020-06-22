@@ -61,12 +61,14 @@
         </div>
     </div>
 
-    <div class="row justify-content-center flex-column my-3">
-        <div class="testimonial-content col-md-12">
+    <div class="row justify-content-center my-3">
+        <div class="testimonial-content flex-column col-md-12">
             {% if testimonials %}
                 {% for testimonial in testimonials %}
                     {% if testimonial.testimonial_active %}
-                    <h3 class="testimonial px-2">"{{ testimonial.testimonial }}"</h3>
+                    <div class="testimonial">
+                        <h3>"{{ testimonial.testimonial }}"</h3>
+                    </div>
                     <div class="button-left"><i class="fas fa-angle-left fa-2x"></i></div>
                     <div class="button-right"><i class="fas fa-angle-right fa-2x"></i></div>
                     {% endif %}

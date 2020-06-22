@@ -1,4 +1,4 @@
-/*-----------------Background and Branding-----------------*/
+/*-------------Background, Branding and Elements-----------------*/
 
 body {
   background-image: url("/static/img/tartanthom.png");
@@ -7,25 +7,6 @@ body {
 
 .content {
   min-height: 70vh;
-}
-
-#django-alert {
-  font-family: "Open Sans", sans-serif;
-}
-
-.alert-error {
-    background-color: #828285 !important;
-    color:#fff;
-}
-
-.alert-success {
-    background-color: #e6beae !important;
-    color: #828285;
-}
-
-.alert-info {
-    background-color: #CED6D7 !important;
-    color: #828285;
 }
 
 .brand {
@@ -44,7 +25,6 @@ p,
 span,
 li,
 a,
-div,
 .btn {
   font-family: "Open Sans", sans-serif;
 }
@@ -73,32 +53,10 @@ a {
 
 i {
   color: inherit;
-  padding: 5px;
+  padding: 0.5em;
 }
 
-button,
-input[type="submit"] {
-    padding: 0.5em;
-    font-family: "Open Sans", sans-serif;
-    color: #fff;
-    background-color: #828285;
-    border: none;
-}
-
-#confirm-delete-header {
-    font-family: "Great Vibes", cursive;
-}
-
-#confirm-delete-body {
-    font-family: "Open Sans", sans-serif;
-}
-
-.tartan-thom-a {
-    font-family: "Great Vibes", cursive !important;
-    font-size: 1.5em;
-}
-
-/*-----------------------Buttons---------------------------*/
+/*------------------Buttons and links---------------------------*/
 
 .add-to-basket,
 .delete-from-basket {
@@ -119,14 +77,60 @@ input[type="submit"] {
     color: #828285
 }
 
-/*-----------------------Containers-------------------------*/
-
-.checkout-container {
-    background-color: #e6beae;
+.tartan-thom-a {
+    font-family: "Great Vibes", cursive !important;
+    font-size: 1.5em;
 }
+
+button,
+input[type="submit"] {
+    padding: 0.5em;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    background-color: #828285;
+    border: none;
+}
+
+/*-----------------------Modal----------------------------*/
+
+#confirm-delete-header {
+    font-family: "Great Vibes", cursive;
+}
+
+#confirm-delete-body {
+    font-family: "Open Sans", sans-serif;
+}
+
+/*-----------------------Messages---------------------------*/
+
+#django-alert {
+  font-family: "Open Sans", sans-serif;
+}
+
+.alert-error {
+    background-color: #828285 !important;
+    color:#fff;
+}
+
+.alert-success {
+    background-color: #e6beae !important;
+    color: #828285;
+}
+
+.alert-info {
+    background-color: #CED6D7 !important;
+    color: #828285;
+}
+
+/*-----------------------Containers-------------------------*/
 
 .tartan-thom-container {
     background-color: #e6beae;
+}
+
+.allauth-container {
+    background-color: #e6beae;
+    margin: 3em auto;
 }
 
 /*-----------------------Navigation-------------------------*/
@@ -140,7 +144,7 @@ input[type="submit"] {
 }
 
 .nav-link {
-  padding: 5px 30px !important;
+  padding: 0.5em 2em !important;
 }
 
 .nav-brand {
@@ -158,8 +162,8 @@ input[type="submit"] {
 }
 
 .bag-quantity {
-    height: 25px;
-    width: 25px;
+    height: 1.5em;
+    width: 1.5em;
     border-radius: 50%;
     display: inline-block;
     background-color: #e6beae;
@@ -168,27 +172,12 @@ input[type="submit"] {
 
 /*----------------------Profile------------------------------*/
 
-.my-profile-container {
-    background-color: #e6beae;
-}
-
 .profile-box {
     border: solid #828285;
 }
 
 .fa-3x {
     color: #828285;
-}
-
-/*----------------------Testimonials-------------------------*/
-
-
-
-
-/*-------------------Authentication Templates----------------*/
-
-.allauth-container {
-    background-color: #e6beae;
 }
 
 /*----------------------Footer------------------------------*/
@@ -219,7 +208,7 @@ footer {
 
 .social {
   font-size: 1.5em;
-  margin-right: 15px;
+  margin-right: 1em;
 }
 
 .copyright {
@@ -233,10 +222,10 @@ footer {
     text-decoration: none;
 }
 
-/*----------------------------Index-------------------------*/
+/*--------------------------Homepage------------------------*/
 
 .nav-home {
-    min-height: 150px;
+    min-height: 7em;
     background-color: #CED6D7;
 }
 
@@ -254,7 +243,6 @@ footer {
     width: 100%;
 }
 
-
 /*----------------------------About-------------------------*/
 
 .welcome {
@@ -269,20 +257,21 @@ footer {
 
 /*-------------------Authentication Templates--------------*/
 
-.allauth-container {
-    margin: 3em auto;
-}
-
 .allauth-col {
     background-color: #e6beae;
 }
 
 /*--------------------------Testimonials-------------------*/
 
+.testimonial {
+    position: relative;
+    display: none;
+}
+
 .testimonial-content {
     display: block;
     position: relative;
-    min-height: 200px;
+    min-height: 10em;
     background-color: #e6beae;
 }
 
@@ -327,7 +316,8 @@ footer {
 
 /*--------------------------Products-----------------------*/
 
-.product-container {
+.product-details {
+    padding: 3em;
     background-color: #e6beae;
 }
 
@@ -342,8 +332,8 @@ footer {
 }
 
 .product-label {
-    height: 50px;
-    width: 50px;
+    height: 3em;
+    width: 3em;
     margin: 1em;
     padding: .5em;
     border-radius: 50%;
@@ -355,8 +345,8 @@ footer {
 }
 
 .product-label-left {
-    height: 50px;
-    width: 50px;
+    height: 3em;
+    width: 3em;
     margin: 1em;
     padding: .5em;
     border-radius: 50%;
@@ -372,18 +362,7 @@ footer {
     font-size: 1em;
 }
 
-/*--------------------------Product Page-------------------*/
-
-.product-details {
-    padding: 3em;
-    background-color: #e6beae;
-}
-
-.product-row {
-    padding-bottom: 3em;
-}
-
-/*--------------------------Reviews------------------------*/
+/*---------------Product Reviews / Additional Info-----------------*/
 
 .stars {
     position: relative;
@@ -433,12 +412,6 @@ footer {
 
 .nav-link.active {
     background-color: #e6beae !important;
-}
-
-/*------------------------------Basket-------------------------*/
-
-.basket-container {
-    background-color: #e6beae;
 }
 
 /*----------------------------Responsive-----------------------*/

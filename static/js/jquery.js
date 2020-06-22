@@ -42,5 +42,16 @@ $(document).ready(function() {
     alert.style.display = "none"; 
     }, 10000);
 
+
+    // function to allow users to scroll to the top of page from any position on the page
+    function scrollTop() {
+        $(".top").on('click', function () {
+            $('html, body').animate({
+                scrollTop: ($('#nav-home').offset().top)
+            }, 1000);
+        })
+    }
+    scrollTop();
+
 })
 
