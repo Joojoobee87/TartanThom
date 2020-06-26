@@ -22,7 +22,7 @@ class Order(models.Model):
     country = CountryField(blank_label='Country', max_length=30)
     order_total = models.DecimalField(default=0, decimal_places=2, max_digits=6)
     delivery_total = models.DecimalField(default=0, decimal_places=2, max_digits=6)
-    grade_total = models.DecimalField(default=0, decimal_places=2, max_digits=6)
+    grand_total = models.DecimalField(default=0, decimal_places=2, max_digits=6)
     is_complete = models.BooleanField(default=False)
 
     def create_order_number(self):
