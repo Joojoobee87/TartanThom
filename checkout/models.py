@@ -4,6 +4,7 @@ from django.db import models
 from products.models import Products
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
+from django.conf import settings
 
 # Create your models here.
 
@@ -19,6 +20,9 @@ class Order(models.Model):
     town_city = models.CharField(max_length=30)
     postcode = models.CharField(max_length=10)
     country = CountryField(blank_label='Country', max_length=30)
+    order_total = models.DecimalField(default=0, decimal_places=2, max_digits=6)
+    delivery_total = models.DecimalField(default=0, decimal_places=2, max_digits=6)
+    grade_total = models.DecimalField(default=0, decimal_places=2, max_digits=6)
     is_complete = models.BooleanField(default=False)
 
     def create_order_number(self):
@@ -28,6 +32,19 @@ class Order(models.Model):
         if not self.order_number:
             self.order_number = self.create_order_number()
             super().save(*args, **kwargs)
+
+    def update_total(self, *args, **kwargs):
+        """
+        Update order total as line items are added / updated
+        """
+        self.order_total = self.lineitems.aggregate(
+            Sum('item_total'))['item_total__sum'] or 0
+        if self.order_total < settings.MIN_DELIVERY_THRESHOLD:
+            self.delivery_total = settings.MIN_DELIVERY_CHARGE
+        else:
+            self.delivery_cost = settings.UPPER_DELIVERY_CHARGE
+        self.grand_total = self.order_total + self.delivery_total
+        self.save()
 
     def __str__(self):
         return self.fullname

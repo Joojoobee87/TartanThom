@@ -100,8 +100,8 @@ def checkout_success(request, order_number):
 
 @login_required
 def checkout_history(request):
-    """ 
-    Returns a list of previous orders for the logged in user 
+    """
+    Returns a list of previous orders for the logged in user
     """
     user = request.user
     user_orders = Order.objects.filter(order_user=user).order_by('-date')
@@ -130,7 +130,7 @@ def order_detail(request, order_number):
 
 def bespoke(request, order_number, id):
     """
-    Returns a bespoke form for users to complete further information for 
+    Returns a bespoke form for users to complete further information for
     order items
     """
     form = BespokeForm()

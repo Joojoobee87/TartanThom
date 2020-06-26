@@ -26,13 +26,10 @@ class OrderAdmin(admin.ModelAdmin):
 
     list_display = ('order_number', 'fullname', 'date', 'is_complete')
 
-    readonly_fields = ('order_number', 'date')
+    readonly_fields = ('order_number', 'date', )
 
     fields = ('order_user', 'order_number', 'date', 'fullname', 'phone_number', 
-              'address_line1', 'address_line2', 'town_city', 'postcode', 'country', 'is_complete')
-
-
-
+              'address_line1', 'address_line2', 'town_city', 'postcode', 'country', 'order_total', 'delivery_total', 'is_complete')
 
 
 admin.site.register(Order, OrderAdmin,)
