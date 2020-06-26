@@ -6,13 +6,21 @@ from .models import Order, OrderItem
 from products.models import Products
 from basket.contexts import basket_contents
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 import stripe
+import os
 
 # Create your views here.
 
 
 @login_required
 def checkout(request):
+    """
+    Creates order from basket items, takes payment through Stripe and
+    emails user receipt
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     if request.method == 'POST':
@@ -44,6 +52,17 @@ def checkout(request):
                     del request.session['basket']
                     del request.session['product_count']
                     request.session.modified = True
+
+                    context = {
+                        'order': order,
+                    }
+                    from_email = os.environ.get('EMAIL_USER')
+                    to_email = request.user.email
+                    header = "Tartan Thom Receipt"
+                    html_message = render_to_string('checkout/receipt.html', context)
+                    plain_message = strip_tags(html_message)
+                    send_mail(header, plain_message, from_email, to_email, html_message=html_message, fail_silently=False)
+
                 except Products.DoesNotExist:
                     order.delete()
             return redirect(reverse('checkout:checkout_success', args=[order.order_number]))
@@ -71,7 +90,9 @@ def checkout(request):
 
 @login_required
 def checkout_success(request, order_number):
-    """Return success page on successful checkout showing order detail"""
+    """
+    Return success page on successful checkout showing order detail
+    """
     order = get_object_or_404(Order, order_number=order_number)
 
     return render(request, 'checkout/success.html', {'order': order})
@@ -79,7 +100,9 @@ def checkout_success(request, order_number):
 
 @login_required
 def checkout_history(request):
-    """ Returns a list of previous orders for the logged in user """
+    """ 
+    Returns a list of previous orders for the logged in user 
+    """
     user = request.user
     user_orders = Order.objects.filter(order_user=user).order_by('-date')
     if user_orders:
@@ -95,7 +118,9 @@ def checkout_history(request):
 
 @login_required
 def order_detail(request, order_number):
-    """Return details of an individual order and the items within the order"""
+    """
+    Return details of an individual order and the items within the order
+    """
     order = get_object_or_404(Order, order_number=order_number)
     context = {
         'order': order,
@@ -105,8 +130,8 @@ def order_detail(request, order_number):
 
 def bespoke(request, order_number, id):
     """
-    Returns a bespoke form for users to complete further
-    information for order items
+    Returns a bespoke form for users to complete further information for 
+    order items
     """
     form = BespokeForm()
     product = get_object_or_404(Products, pk=id)

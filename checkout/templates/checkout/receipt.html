@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Parisienne&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/font-awesome/css/all.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+
+<div class="container tartan-thom-container p-3 my-5">
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col-md-12 col-lg-8">
+            <div class="row justify-content-center">
+                <div class="col-md-12 px-3 mx-auto my-2">
+                    <h1>Tartan Thom Receipt</h1>
+                    <h3>Please retain this receipt as proof of purchase</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Order Summary:</h3>
+                    <p class="text-break">Order Number: {{ order.order_number }}</p>
+                    <p>Date: {{ order.date }}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6 py-2">
+                    <h3>Delivery Details:</h3>
+                    <p>{{ order.fullname }}</p>
+                    <p>{{ order.address_line1 }}</p>
+                    <p>{{ order.address_line2 }}</p>
+                    <p>{{ order.town_city }}</p>
+                    <p>{{ order.postcode }}</p>
+                    <p>{{ order.country }}</p>
+                </div>
+                <div class="col-md-6 py-2">
+                    <h3>Payment Details:</h3>
+                    <p>Total Items: £{{ order.order_total }}</p>
+                    <p>Delivery charge: £ XXXXX</p>
+                    <p>Grand Total: £ XXXXX</p>
+                </div>
+            </div>
+            <hr>
+
+        {% if order %}
+            {% for item in order.lineitems.all %}
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 p-2">
+                    <a href="{% url 'products:view_product' item.product.id %}"><img src="{{ item.product.image.url }}" alt="product-image" height="200" width="200"></a>
+                </div>
+                <div class="col-xs-12 col-sm-6 p-2">
+                    <h3>{{ item.product.name }}</h3>
+                    <p>Quantity: {{ item.quantity }}</p>
+                    <p>Product total : £{{ item.item_total }}</p>
+                    <a href="{% url 'products:review_product' item.product.id %}" class="btn tartan-thom-btn my-2">Leave a review</a>
+                    {% if item.product.is_bespoke %}
+                        <a href="{% url 'checkout:bespoke' order.order_number item.product.id %}" class="btn tartan-thom-btn my-2">Bespoke form</a>
+                    {% endif %}
+
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+</div>
