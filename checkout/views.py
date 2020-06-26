@@ -57,7 +57,7 @@ def checkout(request):
                         'order': order,
                     }
                     from_email = os.environ.get('EMAIL_USER')
-                    to_email = request.user.email
+                    to_email = ['request.user.email']
                     header = "Tartan Thom Receipt"
                     html_message = render_to_string('checkout/receipt.html', context)
                     plain_message = strip_tags(html_message)
