@@ -22,7 +22,7 @@
                 <div class="col-md-8 px-3 mx-auto">
                     <a href="{% url 'checkout:order_detail' order.order_number%}" class="link"><p>Order Number: {{ order.order_number }}</p></a>
                     <p>Order Date: {{ order.date.date }}</p>
-                    <p>Total: {{ order.order_total }}</p>
+                    <p>Total: {{ order.grand_total }}</p>
                     <p>Ordered By: {{ order.fullname }}</p>
                 </div>
             </div>

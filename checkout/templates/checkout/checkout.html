@@ -63,7 +63,7 @@
                     {% else %}
                         <h3>You are checking out {{ product_count }} items from Tartan Thom</h3>
                     {% endif %}
-                    <p>Total cost: £{{total}}</p>
+                    <p>Total cost: £{{ grand_total }}</p>
                 </div>
                 <div class="col-md-12 col-lg-8 my-3">
                     <a href="{% url 'basket:view_basket' %}" class="btn checkout-btn btn-md m-1">Back to bag</a>
