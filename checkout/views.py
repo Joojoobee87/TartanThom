@@ -57,13 +57,11 @@ def checkout(request):
                         'order': order,
                     }
                     from_email = os.environ.get('EMAIL_USER')
-                    user_email = str(request.user.email)
-                    to_email = ['user_email']
-                    print(to_email)
+                    user = request.user
                     header = "Tartan Thom Receipt"
                     html_message = render_to_string('checkout/receipt.html', context)
                     plain_message = strip_tags(html_message)
-                    send_mail(header, plain_message, from_email, to_email, html_message=html_message, fail_silently=False)
+                    send_mail(header, plain_message, from_email, [user.email], html_message=html_message, fail_silently=False)
 
                 except Products.DoesNotExist:
                     order.delete()
