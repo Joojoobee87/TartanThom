@@ -45,6 +45,5 @@ class TestBasketViews(TestCase):
  
     def test_delete_item_from_basket(self):
         response = self.client.get(f'/basket/delete/{self.item.id}/')
-        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'basket/basket.html')
 
