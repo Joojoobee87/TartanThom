@@ -7,8 +7,13 @@ from products.models import Products
 
 def index(request):
     """A view that displays the homepage"""
-    testimonials = Testimonials.objects.all()
+    all_testimonials = Testimonials.objects.all()
     products = Products.objects.all()
+    if all_testimonials:
+        testimonials = all_testimonials
+    else:
+        testimonials = "We don't currently have any testimonials"
+
     context = {
         'testimonials': testimonials,
         'products': products,

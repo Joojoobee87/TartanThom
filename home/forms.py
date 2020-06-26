@@ -11,7 +11,7 @@ class TestimonialForm(forms.ModelForm):
         fields = ('testimonial', 'testimonial_allow_publish')
 
         widgets = {
-            'testimonial': forms.Textarea(attrs={'required': True, 'rows': 5, 'cols': 20, 'max_length': 300}),
+            'testimonial': forms.Textarea(attrs={'required': True, 'rows': 5, 'cols': 20}),
             'testimonial_allow_publish': forms.CheckboxInput(attrs={'required': False, 'null': False}),
         }
 
