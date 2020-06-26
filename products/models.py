@@ -69,7 +69,7 @@ class ProductReviews(models.Model):
     )
     user_anonymous = models.BooleanField(default=False)
     product = models.ForeignKey(Products, null=False, on_delete=models.CASCADE)
-    review_text = models.TextField(null=False, max_length=500)
+    review_text = models.TextField(null=False, max_length=300)
     review_rating = models.IntegerField(null=False, default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
     review_date = models.DateField(auto_now_add=True)
     review_active = models.BooleanField(default=True)

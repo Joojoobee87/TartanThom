@@ -31,7 +31,7 @@
 
 {% block content %}
 
-<div class="container my-profile-container p-3 my-5">
+<div class="container tartan-thom-container p-3 my-5">
     <div class="row justify-content-center m-1 p-3">
         <div class="col">
             <h1>Products</h1>
@@ -64,7 +64,7 @@
                                 {% endif %}
                                 {% if product.label %}
                                 <div class="product-label py-auto">
-                                    <span id="label">{{ product.label }}</span>
+                                    <span class="label">{{ product.label }}</span>
                                 </div>
                                 {% endif %}
                             </a>
@@ -79,7 +79,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-12 product-panel-details">
                         {% if product.sale_price %}
-                        <p><strike>£{{ product.price }}</strike>   £{{ product.sale_price }}</p>
+                        <p><span class="strike">£{{ product.price }}</span>   £{{ product.sale_price }}</p>
                         {% else %}
                         <p>£{{ product.price }}</p>
                         {% endif %}

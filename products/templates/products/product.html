@@ -18,7 +18,7 @@
             <h2>{{ product.name }}</h2>
             <p>Category: {{ product.category }}</p>
             {% if product.sale_price %}
-                <p><strike>£{{ product.price }}</strike>   £{{ product.sale_price }}</p>
+                <p><span class="strike">£{{ product.price }}</span>   £{{ product.sale_price }}</p>
             {% else %}
                 <p>£{{ product.price }}</p>
             {% endif %}
@@ -44,7 +44,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
-                    aria-controls="contact" aria-selected="false">Reviews</a>
+                    aria-controls="reviews" aria-selected="false">Reviews</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">

@@ -75,6 +75,7 @@ def review_product(request, id):
             messages.success(request, 'Thanks for submitting your review!')
             return redirect(reverse('profiles:my_profile'))
         else:
-            messages.error(request, 'Please check the information in the form')
+            errors = form.errors.values()
+            messages.error(request, f'Please check the information in the form {errors}')
 
     return render(request, 'products/review_product.html', context)
