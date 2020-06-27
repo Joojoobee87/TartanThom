@@ -5,8 +5,9 @@ from decimal import Decimal
 
 
 def basket_contents(request):
-    """Make the contents of the basket available for all pages"""
-
+    """
+    Make the contents of the basket available in the session
+    """
     basket = request.session.get('basket', {})
 
     basket_items = []

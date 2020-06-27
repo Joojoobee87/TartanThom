@@ -34,7 +34,7 @@
                     <img src="{{ item.product.image.url }}" alt="product-image" class="products-image"/>
                     {% if item.product.label %}
                     <div class="product-label-left py-auto">
-                        <span id="label">{{ item.product.label }}</span>
+                        <span class="label">{{ item.product.label }}</span>
                     </div>
                     {% endif %}
                 </div>
@@ -64,7 +64,6 @@
 
                     <form method="POST" action="{% url 'basket:delete_from_basket' item.product.id %}">
                         {% csrf_token %}
-
                         <!-- Bootstrap Button trigger modal -->
                         <button type="button" class="delete-from-basket btn btn-md float-left" data-toggle="modal" data-target="#confirmDelete"><i class="far fa-trash-alt"></i>
                         </button>
@@ -81,7 +80,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body" id="confirm-delete-body">
-                                    Are you sure you want to remove this item from your basket?
+                                    Are you sure you want to remove this item from your bag?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -90,7 +89,6 @@
                             </div>
                         </div>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -101,9 +99,9 @@
     <div class="row justify-content-center m-2 p-3">
         <div class="col-md-12 col-lg-8">
             {% if product_count == 1%}
-                <h3>There is {{ product_count }} item in your basket</h3>
+                <h3>There is {{ product_count }} item in your bag</h3>
             {% else %}
-                <h3>There are {{ product_count }} items in your basket</h3>
+                <h3>There are {{ product_count }} items in your bag</h3>
             {% endif %}
             <p>Items: £{{ order_total }}</p>
             <p>Delivery: £{{ delivery_total }}</p>
@@ -116,7 +114,7 @@
     {% else %}
     <div class="row justify-content-center m-2 p-3">
         <div class="col-md-12 col-lg-8 my-3">
-            <h3>Sorry, you don't have any items in your basket!</h3>
+            <h3>Sorry, you don't have any items in your bag!</h3>
         </div>
         <div class="col-md-12 col-lg-8 my-3">
             <p>
@@ -132,6 +130,5 @@
     {% endif %} 
 
 </div>
-
 
 {% endblock %}
