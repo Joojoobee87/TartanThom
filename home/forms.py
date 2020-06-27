@@ -1,7 +1,5 @@
 from django import forms
 from home.models import Testimonials
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserChangeForm
 
 
 class TestimonialForm(forms.ModelForm):
@@ -11,8 +9,12 @@ class TestimonialForm(forms.ModelForm):
         fields = ('testimonial', 'testimonial_allow_publish')
 
         widgets = {
-            'testimonial': forms.Textarea(attrs={'required': True, 'rows': 5, 'cols': 20}),
-            'testimonial_allow_publish': forms.CheckboxInput(attrs={'required': False, 'null': False}),
+            'testimonial': forms.Textarea(attrs={
+                'required': True, 'rows': 5, 'cols': 20
+                }),
+            'testimonial_allow_publish': forms.CheckboxInput(attrs={
+                'required': False, 'null': False
+                }),
         }
 
         labels = {
@@ -30,10 +32,3 @@ class TestimonialForm(forms.ModelForm):
                 'max_length': "Try keep it short and sweet",
             },
         }
-
-
-class UserDetailsForm(forms.ModelForm):
-    class Meta:
-        model = User
-
-        fields = ('username', 'first_name', 'last_name', 'email')

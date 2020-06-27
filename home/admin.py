@@ -6,7 +6,8 @@ from .models import Testimonials
 
 class TestimonialsAdmin(admin.ModelAdmin):
     model = Testimonials
-    list_display = ('testimonial_user', 'testimonial_date', 'testimonial_active')
+    list_display = ('testimonial_user', 'testimonial_date',
+                    'testimonial_active')
 
 
 admin.site.register(Testimonials, TestimonialsAdmin)

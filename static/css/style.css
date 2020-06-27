@@ -357,9 +357,13 @@ footer {
     text-align: center;
 }
 
-#label {
+.label {
     font-family: "Great Vibes", cursive !important;
     font-size: 1em;
+}
+
+.strike {
+    text-decoration: line-through !important;
 }
 
 /*---------------Product Reviews / Additional Info-----------------*/
