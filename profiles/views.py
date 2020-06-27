@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from home.forms import TestimonialForm, UserDetailsForm
+from home.forms import TestimonialForm
+from profiles.forms import UserDetailsForm
 import datetime
 
 # Create your views here.
@@ -9,7 +10,9 @@ import datetime
 
 @login_required
 def my_profile(request):
-    """ Displays users profile page or redirects to login for authentication"""
+    """
+    Displays users profile page or redirects to login for authentication
+    """
     user = request.user
     context = {
         'user': user,
@@ -19,7 +22,9 @@ def my_profile(request):
 
 @login_required
 def testimonial(request):
-    """"Displays testimonial page with form for user to complete and submit"""
+    """"
+    Displays testimonial page with form for user to complete and submit
+    """
     form = TestimonialForm()
     context = {
             'form': form,
@@ -36,15 +41,17 @@ def testimonial(request):
             testimonial.testimonial_user = request.user
             testimonial.save()
             messages.success(request, 'Thanks for submitting your testimonial!')
+            return redirect(reverse('profiles:my_profile'))
         else:
             messages.error(request, 'Please check the information in the form')
-
     return render(request, 'home/testimonial.html', context)
 
 
 @login_required
 def my_details(request):
-    """A view to display User details and allow them to update their information"""
+    """
+    A view to display User details and allow them to update their information
+    """
     form = UserDetailsForm(instance=request.user)
     context = {
             'form': form,
