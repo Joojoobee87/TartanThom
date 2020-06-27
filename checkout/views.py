@@ -67,7 +67,7 @@ def checkout(request):
                     order.delete()
             return redirect(reverse('checkout:checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, "I'm sorry, there seems to be a problem ordering at this time. Please try again later")
+            messages.error(request, "Please review the details in the order form")
     else:
         basket = request.session.get('basket', {})
         current_contents = basket_contents(request)
@@ -128,6 +128,7 @@ def order_detail(request, order_number):
     return render(request, 'checkout/order_detail.html', context)
 
 
+@login_required
 def bespoke(request, order_number, id):
     """
     Returns a bespoke form for users to complete further information for
@@ -143,8 +144,6 @@ def bespoke(request, order_number, id):
     }
     if request.method == 'POST':
         form = BespokeForm(request.POST)
-        print(request.POST)
-        print(form.errors)
         if form.is_valid():
             bespoke = form.save(commit=False)
             bespoke.bespoke_order = order
@@ -152,6 +151,6 @@ def bespoke(request, order_number, id):
             bespoke.save()
             messages.success(request, 'Thanks for submitting your bespoke details!')
         else:
-            messages.error(request, '%s - Please check the information in the form' %form.errors )
+            messages.error(request, 'Please check the information in the form')
 
     return render(request, 'checkout/bespoke.html', context)

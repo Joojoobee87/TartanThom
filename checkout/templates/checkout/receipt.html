@@ -58,11 +58,9 @@
                     <h3>{{ item.product.name }}</h3>
                     <p>Quantity: {{ item.quantity }}</p>
                     <p>Product total : £{{ item.item_total }}</p>
-                    <a href="{% url 'products:review_product' item.product.id %}" class="btn tartan-thom-btn my-2">Leave a review</a>
                     {% if item.product.is_bespoke %}
-                        <a href="{% url 'checkout:bespoke' order.order_number item.product.id %}" class="btn tartan-thom-btn my-2">Bespoke form</a>
+                        <p>Please login to Tartan Thom to complete our bespoke order form</p>
                     {% endif %}
-
                 </div>
             </div>
             <hr>

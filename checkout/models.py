@@ -28,9 +28,16 @@ class Order(models.Model):
     is_complete = models.BooleanField(default=False)
 
     def create_order_number(self):
+        """
+        Generates unique order number for order
+        """
         return uuid.uuid4().hex.upper()
 
     def save(self, *args, **kwargs):
+        """
+        Overrides save method on order model for order number where
+        it does not already exist
+        """
         if not self.order_number:
             self.order_number = self.create_order_number()
         super().save(*args, **kwargs)
@@ -60,7 +67,10 @@ class OrderItem(models.Model):
     item_total = models.DecimalField(max_digits=8, decimal_places=2, null=False,blank=False, editable=False)
 
     def save(self, *args, **kwargs):
-        """ Calculate total of order item """
+        """
+        Calculate total of order item depending on whether the
+        item is on sale or full price
+        """
         if not self.product.sale_price:
             self.item_total = self.product.price * self.quantity
         else:
@@ -89,11 +99,21 @@ class Bespoke(models.Model):
     is_complete = models.BooleanField(blank=True, default=False)
 
 
+# Signals
+
 @receiver(post_save, sender=OrderItem)
 def update_on_save(sender, instance, created, **kwargs):
+    """
+    Signal listens for change on OrderItem and updates order
+    totals where items in an order are created or updated
+    """
     instance.order.update_total()
 
 
 @receiver(post_delete, sender=OrderItem)
 def update_on_delete(sender, instance, **kwargs):
+    """
+    Signal listens for change on OrderItem and updates order
+    totals where items in an order are deleted
+    """
     instance.order.update_total()

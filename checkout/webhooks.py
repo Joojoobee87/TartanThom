@@ -1,4 +1,5 @@
-# Set your secret key. Remember to switch to your live secret key in production!
+# Set your secret key. Remember to switch to your live
+# secret key in production!
 # See your keys here: https://dashboard.stripe.com/account/apikeys
 
 from django.http import HttpResponse
@@ -10,7 +11,8 @@ import stripe
 
 # If you are testing your webhook locally with the Stripe CLI you
 # can find the endpoint's secret by running `stripe listen`
-# Otherwise, find your endpoint's secret in your webhook settings in the Developer Dashboard
+# Otherwise, find your endpoint's secret in your webhook settings
+# in the Developer Dashboard
 
 # Using Django
 @require_POST
@@ -24,20 +26,16 @@ def webhook(request):
     event = None
 
     try:
-        print("I'm at webhook try")
         event = stripe.Webhook.construct_event(
             payload, sig_header, wh_secret
         )
     except ValueError as e:
-        print("I'm at webhook except1")
         # Invalid payload
-        return HttpResponse(status=400)
+        return HttpResponse(content=e, status=400)
     except stripe.error.SignatureVerificationError as e:
-        print("I'm at webhook except2")
         # Invalid signature
-        return HttpResponse(status=400)
+        return HttpResponse(content=e, status=400)
     except Exception as e:
-        print("I'm at webhook except3")
         return HttpResponse(content=e, status=400)
 
     # Set up webhook handler
@@ -59,6 +57,4 @@ def webhook(request):
 
     # Call event handler with event
     response = event_handler(event)
-    print("I'm returning response")
-    print(response)
     return response

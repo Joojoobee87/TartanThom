@@ -6,18 +6,23 @@ from .models import Bespoke
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('fullname', 'phone_number', 'address_line1', 'address_line2', 'town_city', 'postcode', 'country')
+        fields = ('fullname', 'phone_number', 'address_line1',
+                  'address_line2', 'town_city', 'postcode', 'country')
 
 
 class BespokeForm(forms.ModelForm):
 
-    wedding_date = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, 2040)), required=False)
-    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, 2040)), required=False)
+    wedding_date = forms.DateField(widget=forms.SelectDateWidget(
+        years=range(1900, 2040)), required=False)
+    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(
+        years=range(1900, 2040)), required=False)
 
     class Meta:
         model = Bespoke
 
-        fields = ('person_name1', 'person_name2', 'date_of_birth', 'place_of_birth', 'birth_weight_lb', 'birth_weight_oz', 'address_line1')
+        fields = ('person_name1', 'person_name2', 'date_of_birth',
+                  'place_of_birth', 'birth_weight_lb', 'birth_weight_oz',
+                  'address_line1')
 
         labels = {
             'person_name1': 'Name',
