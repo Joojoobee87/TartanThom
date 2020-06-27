@@ -27,6 +27,13 @@
                     {% if product.category == 'Birthday' %}
                         {{ form.person_name1|as_crispy_field }}
                         {{ form.date_of_birth|as_crispy_field }}
+                    <!----------------------Baby-------------------->
+                    {% elif product.category == 'Baby' %}
+                        {{ form.person_name1|as_crispy_field }}
+                        {{ form.date_of_birth|as_crispy_field }}
+                        {{ form.place_of_birth|as_crispy_field }}
+                        {{ form.birth_weight_lb|as_crispy_field }}
+                        {{ form.birth_weight_oz|as_crispy_field }}
                     <!---------------------New Home----------------->
                     {% elif product.category == 'New Home' %}
                         {{ form.person_name1|as_crispy_field }}
@@ -36,13 +43,8 @@
                         {{ form.person_name1|as_crispy_field }}
                         {{ form.person_name2|as_crispy_field }}
                         {{ form.wedding_date|as_crispy_field }}
-                    <!----------------------Baby-------------------->
-                    {% elif product.category == 'Baby' %}
-                        {{ form.person_name1|as_crispy_field }}
-                        {{ form.date_of_birth|as_crispy_field }}
-                        {{ form.place_of_birth|as_crispy_field }}
-                        {{ form.birth_weight_lb|as_crispy_field }}
-                        {{ form.birth_weight_oz|as_crispy_field }}
+                    {% else %}
+                        <p>Sorry, this doesn't appear to be a bespoke product</p>
                     {% endif %}
                     </fieldset>
                     <fieldset class="mb-5">

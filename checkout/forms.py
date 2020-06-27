@@ -11,8 +11,8 @@ class OrderForm(forms.ModelForm):
 
 class BespokeForm(forms.ModelForm):
 
-    wedding_date = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, 2040)))
-    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, 2040)))
+    wedding_date = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, 2040)), required=False)
+    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, 2040)), required=False)
 
     class Meta:
         model = Bespoke
