@@ -87,3 +87,13 @@ class Bespoke(models.Model):
     wedding_date = models.DateField(blank=True, null=True)
     address_line1 = models.CharField(max_length=50, blank=True, null=True)
     is_complete = models.BooleanField(blank=True, default=False)
+
+
+@receiver(post_save, sender=OrderItem)
+def update_on_save(sender, instance, created, **kwargs):
+    instance.order.update_total()
+
+
+@receiver(post_delete, sender=OrderItem)
+def update_on_delete(sender, instance, **kwargs):
+    instance.order.update_total()

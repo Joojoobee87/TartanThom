@@ -110,7 +110,7 @@ def checkout_history(request):
             'user_orders': user_orders,
         }
     else:
-        messages.error("Sorry, you don't currently have any orders")
+        messages.error(request, "Sorry, you don't currently have any orders")
         return redirect(reverse('profiles:my_profile'))
 
     return render(request, 'checkout/checkout_history.html', context)
