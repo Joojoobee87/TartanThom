@@ -9,9 +9,12 @@ class ReviewForm(forms.ModelForm):
         fields = ('review_rating', 'review_text', 'user_anonymous')
 
         widgets = {
-            'review_rating': forms.NumberInput(attrs={'localize': False, 'required': True}),
-            'review_text': forms.Textarea(attrs={'required': True, 'rows': 5, 'cols': 20}),
-            'user_anonymous': forms.CheckboxInput(attrs={'required': False, 'null': False}),
+            'review_rating': forms.NumberInput(
+                attrs={'localize': False, 'required': True}),
+            'review_text': forms.Textarea(
+                attrs={'required': True, 'rows': 5, 'cols': 20}),
+            'user_anonymous': forms.CheckboxInput(
+                attrs={'required': False, 'null': False}),
         }
 
         labels = {

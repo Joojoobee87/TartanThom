@@ -40,7 +40,8 @@ class Products(models.Model):
     ]
     name = models.CharField(max_length=100)
     product_type = models.CharField(max_length=100, choices=PRODUCT_TYPE)
-    image = models.ImageField(upload_to='img', default='static/img/TartanThomDefault.jpg')
+    image = models.ImageField(upload_to='img',
+                              default='static/img/TartanThomDefault.jpg')
     description = models.TextField()
     category = models.CharField(max_length=100, choices=category)
     price = models.DecimalField(decimal_places=2, max_digits=5)
@@ -70,7 +71,8 @@ class ProductReviews(models.Model):
     user_anonymous = models.BooleanField(default=False)
     product = models.ForeignKey(Products, null=False, on_delete=models.CASCADE)
     review_text = models.TextField(null=False, max_length=300)
-    review_rating = models.IntegerField(null=False, default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    review_rating = models.IntegerField(null=False, default=5,
+                                        validators=[MinValueValidator(1), MaxValueValidator(5)])
     review_date = models.DateField(auto_now_add=True)
     review_active = models.BooleanField(default=True)
 

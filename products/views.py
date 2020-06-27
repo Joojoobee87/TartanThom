@@ -9,7 +9,9 @@ import datetime
 
 
 def view_products(request):
-    """View all products in the collection"""
+    """
+    View all products in the collection
+    """
     products = Products.objects.all()
     product_type = "All Products"
     results_count = products.count()
@@ -22,7 +24,9 @@ def view_products(request):
 
 
 def view_products_by_type(request, product_type):
-    """View all products with the product type 'Cards' """
+    """
+    View all products with the product type 'Cards'
+    """
     if request.method == 'GET':
         products = Products.objects.filter(product_type=product_type)
         results_count = products.count()
@@ -38,7 +42,9 @@ def view_products_by_type(request, product_type):
 
 
 def view_product(request, id):
-    """View selected product in the collection"""
+    """
+    View selected product in the collection
+    """
     form = QuantityForm()
     product = get_object_or_404(Products, pk=id)
     reviews = ProductReviews.objects.filter(product=id)
@@ -51,7 +57,9 @@ def view_product(request, id):
 
 
 def review_product(request, id):
-    """ Review form for user to submit for a specific product"""
+    """
+    Review form for user to submit for a specific product
+    """
     form = ReviewForm()
     product = get_object_or_404(Products, pk=id)
     context = {
@@ -75,7 +83,6 @@ def review_product(request, id):
             messages.success(request, 'Thanks for submitting your review!')
             return redirect(reverse('profiles:my_profile'))
         else:
-            errors = form.errors.values()
-            messages.error(request, f'Please check the information in the form {errors}')
+            messages.error(request, 'Please check the information in the form')
 
     return render(request, 'products/review_product.html', context)
