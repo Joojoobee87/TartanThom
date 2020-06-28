@@ -10,7 +10,7 @@
             <img src="{{ product.image.url }}" alt="product-image" class="products-image"/>
             {% if product.label %}
             <div class="product-label py-auto">
-                <span id="label">{{ product.label }}</span>
+                <span class="label">{{ product.label }}</span>
             </div>
             {% endif %}
         </div>
@@ -51,6 +51,9 @@
             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                 <p class="py-1">{{ product.description }}</p>
                 <p class="py-1">Size: {{ product.size }}</p>
+                {% if product.is_bespoke %}
+                <p class="py-1">This is a bespoke product so we'll collect further details once you've completed your order. Bespoke forms can be found via Account - Order History - Order Detail</p>
+                {% endif %}
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
             {% if reviews %}
