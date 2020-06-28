@@ -6,19 +6,27 @@
 
 {% block content %}
 
-<div class="container contact-container">
-  <div class="row justify-content-center my-3">
-    <div class="col-md-10">
-      <h1>Contact Us</h1>
-      <div class="form-group contact-form">
-        <form action="{% url 'contact:contact' %}" method="post">
-            {% csrf_token %} 
-            {{ form|crispy }}
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
+<div class="container tartan-thom-container p-3 my-5">
+    <div class="row justify-content-center m-2 p-3">
+        <div class="col-md-12">
+            <div class="row justify-content-center">
+                <div class="col-md-8 my-3">
+                    <h1>Contact Us</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center my-3">
+                <div class="col-md-10">
+                    <div class="form-group contact-form">
+                        <form action="{% url 'contact:contact' %}" method="post">
+                            {% csrf_token %} 
+                            {{ form|crispy }}
+                        <input type="submit" value="Submit" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}
