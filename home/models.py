@@ -21,4 +21,4 @@ class Testimonials(models.Model):
     )
 
     def __str__(self):
-        return self.testimonial_user
+        return str(self.testimonial_user)
