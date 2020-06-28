@@ -150,6 +150,7 @@ def bespoke(request, order_number, id):
             bespoke.bespoke_product = product
             bespoke.save()
             messages.success(request, 'Thanks for submitting your bespoke details!')
+            return redirect(reverse('checkout:order_detail', args=(order_number, )))
         else:
             messages.error(request, 'Please check the information in the form')
 
