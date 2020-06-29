@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from .forms import QuantityForm
-from django.contrib import messages
 
 # Create your views here.
 
@@ -9,37 +7,26 @@ def view_basket(request):
     """
     A view that renders the contents of the basket
     """
-    form = QuantityForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'basket/basket.html', context)
+    return render(request, 'basket/basket.html')
 
 
 def add_to_basket(request, id):
     """
     A view that adds the quantity of a product to the basket
     """
-    form = QuantityForm()
-    context = {
-        'form': form,
-    }
     quantity = int(request.POST.get('quantity'))
     basket = request.session.get('basket', {})
 
     if request.method == "POST":
-        form = QuantityForm(request.POST)
-        if form.is_valid():
-            quantity = int(request.POST['quantity'])
-            if id in basket:
-                basket[id] = int(basket[id]) + quantity
-            else:
-                basket[id] = basket.get(id, quantity)
+
+        quantity = int(request.POST['quantity'])
+        if id in basket:
+            basket[id] = int(basket[id]) + quantity
         else:
-            messages.error(request, "Please enter a value to update quantity")
+            basket[id] = basket.get(id, quantity)
 
     request.session['basket'] = basket
-    return render(request, 'basket/basket.html', context)
+    return render(request, 'basket/basket.html')
 
 
 def amend_basket(request, id):
@@ -47,25 +34,17 @@ def amend_basket(request, id):
     A view that amends the quantity of a product in the basket
     """
     basket = request.session.get('basket', {})
-    form = QuantityForm()
-    context = {
-        'form': form,
-    }
 
     if request.method == "POST":
-        form = QuantityForm(request.POST)
-        if form.is_valid():
-            quantity = int(request.POST['quantity'])
-            basket = request.session.get('basket', {})
-            if quantity > 0:
-                basket[id] = quantity
-            else:
-                basket.pop[id]
-            request.session.modified = True
+        quantity = int(request.POST['quantity'])
+        basket = request.session.get('basket', {})
+        if quantity > 0:
+            basket[id] = quantity
         else:
-            messages.error(request, "Please enter a value to update quantity")
+            basket.pop[id]
+        request.session.modified = True
 
-    return render(request, 'basket/basket.html', context)
+    return render(request, 'basket/basket.html')
 
 
 def delete_from_basket(request, id):

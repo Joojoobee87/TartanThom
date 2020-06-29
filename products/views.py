@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from products.models import Products, ProductReviews
 from products.forms import ReviewForm
-from basket.forms import QuantityForm
 import datetime
 
 # Create your views here.
@@ -45,13 +44,11 @@ def view_product(request, id):
     """
     View selected product in the collection
     """
-    form = QuantityForm()
     product = get_object_or_404(Products, pk=id)
     reviews = ProductReviews.objects.filter(product=id)
     context = {
         'product': product,
         'reviews': reviews,
-        'form': form,
     }
     return render(request, "products/product.html", context)
 
