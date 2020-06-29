@@ -24,9 +24,10 @@
             {% endif %}
             <form method="POST" action="{% url 'basket:add_to_basket' product.id %}">
                 {% csrf_token %}
-                <fieldset>
-                {{ form|crispy }}
-                </fieldset>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" name="quantity" min="1" max="50">
+                </div>
                 <div class="form-row my-2">
                     <div class="col-md-12">
                         <button class="add-to-basket btn" type="submit">Add to bag</button>

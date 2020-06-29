@@ -33,17 +33,7 @@ class TestBasketViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'basket/basket.html')
 
-    def test_add_item_to_basket(self):
-        response = self.client.get(f'/basket/add/{self.item.id}/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'basket/basket.html')
-
     def test_amend_basket(self):
         response = self.client.get(f'/basket/amend/{self.item.id}/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'basket/basket.html')
- 
-    def test_delete_item_from_basket(self):
-        response = self.client.get(f'/basket/delete/{self.item.id}/')
-        self.assertTemplateUsed(response, 'basket/basket.html')
-
