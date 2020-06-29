@@ -157,8 +157,7 @@ Many of the forms used in the project are Django model forms which allow submiss
 
 Google Fonts was used to browse and select the fonts used on the website and two fonts were identified as a requirement for the project. Great Vibes was selected for its close match to the Tartan Thom logo designed by Nic. It is a handwriting style which has been utilised throughout the project, mainly for header content. Open Sans was identified as a perfect pairing to use concurrently with Great Vibes, utilised for the majority of the text content throughout the site, selected for its clarity and readability.
 
-Font sample demonstrating the Great Vibes and Open Sans font pairing:
-[here](/documentation/GreatVibes.png “Great Vibes / Open Sans”)
+A Font sample demonstrating the Great Vibes and Open Sans font pairing can be found [here](documentation/GreatVibes.png “Great Vibes / Open Sans”)
 
 ### Colour
 
@@ -220,6 +219,9 @@ The Django unittest module defines tests using a class-based approach. When runn
 The user testing framework was drafted in excel, defining the different areas of the site and the associated actions within that specific app/area. The user-based approach allowed me to test not only that the code worked as expected when performing certain actions, but also that the rendering and visual display of code was appropriate for the type in use to ensure a fully responsive design.
 
 Testing was also conducted throughout the build of the project to ensure that the functionality worked as expected and any issues that cropped up during the build phase were rectified during development. 
+
+The user testing framework can be found [here](documentation/MS4_Testing.xlsx "Tartan Thom User Testing").
+
 
 ### Issues
 
