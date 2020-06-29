@@ -38,6 +38,10 @@ p {
     color: black;
 }
 
+.link {
+    font-weight: bold;
+}
+
 a,
 a:hover {
     color: inherit;
@@ -53,7 +57,7 @@ a {
 
 i {
   color: inherit;
-  padding: 0 0.5em !important;
+  padding: 0 0.5em 0 0 !important;
 }
 
 /*------------------Buttons and links---------------------------*/
@@ -89,16 +93,6 @@ input[type="submit"] {
     color: #fff;
     background-color: #828285;
     border: none;
-}
-
-/*-----------------------Modal----------------------------*/
-
-#confirm-delete-header {
-    font-family: "Great Vibes", cursive;
-}
-
-#confirm-delete-body {
-    font-family: "Open Sans", sans-serif;
 }
 
 /*-----------------------Messages---------------------------*/
