@@ -1,8 +1,8 @@
 /*-------------Background, Branding and Elements-----------------*/
 
 body {
-  background-image: url("/static/img/tartanthom.png");
-  background-size: 100%;
+  background-image: url("/static/img/tartanthom.png") repeat;
+  overflow: hidden;
   height: 100%;
 }
 
