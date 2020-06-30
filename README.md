@@ -84,7 +84,7 @@ A full list of the models developed for this project are listed below:
 -	The Django-allauth package was utilised for the authentication on the project. The allauth package supports multiple authentication schemes including login by username or by e-mail, as well as multiple strategies for account verification. Allauth also has the ability to connect multiple social accounts to a Django user account, which is something I’d like to introduce in the second phase of development.
 
 **Homepage Images**
--	The Tartan Thom homepage displays a preview of products from the collection with button overlays to invite the user to navigate to the Shop. A user can choose to shop all products, or shop by the three distinct types of products if they are looking for something specific. s
+-	The Tartan Thom homepage displays a preview of products from the collection with button overlays to invite the user to navigate to the Shop. A user can choose to shop all products, or shop by the three distinct types of products if they are looking for something specific.
 
 **Testimonials**
 -	Beneath the products display, a series of testimonials are presented to the user, allowing them to cycle through the active testimonials using the left and right arrow buttons. This quickly highlights to other customer the positive user experiences of Tartan Thom. Testimonials can be submitted by any user of the site but must be made active by the site owner in order to be displayed (see Profile section for further detail).
@@ -103,9 +103,6 @@ A full list of the models developed for this project are listed below:
 
 **Reviews**
 -	To further enhance the user experience, user reviews have been incorporated to help inform other users when selecting a product to purchase. Reviews are displayed on the product page when a user selects a product, within the tabs section underneath the main product content. Users are able to scroll through a series of reviews, displaying star ratings and rating text. Reviews are only able to be submitted by someone who has purchased the selected product, the link to complete a review is available to a user once they have paid for the product, under the Order History section of their Profile page. 
-
-**Modals**
--	**Confirm Delete** - a Bootstrap model has been utilised in order for Users to confirm when they wish to delete an item from their basket. Introducing a two-step process for deleting items from a user’s basket helps to ensure that they don’t do this in error by confirming their intent to delete.
 
 **Footer**
 
@@ -141,9 +138,11 @@ A full list of the models developed for this project are listed below:
 **Products**
 -	Further enhancements to the Products model are planned to offer customer a choice of colour options other than what has been designed for the standard product. A colour field has been added to the model with an attribute of blank=False in anticipation but as yet, this product enhancement is not available to customers. The views in the basket will need adapting to incorporate adding the relevant colour and quantity of a product to the shopping bag. This is planned for phase 2. 
 
-
 ### Structure and Flow
 
+The structure of the page consists of a header and footer containing appropriate links and the main body which flows in a vertical direction. Beneath the main navigation bar, there is a banner with strap line to capture the user’s attention. User are able to access the Shop either from the main nav-link or via one of the Shop images included in the main homepage content, selecting either all products or from one of the product types.
+
+The products available in the shop occupy rows and columns and are responsive depending on width of the device, reducing to a single column with vertical flow and scrolling on smaller devices.
 
 ### Navigation
 
@@ -190,7 +189,6 @@ The final colour selections can be seen below.
 
 <img src="/documentation/DesertSand.png" width="200px" height="100px">
 
-
 ### Icons
 
 **Font Awesome** has been utilised for the various icons in use throughout the site. Icons have been used for the navigation links including Bag and Shop as well as the boxes on the Profile page under My Account. Font Awesome icons have also been used for the social media icons embedded in the footer including Facebook, Twitter and Instagram which link out to the respective social media pages.
@@ -205,7 +203,8 @@ The final colour selections can be seen below.
 -	Django allauth - https://django-allauth.readthedocs.io/en/latest/overview.html
 -	Django Crispy Forms - https://django-crispy-forms.readthedocs.io/en/latest/
 -	Stripe
--	Bootstrap – Responsive Grid System, Modal boxes, Forms
+-	Amazon AWS – S3 Bucket for storing static and media files externally
+-	Bootstrap – Responsive Grid System, Forms
 -	Google Fonts
 -	Font awesome
 -	Coolors
@@ -222,9 +221,11 @@ Testing was also conducted throughout the build of the project to ensure that th
 
 The user testing framework can be found [here](documentation/MS4_Testing.xlsx "Tartan Thom User Testing").
 
-
 ### Issues
-
+Any issues encountered during the development and build of the project were rectified as and when they were noticed during the development process. Testing took place once the build was finalised and the issues observed were corrected and code committed and pushed back out to GitHub. Aside from small formatting and styling issues in the code, I encountered a couple of more significant issues, these include:
+-	Stripe payment form not rendering on Edge browser. All browsers were tested and on a variety of different devices, all of which rendered the payment form OK except Edge. I researched the issue and found some forums that suggest there are issues with Javascript functionality in Edge which I believe could be related to this issue and something which I can explore further during phase 2 of development.
+-	The homepage when tested on Internet Explorer did not render the rows and columns correctly whilst other pages appeared fine. As above, I have tested my app thoroughly on a range of devices and browsers and am comfortable that this issue is restricted to IE. 
+-	Django messages did not appear when the contact form is submitted on any browser. I checked the code and was unable to find any errors in the code. However, I amended the string to single quotes, removed a reference to the word ‘message’ replacing with ‘enquiry’ which resolved this issue.
 
 ## Deployment
 
@@ -238,6 +239,8 @@ As code was developed in GitPod, changes in the working directory were added reg
 
 Code was then committed and saved to the local repository using the command ‘git commit -m “commit message here”’ before being pushed to the remote repository in GitHub using the command ‘git push’, transferring the commits from the local to the remote repository.
 
+Secrets and keys and other variables were stored as environment variables in GitPod and added to the Config variables settings once the project was deployed to Heroku. 
+
 **SQLite Database**
 
 An SQLite database was provisioned and used during the development and build phase of the project. 
@@ -245,6 +248,10 @@ An SQLite database was provisioned and used during the development and build pha
 **PostgreSQL Database**
 
 A PostgreSQL database was provisioned in Heroku when the project moved into production. Heroku Postgres is a managed SQL database service provided directly by Heroku. 
+
+**Amazon AWS**
+
+Amazon AWS was configured and used to store static and media files for production. 
 
 **Heroku Deployment**
 
