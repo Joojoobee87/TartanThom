@@ -21,7 +21,7 @@ I drafted some initial designs and ideas and then transferred these to Balsamiq 
 ### User Stories
 
 User stories were developed for the project and written in the format:
-“As a <type of user>, I want <some goal> so that <some reason>"
+“As a ‘type of user’, I want ‘some goal’ so that ‘some reason’"
 
 The user stories were grouped by customer type including customer and administrator users. Once all user stories had been drafted, they were reviewed in terms of their priority and assigned a priority of Must, Should or Could depending on their significance in the overall project.
 
