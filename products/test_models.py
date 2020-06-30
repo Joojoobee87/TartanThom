@@ -55,7 +55,6 @@ class TestProductsModels(TestCase):
 
     def test_get_review_percentage_returns_int(self):
         percentage = self.product_1_review.review_percentage()
-        print(percentage)
         self.assertIsInstance(percentage, int)
 
     def tearDown(self):

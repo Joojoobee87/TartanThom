@@ -16,4 +16,3 @@ def about_design(request):
 def about_philosophy(request):
     """A view that display the Philosophy page"""
     return render(request, "about/about_philosophy.html")
-

@@ -118,11 +118,6 @@ class TestProductsViews(TestCase):
             'user_anonymous': False,
         })
         self.assertTrue(form.is_valid)
-        #review = form.save()
-        #review.user = self.user_1
-        #review.product = self.product_1
-        #response = self.client.post(f'/products/review-product/{self.product_1.id}/', form)
-        #self.assertRedirects(response, '/profiles/my_profile/')
 
     def tearDown(self):
         self.product_1.delete()

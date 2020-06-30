@@ -34,8 +34,8 @@ def contact(request):
                 try:
                     send_mail(header, plain_message, from_email, to_email,
                               html_message=html_message, fail_silently=False)
+                    messages.success(request, 'Thanks for your enquiry, we will be back in touch soon!')
                     return redirect(reverse('index'))
-                    messages.success(request, "Thanks for your message, we'll be back in touch soon!")
                 except BadHeaderError:
                     messages.error(request, "Sorry, we were unable to submit your message at this time")
         else:

@@ -26,7 +26,6 @@ class TestBasketViews(TestCase):
             'item': self.item,
             'quantity': self.quantity,
         }
-        print(self.basket)
 
     def test_view_basket(self):
         response = self.client.get('/basket/')

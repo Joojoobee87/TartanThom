@@ -24,6 +24,7 @@
                     <h3>Your checkout was successful!</h3>
                     <p>Thanks for your order. Your order number is {{order.order_number}}</p>
                     <p>Please review your order summary below. You can also view this order along with previous orders in your <a href="{% url 'profiles:my_profile' %}" class="link">Account</a></p>
+                    <p class="my-1"><i class="fas fa-info-circle" aria-hidden="true"></i>If you have ordered any bespoke items, please ensure you complete our bespoke form with the details. Click on the order number link below</p>
                 </div>
             </div>
             <hr>
@@ -32,6 +33,7 @@
                     <h3>Order Details:</h3>
                     <a href="{% url 'checkout:order_detail' order.order_number %}" class="link"><p>Order Number: {{ order.order_number }}</p></a>
                     <p>Order Date: {{ order.date }}</p>
+
                 </div>
             </div>
             <hr>
